@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="header">
+        <p class="pheader">Popster</p>
+    </div>
+    <div class="nav">
+        <i class="fa-solid fa-arrow-left"></i>
+        <button class="button" (click)="back()">Go back</button>
+        <p class="instructions">{{username}}, Upload a file here! </p>
+        <button class="ToUser" (click)="toUser()">See all the files uploaded by {{username}}</button>
+    </div>
+    <div class="body">
+        <div class="uploadContainer">
+            <h1 class="center">Upload a file</h1>
+            <label for="upload" class="upload">
+                <span class="span" aria-hidden="true"></span>
+                <input class="inputFull" type="file" accept="*" (change)="onChangeFile($event)"#fileUpload>
+                <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
+            </label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,593 @@
+.inputClass{
+    color: black;
+}
+.upperContainer{
+    background-color: yellow;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    font-weight: light;
+    border: 1px white solid;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+}
+.container{
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    color: white;
+}
+.choose{
+    color: white;
+    text-align: center;
+    position: absolute;
+    font-size: large;
+    font-weight: light;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    top: 120px;
+    left: 851px;
+}
+.button1{
+    top:154px;
+    left: 848px;
+    background-color: transparent;
+    color: white;
+    width: 112px;
+    border-radius: 40px;
+    position: absolute;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.button1:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.button1:focus{
+    background-color: white;
+    color: black;
+    font-wight: bold;
+}
+.button2{
+    top:154px;
+    left: 962px;
+    background-color: transparent;
+    color: white;
+    width: 112px;
+    border-radius: 40px;
+    position: absolute;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.button2:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.button2:focus{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+.containerForm{
+    position: absolute;
+    top: 204px;
+    left: 884px;
+}
+.p{
+    position: absolute;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    font-weight: bold;
+    top: -22px;
+    text-align: center;
+    left: 26px;
+    width: 102px;
+}
+.name{
+    position: absolute;
+    top: 11px;
+    left: 54px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+
+}
+.inputClass{
+    position: absolute;
+    top: 56px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.surname{
+    position: absolute;
+    top: 74px;
+    left: 43px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClassSurname{
+    position: absolute;
+    top: 120px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.birthday{
+    position: absolute;
+    top: 134px;
+    left: 45px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClassBirth{
+    position: absolute;
+    top: 182px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.eMail{
+    position: absolute;
+    top: 193px;
+    left: 50px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    width: 100px;
+}
+.inputClassEmail{
+    position: absolute;
+    top: 239px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.Nickname{
+    position: absolute;
+    top: 258px;
+    left: 36px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputNickname{
+    position: absolute;
+    top: 305px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.Password{
+    position: absolute;
+    top: 324px;
+    left: 36px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClassPassword{
+    position: absolute;
+    top: 372px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.repeatPassword{
+    position: absolute;
+    top: 399px;
+    left: 14px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    width: 130px;
+}
+.inputClassRepeatPassword{
+    position: absolute;
+    top: 452px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.register{
+    position: absolute;
+    top: 509px;
+    border-radius: 40px;
+    width: 160px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    color: white;
+    background-color: transparent;
+    left: 0px;
+    font-weight: bold;
+}
+.register:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.emailNotValid{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-wight: bold;
+    font-size: small;
+    top: 223px;
+    left: -58px;
+    width: 292px;
+}
+.errorDate{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-wight: bold;
+    font-size: small;
+    top: 165px;
+    left: -39px;
+    width: 251px;
+}
+.username{
+    position: absolute;
+    top: 176px;
+    left: 924px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClassusername{
+    position: absolute;
+    top: 223px;
+    left: 883px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.password{
+    position: absolute;
+    top: 250px;
+    left: 926px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClasspassword{
+    position: absolute;
+    top: 300px;
+    left: 883px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.registerNew{
+    position: absolute;
+    top: 355px;
+    border-radius: 40px;
+    width: 160px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    color: white;
+    background-color: transparent;
+    left: 883px;
+    font-weight: bold;
+}
+.registerNew:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.registerNew:focus{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+.differentPassword{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    font-size: small;
+    top: 432px;
+    left: 8px;
+    width: 292px;
+}
+.notNickname{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    font-size: small;
+    top: 288px;
+    left: 2px;
+    width: 292px;
+}
+.notPassword{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    font-size: small;
+    top: 432px;
+    left: 8px;
+    width: 292px;
+}
+.topRight{
+    top:35px;
+    left: 1717px;
+    background-color: black;
+    color: white;
+    width: 155px;
+    border-radius: 40px;
+    border-color: black;
+    position: absolute;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.topRight:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.topRight:focus{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+.pSeller{
+    position: absolute;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    font-weight: bold;
+    top: 180px;
+    text-align: center;
+    left: 916px;
+    width: 102px;
+}
+.nameSeller{
+    position: absolute;
+    top: 212px;
+    left: 943px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClassSeller{
+    position: absolute;
+    top: 261px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+    left: 887px;
+}
+.surnameSeller{
+    position: absolute;
+    top: 281px;
+    left: 928px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClassSurnameSeller{
+    position: absolute;
+    top: 330px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+    left: 886px;
+}
+.birthdaySeller{
+    position: absolute;
+    top: 133px;
+    left: 43px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputClassBirthSeller{
+    position: absolute;
+    top: 413px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+    left: 882px;
+}
+.errorDateSeller{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-wight: bold;
+    font-size: small;
+    top: 165px;
+    left: -39px;
+    width: 251px;
+}
+.eMailSeller{
+    position: absolute;
+    top: 193px;
+    left: 50px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    width: 100px;
+}
+.emailNotValidSeller{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-wight: bold;
+    font-size: small;
+    top: 223px;
+    left: -58px;
+    width: 292px;
+}
+.inputClassEmailSeller{
+    position: absolute;
+    top: 239px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.NicknameSeller{
+    position: absolute;
+    top: 258px;
+    left: 36px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.notNicknameSeller{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    font-size: small;
+    top: 288px;
+    left: 2px;
+    width: 292px;
+}
+.inputNicknameSeller{
+        position: absolute;
+        top: 305px;
+        border-radius: 40px;
+        background-color: transparent;
+        color: white;
+}
+.PassworSeller{
+    position: absolute;
+    top: 250px;
+    left: 926px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.notPasswordSeller{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    font-size: small;
+    top: 432px;
+    left: 8px;
+    width: 292px;
+}
+.inputClassPasswordSeller{
+    position: absolute;
+    top: 356px;
+    left: 1px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.repeatPasswordSEller{
+    position: absolute;
+    top: 399px;
+    left: 14px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    width: 130px;
+}
+.differentPasswordSeller{
+    position: absolute;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    font-size: small;
+    top: 432px;
+    left: 8px;
+    width: 292px;
+}
+.inputClassRepeatPasswordSeller{
+    position: absolute;
+    top: 452px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+}
+.registerSeller{
+    position: absolute;
+    top: 509px;
+    border-radius: 40px;
+    width: 160px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    color: white;
+    background-color: transparent;
+    left: 0px;
+    font-weight: bold;
+}
+.googleContainerBig{
+    position: absolute;
+    top: 770px;
+    left: 868px;
+    border: 0.5px solid white;
+    border-radius: 25px;
+}
+.googleContainer{
+    position: absolute;
+    top: 397px;
+    left: 868px;
+    border: 0.5px solid white;
+    border-radius: 25px;
+}
+@media (max-width: 926px){
+    .choose{
+        left: 364px;
+    }
+    .button1{
+        left: 362px;
+    }
+    .button2{
+        left: 476px;
+    }
+    .p{
+        left: -465px;
+    }
+    .name{
+        left: -436px;
+    }
+    .inputClass{
+        left: -489px;
+    }
+    .surname{
+        left: -451px
+    }
+    .inputClassSurname{
+        left: -489px;
+    }
+    .inputClassBirth{
+        left: -489px;
+
+    }
+    .inputClassEmail{
+        left: -489px;
+
+    }
+    .inputClassPassword{
+        left: -489px;
+
+    }
+    .inputClassRepeatPassword{
+        left: -489px;
+
+    }
+    .inputClassusername{
+        left: -489px;
+
+    }
+    .inputNickname{
+        left: -489px;
+
+    }
+    .register{
+        left: -489px;
+
+    }
+    .birthday{
+        left: -449px;
+    }
+    .eMail{
+        left: -442px;
+    }
+    .Nickname{
+        left: -452px;
+    }
+    .Password{
+        left: -453px
+    }
+    .repeatPassword{
+        left: -474px;
+    }
+    .errorDate{
+        left: -530px;
+    }
+    .emailNotValid{
+        left: -552px;
+    }
+    .notNickname{
+        left: -486px;
+    }
+    .topRight{
+        left: 702px;
+    }
+    .differentPassword{
+        left: -484px;
+    }
+
+
+}

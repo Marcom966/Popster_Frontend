@@ -1,0 +1,82 @@
+<div class="container" id="container">
+    <div class="upperContainer">
+        <h1 class="h1">Welcome to Popster</h1>
+    </div>
+    <div class="button_lists">
+        <div class="choose">{{vendor ? "Did you already sell in our website?" : "Are you already registered?"}}</div>
+        <button type="button" class="button1" (click)="yesFunction()">Yes</button>
+        <button type="button" class="button2" (click)="vendor ? yesVendor() : noFunction()">No</button>
+        <button class="topRight" id="topRightButton" (click)="onSubmitVendor()">Are you a seller?</button>
+    </div>
+    <form class="containerForm" id="containerForm" #formLogin="ngForm" *ngIf="No==true&&Yes==false" (ngSubmit)="onSubmit(formLogin)">
+        <p class="p">Sign up here.</p>
+        <p class="name">Name:</p>
+            <input class="inputClass" type="text" name="FullName" ngModel>
+                <p class="surname">Surname:</p>
+            <input class="inputClassSurname" type="text" name="Surname" ngModel>
+                 <p class="birthday">Birthday:</p>
+        <div class="errorDate">{{wrongDate ? "Please insert a valid date (YYYY-MM-DD)" : ""}}</div>
+            <input class="inputClassBirth" type="text" name="birthday" ngModel>
+                <p class="eMail">E-mail:</p>
+        <div class="emailNotValid" *ngIf="isDateWrong==false">{{fakeEmail ? "Please insert a valid email (nickname@website)" : ""||emailAlreadyExist ? "Email already exists!" : ""}}</div>
+            <input class="inputClassEmail" type="text" name="eMail" ngModel>
+                <p class="Nickname">Nickname:</p>
+        <div class="notNickname" id="notNickname">{{notNickname ? "Insert a valid nickname" : ""}}</div>
+            <input class="inputNickname" type="text" name="Nickname" ngModel>
+                <p class="Password">Password:</p>
+        <div class="notPassword" id="notpassword">{{notPassword ? "Insert a valid password" : ""}}</div>
+            <input class="inputClassPassword" type="text" name="Password" ngModel>
+                <p class="repeatPassword">Repeat password:</p>
+        <div class="differentPassword" id="password">{{samePassword ? "Passwords don't match" : ""}}</div>
+            <input class="inputClassRepeatPassword" type="text" name="PasswordDue" ngModel>
+            <button type="submit" Class="register" placeholder="Register now!">Register now!</button>
+    </form>
+    <form class="loginForm" id="containerLogin" #formLoginNew="ngForm" *ngIf="Yes==true&&No==false" (ngSubmit)="onSubmitNew(formLoginNew)">
+        <p class="username">Username:</p>
+            <input class="inputClassusername" type="text" name="Nickname" ngModel>
+        <p class="password">Password:</p>
+            <input class="inputClasspassword" type="text" name="passswordAlready" ngModel>
+        <button type="submit" class="registerNew" placeholder="Login">Login</button>
+    </form>
+    <form class="sellerForm" id="containerForm" #formLoginSeller="ngForm" *ngIf="No==false&&Yes==false&&vendor==true&&seller==true" (ngSubmit)="onSubmit(formLoginSeller)">
+        <p class="pSeller">Sign up here</p>
+        <p class="nameSeller">Name:</p>
+            <input class="inputClassSeller" type="text" name="FullName" ngModel>
+                <p class="surnameSeller">Surname:</p>
+            <input class="inputClassSurnameSeller" type="text" name="Surname" ngModel>
+                <p class="birthdaySeller">Birthday:</p>
+        <div class="errorDateSeller">{{wrongDate ? "Please insert a valid date (YYYY-MM-DD)" : ""}}</div>
+            <input class="inputClassBirthSeller" type="text" name="birthday" ngModel>
+                <p class="eMailSeller">E-mail:</p>
+        <div class="emailNotValidSeller" *ngIf="isDateWrong==false">{{fakeEmail ? "Please insert a valid email (nickname@website)" : ""||emailAlreadyExist ? "Email already exists!" : ""}}</div>
+            <input class="inputClassEmailSeller" type="text" name="eMail" ngModel>
+                <p class="NicknameSeller">Seller name:</p>
+        <div class="notNicknameSeller" id="notNickname">{{notNickname ? "Insert a valid nickname" : ""}}</div>
+            <input class="inputNicknameSeller" type="text" name="Seller Name" ngModel>
+                <p class="PasswordSeller">Password:</p>
+        <div class="notPasswordSeller" id="notpassword">{{notPassword ? "Insert a valid password" : ""}}</div>
+            <input class="inputClassPasswordSeller" type="text" name="Password" ngModel>
+                <p class="repeatPasswordSEller">Repeat password:</p>
+        <div class="differentPasswordSeller" id="password">{{samePassword ? "Passwords don't match" : ""}}</div>
+            <input class="inputClassRepeatPasswordSeller" type="text" name="PasswordDue" ngModel>
+        <button type="submit" Class="registerSeller" placeholder="Register now!">Register now!</button>
+    </form>
+    <div id="g_id_onload"
+        data-client_id="324448550075-625vaj9hi25eglu64o2vnldrgsijo278.apps.googleusercontent.com"
+        data-context="use"
+        data-ux_mode="popup"
+        data-login_uri="http://localhost:8080/api/v1/user"
+        data-auto_select="true"
+        data-itp_support="true">
+    </div>
+
+    <div [ngClass]="No||(vendor&&seller) ? 'g_id_signin googleContainerBig' : pageOpened ? 'g_id_signin googleContainer':'g_id_signin googleContainer'"
+        data-type="standard"
+        data-shape="pill"
+        data-theme="filled_black"
+        data-text="signin_with"
+        data-size="large"
+        data-logo_alignment="left">
+     </div>
+
+</div>

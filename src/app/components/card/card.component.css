@@ -1,0 +1,12 @@
+.color{
+    color: black;
+}
+.name{
+    color: white;
+    position: absolute;
+    top: 255px;
+    left: 449px;
+    height: 200px;
+    width: 200px;
+    border: 2px solid white;
+}

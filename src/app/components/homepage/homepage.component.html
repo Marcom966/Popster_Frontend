@@ -1,0 +1,23 @@
+
+<div class="iHateThisColor">
+    <div class="upperContainer">
+        <h1 class="h1">Popster</h1>
+    </div>
+    <nav class="navbar">
+        <button class="logbutton" (click)="logged ? logOut() : logIn()">{{wrongPassword ? 'Go back to login' : ''||wrongUser ? 'Go back to login': ''||logged ? "Log out" : "Log in/subscribe"}}</button>
+        <button class="FileUpload" (click)="logged ? fileUpload() : redirect()">Upload a file</button>
+    </nav>
+    <div class="header">
+        <h1 [ngClass]="(wrongUser&&wrongPassword) ? 'wrong' : logged ? 'welcome' : 'subscribe'">{{wrongUser ? "Wrong username" : ""||wrongPassword ? "Wrong password": ""||logged ? ("Welcome back "+name) : "Please subscribe"}}</h1>
+    </div>
+    <h1 class="h1"></h1>
+    <div class="CardGrids" *ngFor="let d of dataNew">
+        <app-card [data]="dataToSend"></app-card>
+    </div>
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
+</div>
+
+
+
