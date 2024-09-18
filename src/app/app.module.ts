@@ -16,6 +16,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { FileUploadErrorComponent } from './components/file-upload-error/file-upload-error.component';
 import { UserHomepageComponent } from './components/user-homepage/user-homepage.component';
 import { NewDirectiveDirective } from './new-directive.directive';
+import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NewDirectiveDirective } from './new-directive.directive';
     FileUploadErrorComponent,
     UserHomepageComponent,
     NewDirectiveDirective,
+    FileSuccessfullComponent,
   ],
   imports: [
     BrowserModule,

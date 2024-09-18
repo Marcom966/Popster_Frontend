@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   vendor: boolean = false;
   seller: boolean = false;
   pageOpened!: boolean;
+  googleAuthService!: any;
   constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, /*private googleAuthService: GoogleauthServiceService*/) { }
 
   public onSubmit(form: NgForm){

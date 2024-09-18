@@ -17,6 +17,10 @@ export class FileUploadComponent implements OnInit {
   name!: any;
   size!: any;
   type!: any;
+  nameConcat!: string;
+  userName!: string;
+  file!: File|null;
+  subscribed!: boolean;
 
 
   constructor(private route: Router, private getUser: FetchUsersService, private files: PostFileServiceService) { }
@@ -30,17 +34,27 @@ export class FileUploadComponent implements OnInit {
     })   
   }
   public onChangeFile(event: any){
-    let file: File = event.target.files[0];
-    if(file){
-      this.name = file.name;
-      this.size = file.size;
-      this.type = file.type;
-    }
-
+    let Name = "";
+    this.file = event.target.files[0];
+    if(this.file){
+      this.name = this.file.name;
+      this.size = this.file.size;
+      this.type = this.file.type;
+      this.userName = this.username;
+      Name = this.name;
+      if(Name.includes(" ")){
+        this.nameConcat = Name.split(" ").join("");
+      }
+    }else if(this.file==null){
+      return
+    }    
   }
   public onSubmit(){
-    this.requestSub = this.files.postFile(this.name, this.size, this.type).subscribe((resp)=>{
-      console.log(resp);
+    this.requestSub = this.files.postFile(this.nameConcat, this.size, this.type, this.userName).subscribe((resp)=>{
+      if(resp==null){
+        this.subscribed = true;
+        this.toCongrats('file-successfull');
+      }
     })
   }
   public toUser(){
@@ -48,6 +62,9 @@ export class FileUploadComponent implements OnInit {
   }
   public back(){
     this.route.navigate(['homepage']);
+  }
+  public toCongrats(destination: string){
+    this.route.navigate([destination])
   }
 
   ngOnInit(): void {

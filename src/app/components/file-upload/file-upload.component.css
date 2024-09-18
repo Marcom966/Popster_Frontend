@@ -167,3 +167,23 @@ input[type=file]::file-selector-button{
 .submitButton:hover{
     box-shadow: 0 0 15px #fff;
 }
+.deleteupload{
+    margin-left: 334px;
+  background-color: transparent;
+  color: white;
+  border-color: black;
+}
+.reset{
+    margin-left: 297px;
+    margin-top: -1px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    width: 47px;
+    height: 34px;
+    border-radius: 25px;      
+}
+.reset:hover{
+    background-color: white;
+    color: black;
+}

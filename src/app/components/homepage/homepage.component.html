@@ -11,9 +11,9 @@
         <h1 [ngClass]="(wrongUser&&wrongPassword) ? 'wrong' : logged ? 'welcome' : 'subscribe'">{{wrongUser ? "Wrong username" : ""||wrongPassword ? "Wrong password": ""||logged ? ("Welcome back "+name) : "Please subscribe"}}</h1>
     </div>
     <h1 class="h1"></h1>
-    <div class="CardGrids" *ngFor="let d of dataNew">
+    <!--<div class="CardGrids" *ngFor="let d of dataNew">
         <app-card [data]="dataToSend"></app-card>
-    </div>
+    </div>-->
     <div class="footer">
         <app-footer></app-footer>
     </div>

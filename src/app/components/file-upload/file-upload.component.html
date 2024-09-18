@@ -11,11 +11,17 @@
     <div class="body">
         <div class="uploadContainer">
             <h1 class="center">Upload a file</h1>
-            <label for="upload" class="upload">
-                <span class="span" aria-hidden="true"></span>
-                <input class="inputFull" type="file" accept="*" (change)="onChangeFile($event)"#fileUpload>
-                <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
-            </label>
+            <form>
+                <label for="upload" class="upload">
+                    <span class="span" aria-hidden="true"></span>
+                    <input class="inputFull" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
+                    <button type="reset" class="reset">X</button>
+                    <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
+                </label>
+            </form>
+            <div class="uploaded" *ngIf="subscribed==true">
+                <p class="filename">File uploaded: {{name}}</p>
+            </div>
         </div>
     </div>
 </div>
