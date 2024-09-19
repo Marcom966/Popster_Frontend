@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-successfull',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileSuccessfullComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private route: Router) { }
+  public toUpload(){
+    this.route.navigate(['fileUpload']);
   }
 
+  ngOnInit(): void {
+    setTimeout(this.toUpload, 5000)
+  }
 }
