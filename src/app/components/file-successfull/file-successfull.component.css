@@ -33,3 +33,18 @@
 .success:hover{
     box-shadow: 0 0 15px #fff;
 }
+.bodyText{
+    color: white;
+    background-color: transparent;
+    font-size: large;
+    height: 106px;
+    width: 1026px;
+    margin-top: 174px;
+    margin-left: 449px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.largerP{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}

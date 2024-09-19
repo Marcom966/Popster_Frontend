@@ -8,6 +8,7 @@ import { GoogleErrorComponent } from './components/google-error/google-error.com
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FileUploadErrorComponent } from './components/file-upload-error/file-upload-error.component';
 import { UserHomepageComponent } from './components/user-homepage/user-homepage.component';
+import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 
 const routes: Routes = [{
   path: 'home', component: HomepageComponent
@@ -26,7 +27,7 @@ const routes: Routes = [{
 },{
   path: 'userHomepage', component: UserHomepageComponent
 },{
-  path: '', component: HomepageComponent
+  path: 'fileSuccessfull', component: FileSuccessfullComponent
 },{
   path: '**', redirectTo: 'home'
 }];
