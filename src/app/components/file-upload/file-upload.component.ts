@@ -67,6 +67,9 @@ export class FileUploadComponent implements OnInit {
     this.route.navigate([destination])
   }
 
+  ngOnDestroy(): void{
+    this.requestSub.unsubscribe();
+  }
   ngOnInit(): void {
     this.main();
   }
