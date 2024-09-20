@@ -28,11 +28,11 @@ export class FileUploadComponent implements OnInit {
   public main(){
     this.requestSub = this.getUser.getUsers().subscribe((resp)=>{
       this.users = resp;
-      this.users.forEach(user=>{
+        this.users.forEach(user=>{
           this.username = user.user_name;
-      });
-    })   
-  }
+        });
+      })   
+    }
   public onChangeFile(event: any){
     let Name = "";
     this.file = event.target.files[0];
