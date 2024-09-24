@@ -48,13 +48,18 @@ export class HomepageComponent implements OnInit {
             if(this.userName==this.username&&this.passwordEntry==this.password){
               this.logged = true;
               this.name = el['name'];
+              console.log("qui1");
+              console.log("Qui1"+this.userName+" "+this.userName+" "+this.password+" "+this.passwordEntry);
+              
             }else if(this.passwordEntry!=this.password&&this.userName!=this.username){
               this.logged=false;
+              localStorage.clear();
+              
             }else if(this.userName!=this.username&&this.passwordEntry==this.password){
-              this.wrongUser=true;
+              this.logged=false;
               localStorage.clear();
             }else if(this.passwordEntry!=this.password&&this.userName==this.username){
-              this.wrongPassword=true;
+              this.logged=false;
               localStorage.clear();
             }
             this.dataToSend = new DataInt(this.name, this.typeOfUser);

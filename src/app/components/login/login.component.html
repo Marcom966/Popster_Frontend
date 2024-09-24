@@ -36,6 +36,7 @@
             <input class="inputClassusername" type="text" name="Nickname" ngModel>
         <p class="password">Password:</p>
             <input class="inputClasspassword" type="text" name="passswordAlready" ngModel>
+        <h1 class="error" *ngIf="nickAndPassDontMatch==true">Wrong username or password or you have not yet subscribed</h1>
         <button type="submit" class="registerNew" placeholder="Login">Login</button>
     </form>
     <form class="sellerForm" id="containerForm" #formLoginSeller="ngForm" *ngIf="No==false&&Yes==false&&vendor==true&&seller==true" (ngSubmit)="onSubmit(formLoginSeller)">

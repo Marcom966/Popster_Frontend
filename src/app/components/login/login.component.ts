@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
   email = "";
   nickname = "";
   password = "";
+  nameNew!: any;
+  passNew!: any;
+  definitiveUserName!: any;
+  definitivePassword!: any;
   pasDue!: string;
   NameAlready!: string;
   passAlready!: string;
@@ -31,6 +35,7 @@ export class LoginComponent implements OnInit {
   emailAlreadyExist: boolean = false;
   notNickname: boolean = false;
   notPassword: boolean = false;
+  nickAndPassDontMatch: boolean = false;
   requestSub = new Subscription;
   vendor: boolean = false;
   seller: boolean = false;
@@ -86,9 +91,25 @@ export class LoginComponent implements OnInit {
   public onSubmitNew(form: NgForm){
     this.passAlready = form.value.passswordAlready;
     this.NameAlready = form.value.Nickname;
-    localStorage.setItem('user_name', this.NameAlready);
-    localStorage.setItem('password', this.passAlready);
-    this.Destination('home');
+    this.fetchUsers.getUsers().forEach(user=>{
+      this.nameNew = user.map((u: any)=>u['user_name'])
+      this.passNew = user.map((u: any)=>u['password'])
+      Object.values(this.nameNew).forEach(name=>{
+        this.definitiveUserName = name; 
+        Object.values(this.passNew).forEach(pass=>{
+          this.definitivePassword = pass;
+          if(this.NameAlready==this.definitiveUserName&&this.passAlready==this.definitivePassword){
+            this.Destination('home');
+            localStorage.setItem('user_name', this.NameAlready);
+            localStorage.setItem('password', this.passAlready);
+          }else{
+            this.nickAndPassDontMatch=true;
+          }        
+        });       
+      });
+      
+    });
+    
   }
   public onSubmitVendor(){
     this.vendor = true;
