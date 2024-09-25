@@ -105,8 +105,6 @@ export class LoginComponent implements OnInit {
             this.Destination('home');
             localStorage.setItem('user_name', this.NameAlready);
             localStorage.setItem('password', this.passAlready);
-            localStorage.setItem('name', this.singleName);
-            
           }else{
             this.nickAndPassDontMatch=true;
           }        

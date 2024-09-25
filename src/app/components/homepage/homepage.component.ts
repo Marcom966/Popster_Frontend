@@ -48,31 +48,7 @@ export class HomepageComponent implements OnInit {
           }else{
             return
           }
-          
-          /*if(typeof(el)=='object'){
-            this.userName = el['user_name'];
-            this.passwordEntry = el['password'];
-            if(this.userName==this.username&&this.passwordEntry==this.password){
-              this.logged = true;
-              this.name = el['name'];
-              console.log("qui1");
-              console.log("Qui1"+this.userName+" "+this.userName+" "+this.password+" "+this.passwordEntry);
-              
-            }else if(this.passwordEntry!=this.password&&this.userName!=this.username){
-              this.logged=false;
-              localStorage.clear();
-              
-            }else if(this.userName!=this.username&&this.passwordEntry==this.password){
-              this.logged=false;
-              localStorage.clear();
-            }else if(this.passwordEntry!=this.password&&this.userName==this.username){
-              this.logged=false;
-              localStorage.clear();
-            }
-            this.dataToSend = new DataInt(this.name, this.typeOfUser);
-            this.dataNew.push(el);
-          }
-        */});          
+        });          
       });         
     });
   };
