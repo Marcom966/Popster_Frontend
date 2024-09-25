@@ -31,7 +31,7 @@ export class HomepageComponent implements OnInit {
   public verify(){
     let arr: any[] = []
     this.username= localStorage.getItem('user_name');    
-    this.password = localStorage.getItem('password'); 
+    this.password = localStorage.getItem('password');
     if(!this.username&&!this.password){
       return
     }
@@ -42,7 +42,14 @@ export class HomepageComponent implements OnInit {
       }
       arr.forEach((element: any)=>{
         Object.values(element).forEach((el: any)=>{
-          if(typeof(el)=='object'){
+          if(el['user_name']==this.username){
+            this.name = el['name'];
+            this.logged=true;
+          }else{
+            return
+          }
+          
+          /*if(typeof(el)=='object'){
             this.userName = el['user_name'];
             this.passwordEntry = el['password'];
             if(this.userName==this.username&&this.passwordEntry==this.password){
@@ -65,7 +72,7 @@ export class HomepageComponent implements OnInit {
             this.dataToSend = new DataInt(this.name, this.typeOfUser);
             this.dataNew.push(el);
           }
-        });          
+        */});          
       });         
     });
   };

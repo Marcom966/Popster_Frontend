@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   password = "";
   nameNew!: any;
   passNew!: any;
+  nameFromDatabase!: string;
+  singleName!: any;
   definitiveUserName!: any;
   definitivePassword!: any;
   pasDue!: string;
@@ -92,8 +94,9 @@ export class LoginComponent implements OnInit {
     this.passAlready = form.value.passswordAlready;
     this.NameAlready = form.value.Nickname;
     this.fetchUsers.getUsers().forEach(user=>{
-      this.nameNew = user.map((u: any)=>u['user_name'])
-      this.passNew = user.map((u: any)=>u['password'])
+      this.nameNew = user.map((u: any)=>u['user_name']);
+      this.passNew = user.map((u: any)=>u['password']);
+      this.nameFromDatabase = user.map((u: any)=>u['name']);
       Object.values(this.nameNew).forEach(name=>{
         this.definitiveUserName = name; 
         Object.values(this.passNew).forEach(pass=>{
@@ -102,6 +105,8 @@ export class LoginComponent implements OnInit {
             this.Destination('home');
             localStorage.setItem('user_name', this.NameAlready);
             localStorage.setItem('password', this.passAlready);
+            localStorage.setItem('name', this.singleName);
+            
           }else{
             this.nickAndPassDontMatch=true;
           }        
