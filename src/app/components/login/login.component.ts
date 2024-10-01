@@ -109,8 +109,7 @@ export class LoginComponent implements OnInit {
             this.nickAndPassDontMatch=true;
           }        
         });       
-      });
-      
+      });  
     });
     
   }

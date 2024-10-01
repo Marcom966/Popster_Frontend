@@ -188,3 +188,17 @@ input[type=file]::file-selector-button{
     color: black;
 }
 
+.resetNew{
+    margin-left: 500px;
+    margin-top: -1px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    width: 47px;
+    height: 34px;
+    border-radius: 25px;
+}
+.resetNew:hover{
+    background-color: white;
+    color: black;
+}

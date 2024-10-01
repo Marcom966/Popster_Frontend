@@ -11,28 +11,27 @@ import { PostFileServiceService } from 'src/app/services/post-file-service.servi
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
-  username!: string;
+  username!: string|null;
   users!: any[];
   requestSub = new Subscription;
   name!: any;
   size!: any;
   type!: any;
+  clicked: boolean = false;
   nameConcat!: string;
-  userName!: string;
+  userName!: string|null;
   file!: File|null;
   subscribed!: boolean;
 
 
-  constructor(private route: Router, private getUser: FetchUsersService, private files: PostFileServiceService) { }
+  constructor(private route: Router, private files: PostFileServiceService) { }
 
   public main(){
-    this.requestSub = this.getUser.getUsers().subscribe((resp)=>{
-      this.users = resp;
-        this.users.forEach(user=>{
-          this.username = user.user_name;
-        });
-      })   
+    this.username = localStorage.getItem('user_name');
     }
+  public onChangeclass(){
+    this.clicked = true;
+  }
   public onChangeFile(event: any){
     let Name = "";
     this.file = event.target.files[0];
