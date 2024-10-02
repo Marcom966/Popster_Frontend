@@ -14,8 +14,8 @@
             <form>
                 <label for="upload" class="upload">
                     <span class="span" aria-hidden="true"></span>
-                    <input class="inputFull" id="inputFile" type="file" accept="*" (click)="onChangeclass()"  (change)="onChangeFile($event)" #fileUpload>
-                    <button type="reset" id="resetButton" [ngClass]="clicked ? 'resetNew': 'reset'">X</button>
+                    <input class="inputFull" id="inputFile" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
+                    <button type="reset" id="resetButton" class='reset'>X</button>
                     <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
                 </label>
             </form>

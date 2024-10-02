@@ -29,9 +29,6 @@ export class FileUploadComponent implements OnInit {
   public main(){
     this.username = localStorage.getItem('user_name');
     }
-  public onChangeclass(){
-    this.clicked = true;
-  }
   public onChangeFile(event: any){
     let Name = "";
     this.file = event.target.files[0];

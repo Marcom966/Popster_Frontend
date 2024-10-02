@@ -149,7 +149,7 @@ input[type=file]::file-selector-button{
     border-radius: 25px;
     height: 29px;
     position: absolute;
-    left: -77px;
+    left: -55px;
 }
 .submitButton{
     background-color: transparent;
@@ -174,7 +174,7 @@ input[type=file]::file-selector-button{
   border-color: black;
 }
 .reset{
-    margin-left: 297px;
+    margin-left: -107px;
     margin-top: -1px;
     background-color: transparent;
     color: white;
@@ -188,17 +188,3 @@ input[type=file]::file-selector-button{
     color: black;
 }
 
-.resetNew{
-    margin-left: 500px;
-    margin-top: -1px;
-    background-color: transparent;
-    color: white;
-    border: 2px solid white;
-    width: 47px;
-    height: 34px;
-    border-radius: 25px;
-}
-.resetNew:hover{
-    background-color: white;
-    color: black;
-}
