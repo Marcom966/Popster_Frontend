@@ -49,7 +49,7 @@ export class FileUploadComponent implements OnInit {
     this.requestSub = this.files.postFile(this.nameConcat, this.size, this.type, this.userName).subscribe((resp)=>{
       if(resp==null){
         this.subscribed = true;
-        this.toCongrats('file-successfull');
+        this.toCongrats('fileSuccessfull');
       }
     })
   }
