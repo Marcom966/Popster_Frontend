@@ -19,12 +19,14 @@ export class HomepageComponent implements OnInit {
   userName!: string;
   passwordEntry!: string;
   logged: boolean = false;
-  name!: string;
+  name!: string|undefined;
   wrongUser: boolean = false;
   wrongPassword: boolean = false;
   dataToSend!: DataInt;
   typeOfUser!: TypeOfUser;
   dataNew: any[] = [];
+  nameLocal: string = "";
+  
 
   constructor(public getUsers: FetchUsersService, public route: Router) { }
 
@@ -33,6 +35,9 @@ export class HomepageComponent implements OnInit {
     this.username= localStorage.getItem('user_name');    
     this.password = localStorage.getItem('password');
     if(!this.username&&!this.password){
+      return
+    }else if(this.username&&this.password&&this.nameLocal!=""){
+      this.name = localStorage.getItem('nameOfTheUser')?.toString();
       return
     }
     this.requestSub = this.getUsers.getUsers().subscribe((resp)=>{
@@ -45,6 +50,13 @@ export class HomepageComponent implements OnInit {
           if(el['user_name']==this.username){
             this.name = el['name'];
             this.logged=true;
+            if(this.name!=undefined){
+              this.nameLocal = this.name as string;
+            }else{
+              window.alert("There was an error: name is undefined");
+              throw Error("Name is undefined");
+            }
+            localStorage.setItem('nameOfTheUser', this.nameLocal);
           }else{
             return
           }
