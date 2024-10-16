@@ -22,6 +22,7 @@ export class FileUploadComponent implements OnInit {
   userName!: string|null;
   file!: File|null;
   subscribed!: boolean;
+  nameOfficial!: string;
 
 
   constructor(private route: Router, private files: PostFileServiceService) { }
@@ -30,23 +31,22 @@ export class FileUploadComponent implements OnInit {
     this.username = localStorage.getItem('user_name');
     }
   public onChangeFile(event: any){
-    let Name = "";
     this.file = event.target.files[0];
     if(this.file){
       this.name = this.file.name;
       this.size = this.file.size;
       this.type = this.file.type;
       this.userName = this.username;
-      Name = this.name;
-      if(Name.includes(" ")){
-        this.nameConcat = Name.split(" ").join("");
+      this.nameOfficial = this.name;
+      if(this.nameOfficial.includes(" ")){
+        this.nameConcat = this.nameOfficial.split(" ").join("");
       }
     }else if(this.file==null){
       return
     }    
   }
   public onSubmit(){
-    this.requestSub = this.files.postFile(this.nameConcat, this.size, this.type, this.userName).subscribe((resp)=>{
+    this.requestSub = this.files.postFile(this.nameConcat ? this.nameConcat : this.nameOfficial, this.size, this.type).subscribe((resp)=>{
       if(resp==null){
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
