@@ -23,6 +23,8 @@ export class FileUploadComponent implements OnInit {
   file!: File|null;
   subscribed!: boolean;
   nameOfficial!: string;
+  erroor: boolean = false;
+  
 
 
   constructor(private route: Router, private files: PostFileServiceService) { }
