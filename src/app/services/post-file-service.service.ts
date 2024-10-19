@@ -8,14 +8,8 @@ import { Observable } from 'rxjs';
 export class PostFileServiceService {
 
   constructor(private http: HttpClient) { }
-  public postFile(name: string, size: any, type: any): Observable<any>{
-    const body = JSON.stringify({name, size, type});
-    const Options = {
-      headers: new HttpHeaders({
-        'content-type':'multipart/form-data',
-      })
-    }
-    const url = `http://localhost:8080/api/v1/file/upload?name=${name}&size=${size}&type=${type}`;
-    return this.http.post(url, body, Options);
+  public postFile(formData: FormData): Observable<any>{
+    const url = `http://localhost:8080/api/v1/file/`;
+    return this.http.post(url+`/Upload`, formData);
   }
 }

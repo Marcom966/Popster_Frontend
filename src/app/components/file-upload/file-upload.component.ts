@@ -24,6 +24,7 @@ export class FileUploadComponent implements OnInit {
   subscribed!: boolean;
   nameOfficial!: string;
   erroor: boolean = false;
+  formData!: FormData;
   
 
 
@@ -33,22 +34,27 @@ export class FileUploadComponent implements OnInit {
     this.username = localStorage.getItem('user_name');
     }
   public onChangeFile(event: any){
+    this.formData = new FormData();
     this.file = event.target.files[0];
     if(this.file){
       this.name = this.file.name;
       this.size = this.file.size;
       this.type = this.file.type;
+      this.formData.append('fileSize', this.size);
+      this.formData.append('fileType', this.type);
       this.userName = this.username;
+      this.formData.append('userName', new Blob([JSON.stringify(this.userName)], {type: 'multipart/form-data'}));
       this.nameOfficial = this.name;
       if(this.nameOfficial.includes(" ")){
         this.nameConcat = this.nameOfficial.split(" ").join("");
       }
+      this.formData.append('fileName', this.nameConcat ? this.nameConcat : this.nameOfficial);
     }else if(this.file==null){
       return
     }    
   }
   public onSubmit(){
-    this.requestSub = this.files.postFile(this.nameConcat ? this.nameConcat : this.nameOfficial, this.size, this.type).subscribe((resp)=>{
+    this.requestSub = this.files.postFile(this.formData).subscribe((resp)=>{
       if(resp==null){
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
