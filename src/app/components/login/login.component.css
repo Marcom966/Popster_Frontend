@@ -505,6 +505,17 @@
     border: 0.5px solid white;
     border-radius: 25px;
 }
+.error{
+    background-color: Transparent;
+    height: 172px;
+    width: 720px;
+    margin-top: 460px;
+    margin-left: 646px;
+    color: red;
+    font-size: x-large;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+
 
 @media (max-width: 926px){
     .choose{
