@@ -10,6 +10,6 @@ export class PostFileServiceService {
   constructor(private http: HttpClient) { }
   public postFile(formData: FormData): Observable<any>{
     const url = `http://localhost:8080/api/v1/file`;
-    return this.http.post(url, formData);
+    return this.http.post<any>(url, formData);
   }
 }
