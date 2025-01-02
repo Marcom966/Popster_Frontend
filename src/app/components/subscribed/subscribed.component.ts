@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-subscribed',
-  templateUrl: './subscribed.component.html',
-  styleUrls: ['./subscribed.component.css']
+    selector: 'app-subscribed',
+    templateUrl: './subscribed.component.html',
+    styleUrls: ['./subscribed.component.css'],
+    standalone: false
 })
 export class SubscribedComponent implements OnInit {
 

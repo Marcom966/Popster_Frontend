@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-file-successfull',
-  templateUrl: './file-successfull.component.html',
-  styleUrls: ['./file-successfull.component.css']
+    selector: 'app-file-successfull',
+    templateUrl: './file-successfull.component.html',
+    styleUrls: ['./file-successfull.component.css'],
+    standalone: false
 })
 export class FileSuccessfullComponent implements OnInit {
 

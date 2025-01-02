@@ -1,7 +1,8 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appNewDirective]'
+    selector: '[appNewDirective]',
+    standalone: false
 })
 export class NewDirectiveDirective {
 

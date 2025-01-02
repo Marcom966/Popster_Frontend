@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-file-upload-error',
-  templateUrl: './file-upload-error.component.html',
-  styleUrls: ['./file-upload-error.component.css']
+    selector: 'app-file-upload-error',
+    templateUrl: './file-upload-error.component.html',
+    styleUrls: ['./file-upload-error.component.css'],
+    standalone: false
 })
 export class FileUploadErrorComponent implements OnInit {
 

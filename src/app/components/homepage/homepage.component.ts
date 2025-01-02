@@ -6,9 +6,10 @@ import { TypeOfUser } from 'src/app/Interfaces/type-of-user';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+    selector: 'app-homepage',
+    templateUrl: './homepage.component.html',
+    styleUrls: ['./homepage.component.css'],
+    standalone: false
 })
 export class HomepageComponent implements OnInit {
   data!: any;

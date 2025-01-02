@@ -6,9 +6,10 @@ import { FetchUsersService } from 'src/app/services/fetch-users.service';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 @Component({
-  selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css']
+    selector: 'app-file-upload',
+    templateUrl: './file-upload.component.html',
+    styleUrls: ['./file-upload.component.css'],
+    standalone: false
 })
 export class FileUploadComponent implements OnInit {
   username!: string|null;
