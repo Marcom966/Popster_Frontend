@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SubscribedComponent } from './components/subscribed/subscribed.component';
 import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,29 +18,22 @@ import { UserHomepageComponent } from './components/user-homepage/user-homepage.
 import { NewDirectiveDirective } from './new-directive.directive';
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomepageComponent,
-    LoginComponent,
-    SubscribedComponent,
-    CardComponent,
-    FooterComponent,
-    GoogleErrorComponent,
-    GoogleLandingPageComponent,
-    FileUploadComponent,
-    FileUploadErrorComponent,
-    UserHomepageComponent,
-    NewDirectiveDirective,
-    FileSuccessfullComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomepageComponent,
+        LoginComponent,
+        SubscribedComponent,
+        CardComponent,
+        FooterComponent,
+        GoogleErrorComponent,
+        GoogleLandingPageComponent,
+        FileUploadComponent,
+        FileUploadErrorComponent,
+        UserHomepageComponent,
+        NewDirectiveDirective,
+        FileSuccessfullComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
