@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Observable, Subscription, catchError, throwError } from 'rxjs';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 //import { GoogleauthServiceService } from 'src/app/services/googleauth-service.service';

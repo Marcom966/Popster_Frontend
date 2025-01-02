@@ -48,7 +48,7 @@
 .button1:focus{
     background-color: white;
     color: black;
-    font-wight: bold;
+    font-weight: bold;
 }
 .button2{
     top:154px;
@@ -202,7 +202,7 @@
     position: absolute;
     color: red;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
-    font-wight: bold;
+    font-weight: bold;
     font-size: small;
     top: 223px;
     left: -58px;
@@ -212,7 +212,7 @@
     position: absolute;
     color: red;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
-    font-wight: bold;
+    font-weight: bold;
     font-size: small;
     top: 165px;
     left: -39px;
@@ -375,7 +375,7 @@
     position: absolute;
     color: red;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
-    font-wight: bold;
+    font-weight: bold;
     font-size: small;
     top: 165px;
     left: -39px;
@@ -393,7 +393,7 @@
     position: absolute;
     color: red;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
-    font-wight: bold;
+    font-weight: bold;
     font-size: small;
     top: 223px;
     left: -58px;
