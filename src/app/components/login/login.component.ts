@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         }else if (error.includes('400')){
           this.wrongDate=true;
           this.samePassword=false;
-        }else if(error){
+        }else if(error&&this.emailAlreadyExist==false&&this.wrongDate==false&&this.samePassword==false){
           this.somethingElse = true;
         }
       });
