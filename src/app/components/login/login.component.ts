@@ -82,6 +82,9 @@ export class LoginComponent implements OnInit {
         let error = new Error(err).message.toString();
         if(error.includes('500')){
           this.emailAlreadyExist=true;
+        }else if (error.includes('400')){
+          this.wrongDate=true;
+          this.samePassword=false;
         }
       });
     }))
