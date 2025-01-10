@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   seller: boolean = false;
   pageOpened!: boolean;
   googleAuthService!: any;
+  somethingElse: boolean = false;
   constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, /*private googleAuthService: GoogleauthServiceService*/) { }
 
   public onSubmit(form: NgForm){
@@ -85,6 +86,8 @@ export class LoginComponent implements OnInit {
         }else if (error.includes('400')){
           this.wrongDate=true;
           this.samePassword=false;
+        }else if(error){
+          this.somethingElse = true;
         }
       });
     }))
