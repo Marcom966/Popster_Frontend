@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
   public onSubmitNew(form: NgForm){
     this.passAlready = form.value.passswordAlready;
     this.NameAlready = form.value.Nickname;
-    this.fetchUsers.getUsers()
+    this.requestSub = this.fetchUsers.getUsers()
     .pipe(catchError(err=>{
       return throwError(()=>{
         let error = new Error(err).message.toString();
