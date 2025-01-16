@@ -26,7 +26,8 @@ export class FetchUsersService {
 
   public getUsers(): Observable<any>{
     const url = `http://localhost:8080/api/v1/user`;
-    return this.http.get<any>(url);
+    return this.http.get<any>(url)
+    .pipe(catchError(this.handleError));
   }
 
 
