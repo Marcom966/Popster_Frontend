@@ -116,24 +116,21 @@ export class LoginComponent implements OnInit {
     }))
     .subscribe((resp)=>{
     resp.forEach((user:any)=>{
-      this.nameNew = user.map((u: any)=>{u['user_name']});
-      this.passNew = user.map((u: any)=>{u['password']});
-      this.nameFromDatabase = user.map((u: any)=>{u['name']});
-        Object.values(this.nameNew).forEach(name=>{
-        this.definitiveUserName = name; 
-          Object.values(this.passNew).forEach(pass=>{
-          this.definitivePassword = pass;
-            if(this.NameAlready==this.definitiveUserName&&this.passAlready==this.definitivePassword){
-              this.Destination('home');
-              localStorage.setItem('user_name', this.NameAlready);
-              localStorage.setItem('password', this.passAlready);
-            }else{
-              this.nickAndPassDontMatch=true;
-            }        
-          });       
-        });  
-      });
-    });
+      this.nameNew = user['user_name'];
+      this.passNew = user['password'];
+      this.nameFromDatabase = user['name'];
+      if(this.NameAlready==this.nameNew&&this.passAlready==this.passNew){
+        this.Destination('home');
+        localStorage.setItem('user_name', this.NameAlready);
+        localStorage.setItem('password', this.passAlready);
+        }else{
+          if(this.somethingElse==true){
+            this.nickAndPassDontMatch=false;
+          };
+        this.nickAndPassDontMatch=true;
+        }        
+      });       
+    });  
   }
   public onSubmitVendor(){
     this.vendor = true;
