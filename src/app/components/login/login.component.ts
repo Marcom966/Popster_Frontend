@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   pageOpened!: boolean;
   googleAuthService!: any;
   somethingElse: boolean = false;
-  BackendError: boolean = false;
+  Post: boolean = false;
   constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, /*private googleAuthService: GoogleauthServiceService*/) { }
 
   public onSubmit(form: NgForm){
@@ -88,7 +88,9 @@ export class LoginComponent implements OnInit {
           this.wrongDate=true;
           this.samePassword=false;
         }else if(error.includes('0')){
-          window.alert('An error occurred, please try again later');
+          this.somethingElse=true;
+          this.Post=true;
+          this.samePassword=false;
         }else if(error&&this.emailAlreadyExist==false&&this.wrongDate==false&&this.samePassword==false){
           this.somethingElse = true;
         }
@@ -108,15 +110,15 @@ export class LoginComponent implements OnInit {
       return throwError(()=>{
         let error = new Error(err).message.toString();
         if(error.includes('0')){
-          window.alert('An error occurred, please try again later');
+          this.somethingElse=true;
         }
       });
     }))
     .subscribe((resp)=>{
     resp.forEach((user:any)=>{
-      this.nameNew = user.map((u: any)=>u['user_name']);
-      this.passNew = user.map((u: any)=>u['password']);
-      this.nameFromDatabase = user.map((u: any)=>u['name']);
+      this.nameNew = user.map((u: any)=>{u['user_name']});
+      this.passNew = user.map((u: any)=>{u['password']});
+      this.nameFromDatabase = user.map((u: any)=>{u['name']});
         Object.values(this.nameNew).forEach(name=>{
         this.definitiveUserName = name; 
           Object.values(this.passNew).forEach(pass=>{

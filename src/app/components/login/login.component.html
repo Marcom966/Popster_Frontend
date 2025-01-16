@@ -79,6 +79,6 @@
         data-size="large"
         data-logo_alignment="left">
      </div>
-     <div class="somethingElse" *ngIf="somethingElse==true">An error has occured, please contact our administrators</div>
+     <div [ngClass]="Post ? 'somethingElseclassBottom':'somethingElseClassTop'"  *ngIf="somethingElse==true">An error has occured, please contact our administrators</div>
 
 </div>

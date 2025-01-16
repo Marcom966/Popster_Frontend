@@ -515,12 +515,22 @@
     font-size: x-large;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
 }
-.somethingElse{
+.somethingElseClassTop{
     background-color: Transparent;
     height: 172px;
     width: 720px;
     margin-top: 460px;
-    margin-left: 646px;
+    margin-left: 673px;
+    color: red;
+    font-size: x-large;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.somethingElseclassBottom{
+    background-color: Transparent;
+    height: 172px;
+    width: 720px;
+    margin-top: 830px;
+    margin-left: 673px;
     color: red;
     font-size: x-large;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
