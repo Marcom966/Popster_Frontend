@@ -535,6 +535,21 @@
     font-size: x-large;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
 }
+.buttonSupport{
+    position: absolute;
+    top: 548px;
+    left: 870px;
+    background-color: Transparent;
+    color: white;
+    border-radius: 25px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    font-weight: bold;
+    width: 191px;
+}
+.buttonSupport:hover{
+    box-shadow: 0 0 15px #fff;
+}
 
 @media (max-width: 926px){
     .choose{
