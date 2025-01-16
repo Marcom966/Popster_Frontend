@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
         }
       });
     }))
-    .subscribe((resp)=>{
+    .subscribe(resp=>{
     resp.forEach((user:any)=>{
       this.nameNew = user['user_name'];
       this.passNew = user['password'];
