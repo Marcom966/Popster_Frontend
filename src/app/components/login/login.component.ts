@@ -132,6 +132,9 @@ export class LoginComponent implements OnInit {
       });       
     });  
   }
+  public toSupport(){
+    this.route.navigate(['support']);
+  }
   public onSubmitVendor(){
     this.vendor = true;
     this.Yes = false;

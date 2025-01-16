@@ -9,6 +9,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { FileUploadErrorComponent } from './components/file-upload-error/file-upload-error.component';
 import { UserHomepageComponent } from './components/user-homepage/user-homepage.component';
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
+import { SupportComponentComponent } from './components/support-component/support-component.component';
 
 const routes: Routes = [{
   path: 'home', component: HomepageComponent
@@ -28,6 +29,8 @@ const routes: Routes = [{
   path: 'userHomepage', component: UserHomepageComponent
 },{
   path: 'fileSuccessfull', component: FileSuccessfullComponent
+},{
+  path: 'support', component: SupportComponentComponent
 },{
   path: '**', redirectTo: 'home'
 }];
