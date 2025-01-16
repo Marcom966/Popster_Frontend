@@ -3,6 +3,7 @@
         <h1 class="h1">Welcome to Popster</h1>
     </div>
     <div class="button_lists">
+        <button type="button" class="backButton" (click)="backToTheHomepage()">Go back to the Homepage</button>
         <div class="choose">{{vendor ? "Did you already sell in our website?" : "Are you already registered?"}}</div>
         <button type="button" class="button1" (click)="yesFunction()">Yes</button>
         <button type="button" class="button2" (click)="vendor ? yesVendor() : noFunction()">No</button>

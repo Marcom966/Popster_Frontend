@@ -154,6 +154,9 @@ export class LoginComponent implements OnInit {
     this.No=true;
     this.Yes=false;
   }
+  public backToTheHomepage(){
+    this.route.navigate(['home']);
+  }
   ngOnDestroy(): void{
     this.requestSub.unsubscribe();
   }

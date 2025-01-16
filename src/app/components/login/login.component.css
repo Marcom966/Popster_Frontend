@@ -565,6 +565,20 @@
 .buttonSupportBottom:hover{
     box-shadow: 0 0 15px #fff;
 }
+.backButton{
+    position: absolute;
+    top: 35px;
+    left: 37px;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    width: 191px;
+}
+.backButton:hover{
+    box-shadow: 0 0 15px #fff;
+}
 
 @media (max-width: 926px){
     .choose{
