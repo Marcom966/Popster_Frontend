@@ -535,7 +535,7 @@
     font-size: x-large;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
 }
-.buttonSupport{
+.buttonSupportTop{
     position: absolute;
     top: 548px;
     left: 870px;
@@ -547,7 +547,22 @@
     font-weight: bold;
     width: 191px;
 }
-.buttonSupport:hover{
+.buttonSupportTop:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.buttonSupportBottom{
+    position: absolute;
+    top: 869px;
+    left: 870px;
+    background-color: Transparent;
+    color: white;
+    border-radius: 25px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    font-weight: bold;
+    width: 191px;
+}
+.buttonSupportBottom:hover{
     box-shadow: 0 0 15px #fff;
 }
 

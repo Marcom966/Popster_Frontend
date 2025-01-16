@@ -127,7 +127,7 @@ export class LoginComponent implements OnInit {
           if(this.somethingElse==true){
             this.nickAndPassDontMatch=false;
           };
-        this.nickAndPassDontMatch=true;
+          this.nickAndPassDontMatch=true;
         }        
       });       
     });  
