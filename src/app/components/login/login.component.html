@@ -81,6 +81,6 @@
         data-logo_alignment="left">
      </div>
      <div [ngClass]="Post ? 'somethingElseclassBottom':'somethingElseClassTop'"  *ngIf="somethingElse==true">An error has occured, please contact our administrators</div>
-     <button type="button" [ngClass]="Post ? 'buttonSupportBottom' : 'buttonSupportTop'" *ngIf="somethingElse==true" (click)="toSupport()">Contact support</button>
+     <button type="button" [ngClass]="Post ? 'buttonSupportBottom' : 'buttonSupportTop'" *ngIf="somethingElse==true&&nickAndPassDontMatch==false" (click)="toSupport()">Contact support</button>
 
 </div>
