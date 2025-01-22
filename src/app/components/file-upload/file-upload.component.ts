@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { catchError, Subscription, throwError } from 'rxjs';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
@@ -55,7 +55,18 @@ export class FileUploadComponent implements OnInit {
     }    
   }
   public onSubmit(){
-    this.requestSub = this.files.postFile(this.formData).subscribe((resp)=>{
+    this.requestSub = this.files.postFile(this.formData)
+    .pipe(catchError(err=>{
+      return throwError(()=>{
+        if(err.status===0){
+          console.error("an error occurred: "+err.error);
+        }else if(err.status===400){
+          let er = Object.values(err);
+          console.error(`Backend returned code ${err.status}, body was: `+er)
+        }
+      });
+    }))
+    .subscribe((resp)=>{
       if(resp==null){
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
