@@ -66,7 +66,7 @@ export class FileUploadComponent implements OnInit {
         }
       });
     }))
-    .subscribe((resp)=>{
+    .subscribe(resp=>{
       if(resp==null){
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
