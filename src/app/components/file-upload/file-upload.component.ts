@@ -69,7 +69,7 @@ export class FileUploadComponent implements OnInit {
     }))
     .subscribe(resp=>{
       this.res = Object.values(resp)[0];
-      if((this.res as string).toString().includes("File Uploaded successfully")){
+      if((this.res as string).includes("File Uploaded successfully")){
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
       }
