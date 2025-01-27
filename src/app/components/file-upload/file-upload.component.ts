@@ -26,6 +26,7 @@ export class FileUploadComponent implements OnInit {
   nameOfficial!: string;
   erroor: boolean = false;
   formData!: FormData;
+  res!: unknown;
   
 
 
@@ -44,12 +45,12 @@ export class FileUploadComponent implements OnInit {
       this.formData.append('fileSize', this.size);
       this.formData.append('fileType', this.type);
       this.userName = this.username;
-      this.formData.append('userName', new Blob([JSON.stringify(this.userName)], {type: 'multipart/form-data'}));
       this.nameOfficial = this.name;
       if(this.nameOfficial.includes(" ")){
         this.nameConcat = this.nameOfficial.split(" ").join("");
       }
-      this.formData.append('fileName', this.nameConcat ? this.nameConcat : this.nameOfficial);
+      this.formData.append('file', new Blob([JSON.stringify(this.nameConcat ? this.nameConcat : this.nameOfficial)], {type: 'multipart/form-data'}));
+      this.formData.append('userName', this.userName ?? '');      
     }else if(this.file==null){
       return
     }    
@@ -67,11 +68,12 @@ export class FileUploadComponent implements OnInit {
       });
     }))
     .subscribe(resp=>{
-      if(resp==null){
+      this.res = Object.values(resp)[0];
+      if((this.res as string).toString().includes("File Uploaded successfully")){
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
       }
-    })
+    });
   }
   public toUser(){
     this.route.navigate(['userHomepage']);

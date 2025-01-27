@@ -13,10 +13,10 @@
     <div class="body">
         <div class="uploadContainer">
             <h1 class="center">Upload a file</h1>
-            <form enctype="multipart/form-data" action="http://localhost:8080/api/v1/file/upload" method="post">
+            <form enctype="multipart/form-data" action="http://localhost:8080/api/v1/file" method="post">
                 <label for="upload" class="upload">
                     <span class="span" aria-hidden="true"></span>
-                    <input class="inputFull" id="inputFile" name="userFile" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
+                    <input class="inputFull" id="inputFile" name="file" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
                     <button type="reset" id="resetButton" class='reset'>X</button>
                     <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
                 </label>
