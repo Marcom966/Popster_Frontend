@@ -102,3 +102,17 @@
 .FileUpload:hover{
     box-shadow: 0 0 2px #fff;
 }
+.hompageUno{
+    top: 176px;
+    position: absolute;
+    left: 812px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.errorHomepage{
+    top: 176px;
+    position: absolute;
+    left: 812px;
+    color: red;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+

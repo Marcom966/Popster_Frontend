@@ -10,9 +10,13 @@
     <div class="header">
         <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : "Please subscribe"}}</h1>
     </div>
-    <h1 class="h1"></h1>
-    <div class="CardGrids" *ngFor="let r of response">-->
-        <app-card [data]="r"></app-card>
+    <div class="uselessNess">
+        <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : 'Files uploaded so far:'}}</h1>
+    </div>
+    <div *ngIf="noFiles==false">
+        <div class="CardGrids" *ngFor="let r of response">
+            <app-card [data]="r"></app-card>
+        </div>
     </div>
     <div class="footer">
         <app-footer></app-footer>

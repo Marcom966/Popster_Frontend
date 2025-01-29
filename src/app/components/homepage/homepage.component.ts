@@ -31,6 +31,7 @@ export class HomepageComponent implements OnInit {
   response!: DataInt[];
   res1!: any|undefined;
   toshow!: string;
+  noFiles: boolean = false;
   
 
   constructor(public getUsers: FetchUsersService, public route: Router, private getFiles: PostFileServiceService) { }
@@ -73,6 +74,9 @@ export class HomepageComponent implements OnInit {
   public listData(){
     this.requestSub = this.getFiles.getAllFiles().subscribe((res)=>{
       this.response = res;
+      if(this.response.length==0){
+        this.noFiles = true;
+      }
       this.res1 = this.response[0];
       this.toshow = this.res1.name;
       console.log(this.response); 
