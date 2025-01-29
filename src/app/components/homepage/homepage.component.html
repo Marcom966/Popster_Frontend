@@ -11,9 +11,9 @@
         <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : "Please subscribe"}}</h1>
     </div>
     <h1 class="h1"></h1>
-    <!--<div class="CardGrids" *ngFor="let d of dataNew">-->
-        <app-card></app-card>
-    <!--</div>-->
+    <div class="CardGrids" *ngFor="let r of response">-->
+        <app-card [data]="r"></app-card>
+    </div>
     <div class="footer">
         <app-footer></app-footer>
     </div>

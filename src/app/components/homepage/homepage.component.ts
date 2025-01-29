@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { DataInt } from 'src/app/Interfaces/data-int';
 import { TypeOfUser } from 'src/app/Interfaces/type-of-user';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
+import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 @Component({
     selector: 'app-homepage',
@@ -27,9 +28,12 @@ export class HomepageComponent implements OnInit {
   typeOfUser!: TypeOfUser;
   dataNew: any[] = [];
   nameLocal: string = "";
+  response!: DataInt[];
+  res1!: any|undefined;
+  toshow!: string;
   
 
-  constructor(public getUsers: FetchUsersService, public route: Router) { }
+  constructor(public getUsers: FetchUsersService, public route: Router, private getFiles: PostFileServiceService) { }
 
   public verify(){
     let arr: any[] = []
@@ -65,8 +69,14 @@ export class HomepageComponent implements OnInit {
       });         
     });
   };
-  public createItem(){
-    
+
+  public listData(){
+    this.requestSub = this.getFiles.getAllFiles().subscribe((res)=>{
+      this.response = res;
+      this.res1 = this.response[0];
+      this.toshow = this.res1.name;
+      console.log(this.response); 
+    });
   }
 
   public logOut(){
@@ -87,6 +97,7 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.verify();
+    this.listData();
   }
 
 }

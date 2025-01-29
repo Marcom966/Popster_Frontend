@@ -10,23 +10,14 @@ import { PostFileServiceService } from 'src/app/services/post-file-service.servi
     standalone: false
 })
 export class CardComponent implements OnInit {
+  @Input() data!: any;
   name!: string;
-  requestSub = new Subscription;
-  response!: DataInt[];
-  res1!: any|undefined;
-  toshow!: string;
 
 
-  constructor(private getFiles: PostFileServiceService) { }
+  constructor() { }
   public listData(){
-    //this.name = this.data.name.toString();
-    this.requestSub = this.getFiles.getAllFiles().subscribe((res)=>{
-      this.response = res;
-      
-      this.res1 = this.response[0];
-      this.toshow = this.res1.name;
-      console.log(this.response); 
-    });
+    this.name = this.data.name.toString();
+
     
   }
   ngOnInit(): void {
