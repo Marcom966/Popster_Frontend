@@ -76,6 +76,7 @@ export class HomepageComponent implements OnInit {
       this.response = res;
       if(this.response.length==0){
         this.noFiles = true;
+        return
       }
       this.res1 = this.response[0];
       this.toshow = this.res1.name;
