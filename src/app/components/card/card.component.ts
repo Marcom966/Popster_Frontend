@@ -29,7 +29,6 @@ export class CardComponent implements OnInit {
     });
     
   }
-
   ngOnInit(): void {
     this.listData();
   }
