@@ -14,8 +14,16 @@
         <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : 'Files uploaded so far:'}}</h1>
     </div>
     <div *ngIf="noFiles==false">
-        <div class="CardGrids" *ngFor="let r of response">
-            <app-card [data]="r"></app-card>
+        <div class="wrapper">
+            <div class="container">
+                <div class="row-wrapper">
+                    <div class="row">   
+                        <div class="CardGrids" *ngFor="let r of response">
+                            <app-card [data]="r"></app-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">
