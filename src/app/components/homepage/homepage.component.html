@@ -8,19 +8,17 @@
         <button class="FileUpload" (click)="logged ? fileUpload() : redirect()">Upload a file</button>
     </nav>
     <div class="header">
-        <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : "Please subscribe"}}</h1>
+        <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : ''}}</h1>
     </div>
     <div class="uselessNess">
-        <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : 'Files uploaded so far:'}}</h1>
+        <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : ''}}</h1>
     </div>
     <div *ngIf="noFiles==false">
-        <div class="wrapper">
-            <div class="container">
-                <div class="row-wrapper">
-                    <div class="row">   
-                        <div class="CardGrids" *ngFor="let r of response">
-                            <app-card [data]="r"></app-card>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">   
+                    <div class="CardGrids" *ngFor="let r of response">
+                        <app-card [data]="r"></app-card>
                     </div>
                 </div>
             </div>

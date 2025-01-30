@@ -115,4 +115,14 @@
     color: white;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
 }
+.container{
+    max-width: 100vh;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: -15px;
+    margin-left: -15px;
+}
 
