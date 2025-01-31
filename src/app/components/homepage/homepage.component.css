@@ -17,7 +17,9 @@
     left: 0px;
     right: 0px;
     top: 0px;
+    height: 93px;
 }
+
 .navbar{
     width:100%;
     height: 60px;
@@ -124,5 +126,15 @@
     justify-content: center;
     margin-right: -15px;
     margin-left: -15px;
+}
+.h1New{
+    font-weight: bold;
+    font-family: 'san francisco', Helvetica, Arial, san-serif;
+    margin-top: 20px;
+}
+.somethingElseclass{
+    background-color: black;
+    position: absolute;
+    color: white;
 }
 

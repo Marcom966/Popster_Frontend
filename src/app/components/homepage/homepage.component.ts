@@ -5,6 +5,8 @@ import { DataInt } from 'src/app/Interfaces/data-int';
 import { TypeOfUser } from 'src/app/Interfaces/type-of-user';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
     selector: 'app-homepage',
@@ -32,6 +34,7 @@ export class HomepageComponent implements OnInit {
   res1!: any|undefined;
   toshow!: string;
   noFiles: boolean = false;
+  sometghingEWlse: boolean = false;
   
 
   constructor(public getUsers: FetchUsersService, public route: Router, private getFiles: PostFileServiceService) { }
@@ -72,7 +75,19 @@ export class HomepageComponent implements OnInit {
   };
 
   public listData(){
-    this.requestSub = this.getFiles.getAllFiles().subscribe((res)=>{
+    this.requestSub = this.getFiles.getAllFiles()
+    .pipe(catchError(err=>{
+      return throwError(()=>{
+        if(err.status===0){
+          console.error("an error occurred: "+err.error);
+          this.sometghingEWlse = true;
+        }else if(err.status===400){
+          let er = Object.values(err);
+          console.error(`Backend returned code ${err.status}, body was: `+er)
+        }
+      });
+    }))
+    .subscribe((res)=>{
       this.response = res;
       if(this.response.length==0){
         this.noFiles = true;
@@ -97,6 +112,9 @@ export class HomepageComponent implements OnInit {
   public redirect(){
     this.route.navigate(['fileUploadError']);
   }
+  public toSupport(){
+    this.route.navigate(['support']);
+  }
   ngOnDestroy(): void{
     this.requestSub.unsubscribe();
   }
@@ -106,3 +124,5 @@ export class HomepageComponent implements OnInit {
   }
 
 }
+
+
