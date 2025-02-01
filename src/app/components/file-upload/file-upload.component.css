@@ -1,9 +1,10 @@
 .container{
-    height: 100vh;
-    width: 100%;
+    height: 100%;
+    width: 100% !important;
     background-color: black;
     color: white;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    position: fixed;
 }
 .header{
     background-color: yellow;

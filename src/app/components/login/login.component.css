@@ -15,12 +15,14 @@
     right: 0px;
     top: 0px;
 }
-.container{
+.containerLogin{
     background-color: black;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     color: white;
+    left: 0px;
+    top: 0px;
 }
 .choose{
     color: white;
@@ -567,17 +569,23 @@
 }
 .backButton{
     position: absolute;
-    top: 35px;
+    top: 44px;
     left: 37px;
     background-color: black;
     color: white;
     border-radius: 25px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-weight: bold;
-    width: 191px;
+    width: 242px;
 }
 .backButton:hover{
     box-shadow: 0 0 15px #fff;
+}
+.h1Login{
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    margin-top: 33px;
+    margin-bottom: 24px;
 }
 
 @media (max-width: 926px){
@@ -666,3 +674,5 @@
 
 
 }
+
+
