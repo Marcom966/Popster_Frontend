@@ -80,14 +80,14 @@
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
     font-weight: bold;
-    top: -22px;
+    top: -8px;
     text-align: center;
     left: 26px;
     width: 102px;
 }
 .name{
     position: absolute;
-    top: 11px;
+    top: 29px;
     left: 54px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
@@ -99,10 +99,11 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
+    left: -16px;
 }
 .surname{
     position: absolute;
-    top: 74px;
+    top: 92px;
     left: 43px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
@@ -113,10 +114,11 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
+    left: -16px;
 }
 .birthday{
     position: absolute;
-    top: 134px;
+    top: 157px;
     left: 45px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
@@ -127,10 +129,11 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
+    left: -16px;
 }
 .eMail{
     position: absolute;
-    top: 193px;
+    top: 215px;
     left: 50px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
@@ -142,10 +145,11 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
+    left: -16px;
 }
 .Nickname{
     position: absolute;
-    top: 258px;
+    top: 280px;
     left: 36px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
@@ -156,10 +160,11 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
+    left: -16px;
 }
 .Password{
     position: absolute;
-    top: 324px;
+    top: 347px;
     left: 36px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
@@ -170,10 +175,11 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
+    left: -16px;
 }
 .repeatPassword{
     position: absolute;
-    top: 399px;
+    top: 427px;
     left: 14px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
@@ -185,6 +191,7 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
+    left: -16px;
 }
 .register{
     position: absolute;
