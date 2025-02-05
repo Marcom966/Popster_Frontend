@@ -1,10 +1,10 @@
 
 
-<div class="container">
+<div class="containerUpload">
     <div class="header">
         <p class="pheader">Popster</p>
     </div>
-    <div class="nav">
+    <div class="navUpload">
         <i class="fa-solid fa-arrow-left"></i>
         <button class="button" (click)="back()">Go back</button>
         <p class="instructions">{{username}}, Upload a file here! </p>
@@ -12,7 +12,7 @@
     </div>
     <div class="body">
         <div class="uploadContainer">
-            <h1 class="center">Upload a file</h1>
+            <h1 class="centerUplload">Upload a file</h1>
             <form enctype="multipart/form-data" action="http://localhost:8080/api/v1/file" method="post">
                 <label for="upload" class="upload">
                     <span class="span" aria-hidden="true"></span>

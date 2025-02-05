@@ -1,4 +1,4 @@
-.container{
+.containerUpload{
     height: 100%;
     width: 100% !important;
     background-color: black;
@@ -22,13 +22,13 @@
 .pheader{
     font-size: 35px;
 }
-.nav{
+.navUpload{
     width:100%;
     height: 60px;
     position: absolute;
     left: -1px;
     right: 0px;
-    top: 113px;
+    top: 70px;
     background-color: transparent;
     border: 0.5px solid white;
     box-shadow: 0 0 15px #fff
@@ -67,7 +67,7 @@
 
 }
 .instructions{
-    top:7px;
+    top:17px;
     left: 861px;
     background-color: transparent;
     color: white;
@@ -75,13 +75,13 @@
     font-weight: bold;
     position: absolute;
 }
-.center{
+.centerUplload{
     top:243px;
-    left: 857px;
+    left: 844px;
     text-align: center;
     background-color: transparent;
     color: white;
-    width: 213px;
+    width: 238px;
     font-weight: bold;
     position: absolute;
 }
@@ -117,7 +117,7 @@
     width: 200px;
     background-color: transparent;
     top: 414px;
-    left: 861px;
+    left: 853px;
     display: inline-block;
     position: absolute;
     border-radius: 25px;
@@ -148,7 +148,7 @@ input[type=file]::file-selector-button{
 .inputFull{
     border: 2px solid white;
     border-radius: 25px;
-    height: 29px;
+    height: 34px;
     position: absolute;
     left: -55px;
 }
@@ -158,8 +158,8 @@ input[type=file]::file-selector-button{
     font-weight: bold;
     font-size: small;
     position: absolute;
-    top: 48px;
-    left: 44px;
+    top: 54px;
+    left: 51px;
     width: 131px;
     height: 30px;
     border-radius: 40px;

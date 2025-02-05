@@ -5,12 +5,13 @@
     color: black;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: large;
-    font-weight: light;
+    font-weight: bold;
     border: 1px white solid;
     position: absolute;
     left: 0px;
     right: 0px;
     top: 0px;
+    height: 68px;
 }
 .successfully{
     background-color: black;
@@ -32,4 +33,8 @@
 }
 .success:hover{
     box-shadow: 0 0 15px #fff;
+}
+.congratulations{
+    font-weight: bold;
+    margin-top: 6px;
 }

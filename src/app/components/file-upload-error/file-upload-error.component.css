@@ -1,4 +1,4 @@
-.container{
+.containerError{
     height: 100vh;
     width: 100%;
     background-color: black;
@@ -54,7 +54,7 @@
     font-weight: bold;
     font-size: small;
     position: absolute;
-    top: 394px;
+    top: 420px;
     left: 854px;
     width: 242px;
     height: 30px;
@@ -66,7 +66,7 @@
 
 }
 .instructions{
-    top:228px;
+    top:202px;
     left: 552px;
     background-color: transparent;
     color: white;
@@ -114,7 +114,7 @@
     display: none;
 }
 .instructions2{
-    top:296px;
+    top:356px;
     left: 552px;
     background-color: transparent;
     color: white;
@@ -125,7 +125,7 @@
     font-size: 25px;
 }
 .newInstructions{
-    top:443px;
+    top:491px;
     left: 552px;
     background-color: transparent;
     color: white;
@@ -134,5 +134,10 @@
     position: absolute;
     text-align: center;
     font-size: 25px;
+}
+.uploadContainer{
+    background-color: black;
+    width: 242px;
+    position: absolute;
 }
 
