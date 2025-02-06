@@ -1,4 +1,4 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { LoginProvider, SocialUser } from 'angularx-social-login';
 import { filter, firstValueFrom, map, Subscription } from 'rxjs';
@@ -19,6 +19,15 @@ export class GoogleauthServiceService implements LoginProvider {
 
   constructor(private readonly _oAuthService: OAuthService, private fetchUsers: FetchUsersService){
     this.createConfiguration();
+  }
+  initialize(): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  getLoginStatus(loginStatusOptions?: any): Promise<SocialUser> {
+    throw new Error('Method not implemented.');
+  }
+  signOut(revoke?: boolean): Promise<void> {
+    throw new Error('Method not implemented.');
   }
 
   private readonly _TokenReceived$ = this._oAuthService.events.pipe(filter((e)=>e.type==='token_received'), map(()=>true as const));
@@ -52,4 +61,4 @@ export class GoogleauthServiceService implements LoginProvider {
   
 
 
-}*/
+}

@@ -17,6 +17,7 @@ import { FileUploadErrorComponent } from './components/file-upload-error/file-up
 import { UserHomepageComponent } from './components/user-homepage/user-homepage.component';
 import { NewDirectiveDirective } from './new-directive.directive';
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -35,5 +36,5 @@ import { FileSuccessfullComponent } from './components/file-successfull/file-suc
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
-        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi()), OAuthModule] })
 export class AppModule { }

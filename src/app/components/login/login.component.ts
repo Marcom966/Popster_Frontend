@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { Observable, Subscription, catchError, throwError } from 'rxjs';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
+import { GoogleauthServiceService } from 'src/app/services/googleauth-service.service';
 //import { GoogleauthServiceService } from 'src/app/services/googleauth-service.service';
 
 @Component({
@@ -43,10 +44,9 @@ export class LoginComponent implements OnInit {
   vendor: boolean = false;
   seller: boolean = false;
   pageOpened!: boolean;
-  googleAuthService!: any;
   somethingElse: boolean = false;
   Post: boolean = false;
-  constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, /*private googleAuthService: GoogleauthServiceService*/) { }
+  constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, @Inject(GoogleauthServiceService) private googleAuthService: GoogleauthServiceService) { }
 
   public onSubmit(form: NgForm){
     this.name = form.value.FullName;
@@ -162,7 +162,7 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     this.pageOpened = true;
-    //this.googleAuthService.initialize();
+    this.googleAuthService.initialize();
   }
 
 }
