@@ -5,7 +5,7 @@ import { filter, firstValueFrom, map, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FetchUsersService } from './fetch-users.service';
 
-@Injectable({
+/*@Injectable({
   providedIn: 'root'
 })
 export class GoogleauthServiceService implements LoginProvider {
@@ -61,4 +61,4 @@ export class GoogleauthServiceService implements LoginProvider {
   
 
 
-}
+}*/

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import moment from 'moment';
 import { Observable, Subscription, catchError, throwError } from 'rxjs';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
-import { GoogleauthServiceService } from 'src/app/services/googleauth-service.service';
 //import { GoogleauthServiceService } from 'src/app/services/googleauth-service.service';
 
 @Component({
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
   pageOpened!: boolean;
   somethingElse: boolean = false;
   Post: boolean = false;
-  constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, @Inject(GoogleauthServiceService) private googleAuthService: GoogleauthServiceService) { }
+  constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, /*@Inject(GoogleauthServiceService) private googleAuthService: GoogleauthServiceService*/) { }
 
   public onSubmit(form: NgForm){
     this.name = form.value.FullName;
