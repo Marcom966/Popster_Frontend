@@ -78,8 +78,8 @@ export class HomepageComponent implements OnInit {
     this.requestSub = this.getFiles.getAllFiles()
     .pipe(catchError(err=>{
       return throwError(()=>{
-        if(err.status===0){
-          console.error("an error occurred: "+err.error);
+        if(err.toString().includes('0')){
+          console.error("an error occurred: could not connect to backend or else");
           this.sometghingEWlse = true;
         }else if(err.status===400){
           let er = Object.values(err);

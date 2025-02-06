@@ -136,6 +136,27 @@
 .somethingElseclass{
     background-color: black;
     position: absolute;
+    top: 391px;
+    left: 491px;
+    font-family: 'san francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    color: red;
+    font-size: 40px;
+}
+.buttonSupport{
+    background-color: transparent;
     color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 494px;
+    left: 815px;
+    width: 268px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;
+}
+.buttonSupport:hover{
+    box-shadow: 0 0 15px #fff;
 }
 
