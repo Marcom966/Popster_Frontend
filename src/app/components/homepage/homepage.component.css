@@ -159,4 +159,11 @@
 .buttonSupport:hover{
     box-shadow: 0 0 15px #fff;
 }
+.CardcontainerHm{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: space-between;
+    margin-left: 222px
+}
 

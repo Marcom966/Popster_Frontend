@@ -1,12 +1,15 @@
 .color{
     color: black;
 }
-.name{
+.cards{
+    margin-top: 264px;
+    background-color: transparent;
     color: white;
-    position: absolute;
-    top: 255px;
-    left: 449px;
-    height: 200px;
-    width: 200px;
     border: 2px solid white;
+    border-radius: 25px;
+    width:467px;
+
 }
+.cards:hover{
+    box-shadow: 0 0 15px #fff;
+}  
