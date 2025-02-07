@@ -5,7 +5,7 @@ import { filter, firstValueFrom, map, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FetchUsersService } from './fetch-users.service';
 
-/*@Injectable({
+@Injectable({
   providedIn: 'root'
 })
 export class GoogleauthServiceService implements LoginProvider {
@@ -21,7 +21,8 @@ export class GoogleauthServiceService implements LoginProvider {
     this.createConfiguration();
   }
   initialize(): Promise<void> {
-    throw new Error('Method not implemented.');
+    this.createConfiguration();
+    return Promise.resolve();
   }
   getLoginStatus(loginStatusOptions?: any): Promise<SocialUser> {
     throw new Error('Method not implemented.');
@@ -54,6 +55,13 @@ export class GoogleauthServiceService implements LoginProvider {
 
   private async createUser(idToken: string): Promise<SocialUser>{
     let clientId = this._oAuthService.clientId;
+    console.log(clientId);
+    let socialuser = new SocialUser();
+    console.log(socialuser);
+    
+    
+    
+    
     return new SocialUser
     
   }
@@ -61,4 +69,4 @@ export class GoogleauthServiceService implements LoginProvider {
   
 
 
-}*/
+}

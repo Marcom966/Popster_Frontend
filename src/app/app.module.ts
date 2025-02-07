@@ -36,5 +36,5 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
-        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        FormsModule, OAuthModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
