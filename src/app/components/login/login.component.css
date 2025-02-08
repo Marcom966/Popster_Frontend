@@ -528,7 +528,7 @@
     background-color: Transparent;
     height: 172px;
     width: 720px;
-    margin-top: 460px;
+    margin-top: 511px;
     margin-left: 673px;
     color: red;
     font-size: x-large;
@@ -546,7 +546,7 @@
 }
 .buttonSupportTop{
     position: absolute;
-    top: 548px;
+    top: 569px;
     left: 870px;
     background-color: Transparent;
     color: white;
