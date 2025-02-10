@@ -12,12 +12,16 @@ import { PostFileServiceService } from 'src/app/services/post-file-service.servi
 export class CardComponent implements OnInit {
   @Input() data!: any;
   name!: string;
+  requestSub = new Subscription;
 
 
-  constructor() { }
+  constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
-
+    this.requestSub = this.filegetter.getFilebyId(this.data.id).subscribe((data: DataInt)=>{
+      console.log(data);
+      
+    })
     
   }
   ngOnInit(): void {
