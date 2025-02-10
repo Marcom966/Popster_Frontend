@@ -15,8 +15,8 @@
     </div>
     <div *ngIf="noFiles==false">
         <div class="CardcontainerHm">
-            <div class="row">
-                <div class="col-md-4 mb-4" *ngFor="let r of response">   
+            <div [ngClass]="response.length==2 ? 'row twocardsRow' : 'row'">
+                <div [ngClass]="response.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'" *ngFor="let r of response">   
                     <app-card [ngClass]="response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
                 </div>
             </div>
