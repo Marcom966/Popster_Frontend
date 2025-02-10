@@ -17,7 +17,7 @@
         <div class="CardcontainerHm">
             <div class="row">
                 <div class="col-md-4 mb-4" *ngFor="let r of response">   
-                    <app-card [data]="r"></app-card>
+                    <app-card [ngClass]="response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
                 </div>
             </div>
         </div>
