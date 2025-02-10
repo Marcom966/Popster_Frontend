@@ -18,6 +18,7 @@ import { UserHomepageComponent } from './components/user-homepage/user-homepage.
 import { NewDirectiveDirective } from './new-directive.directive';
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -32,9 +33,10 @@ import { OAuthModule } from 'angular-oauth2-oidc';
         FileUploadErrorComponent,
         UserHomepageComponent,
         NewDirectiveDirective,
-        FileSuccessfullComponent,
+        FileSuccessfullComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
+        NgxAudioPlayerModule,
         AppRoutingModule,
         FormsModule, OAuthModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
