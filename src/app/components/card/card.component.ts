@@ -24,6 +24,9 @@ export class CardComponent implements OnInit {
     })
     
   }
+  ngOnDestroy(): void{
+    this.requestSub.unsubscribe();
+  }
   ngOnInit(): void {
     this.listData();
   }
