@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { NewDirectiveDirective } from './new-directive.directive';
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { AudioPlayerComponentComponent } from "./components/audio-player-component/audio-player-component.component";
 
 @NgModule({ declarations: [
         AppComponent,
@@ -36,7 +38,8 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
         FileSuccessfullComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
-        NgxAudioPlayerModule,
-        AppRoutingModule,
-        FormsModule, OAuthModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
+    NgxAudioPlayerModule,
+    AppRoutingModule,
+    FormsModule, OAuthModule.forRoot(), AudioPlayerComponentComponent], providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class AppModule { }
