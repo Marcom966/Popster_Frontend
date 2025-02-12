@@ -6,18 +6,20 @@
     <nav class="navbar">
         <button class="logbutton" (click)="logged ? logOut() : logIn()">{{logged ? "Log out" : "Log in/subscribe"}}</button>
         <button class="FileUpload" (click)="logged ? fileUpload() : redirect()">Upload a file</button>
+        <div class="header">
+            <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : ''}}</h1>
+        </div>
     </nav>
-    <div class="header">
-        <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : ''}}</h1>
-    </div>
-    <div class="uselessNess">
-        <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : ''}}</h1>
-    </div>
-    <div *ngIf="noFiles==false">
-        <div class="CardcontainerHm">
-            <div [ngClass]="response.length==2 ? 'row twocardsRow' : 'row'">
-                <div [ngClass]="response.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'" *ngFor="let r of response">   
-                    <app-card [ngClass]="response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+    <div class="nuovoContainer">
+        <div class="uselessNess">
+            <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : ''}}</h1>
+        </div>
+        <div class="bigDiv" *ngIf="noFiles==false">
+            <div class="CardcontainerHm">
+                <div [ngClass]="response.length==2 ? 'row twocardsRow' : 'row'">
+                    <div [ngClass]="response.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'" *ngFor="let r of response">   
+                        <app-card [ngClass]="response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+                    </div>
                 </div>
             </div>
         </div>
