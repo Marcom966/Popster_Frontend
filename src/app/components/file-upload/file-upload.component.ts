@@ -27,6 +27,7 @@ export class FileUploadComponent implements OnInit {
   erroor: boolean = false;
   formData!: FormData;
   res!: unknown;
+  idFile!: string;
   
 
 
@@ -39,6 +40,7 @@ export class FileUploadComponent implements OnInit {
     this.formData = new FormData();
     this.file = event.target.files[0];
     if(this.file){
+      this.idFile = crypto.randomUUID();
       this.name = this.file.name;
       this.size = this.file.size;
       this.type = this.file.type;
@@ -52,6 +54,7 @@ export class FileUploadComponent implements OnInit {
       let blob = new Blob([JSON.stringify(this.nameConcat ? this.nameConcat : this.nameOfficial)], {type: 'multipart/form-data'});
       this.formData.append('file', blob, this.nameConcat ? this.nameConcat : this.nameOfficial);
       this.formData.append('userName', this.userName ?? '');
+      this.formData.append('idFile', this.idFile);
     }else if(this.file==null){
       return
     }    
