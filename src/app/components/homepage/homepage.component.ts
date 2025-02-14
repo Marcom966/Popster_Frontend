@@ -95,7 +95,6 @@ export class HomepageComponent implements OnInit {
       }
       this.res1 = this.response[0];
       this.toshow = this.res1.name;
-      console.log(this.response); 
     });
   }
 

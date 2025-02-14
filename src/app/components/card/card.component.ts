@@ -13,11 +13,14 @@ export class CardComponent implements OnInit {
   @Input() data!: any;
   name!: string;
   requestSub = new Subscription;
+  id!: string;
 
 
   constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
+    console.log(this.data.id);
+    
     this.requestSub = this.filegetter.getFilebyId(this.data.id).subscribe((data: DataInt)=>{
       console.log(data);
       

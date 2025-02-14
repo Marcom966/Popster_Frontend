@@ -31,7 +31,7 @@ export class PostFileServiceService {
     return this.http.get<any>(url)
       .pipe(catchError(this.handleError));
   }
-  public getFilebyId(id: number): Observable<any>{
+  public getFilebyId(id: string): Observable<any>{
     const url = `http://localhost:8080/api/v1/file/${id}`;
     return this.http.get<any>(url)
       .pipe(catchError(this.handleError));
