@@ -14,14 +14,16 @@ export class CardComponent implements OnInit {
   name!: string;
   requestSub = new Subscription;
   id!: string;
+  link!: string;
+  dataSendToxard!: any;
 
 
   constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
     this.requestSub = this.filegetter.getFilebyId(this.data.id).subscribe((dataReturn: any)=>{
-      console.log(dataReturn);
-      
+      this.link = dataReturn.url;
+      console.log(this.link);
     })
     
   }

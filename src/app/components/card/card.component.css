@@ -13,3 +13,9 @@
 .cards:hover{
     box-shadow: 0 0 15px #fff;
 }  
+.audioPlayer{
+    height: 44px;
+  width: 465px;
+  color: transparent;
+  border: 2px solid white;
+}
