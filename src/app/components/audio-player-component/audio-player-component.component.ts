@@ -8,20 +8,21 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AudioPlayerComponentComponent {
-  @Input() url!: any;
-  @Input() name!: any;
-  playlist = [
+  @Input() link!: any;
+  //@Input() name!: any;
+  playlist = 
     {
-      title: this.name,
-      link: this.url
-    }
-  ];
+      //title: this.name,
+      link: this.link
+    };
   constructor() { }
   public playAudio() {
-  console.log(this.playlist[0].link);
+  console.log(this.playlist.link, this.link);
+  //console.log(this.playlist.title, this.name);
+  
 
     let audio = new Audio();
-    audio.src = this.playlist[0].link;
+    audio.src = this.playlist.link;
     audio.load();
     audio.play();
   }
