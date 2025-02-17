@@ -29,7 +29,7 @@ export class AudioPlayerComponentComponent {
       this.playlist.link = changes['link'].currentValue;
       console.log('new link', this.playlist.link);
       this.playAudio();
-    }if (changes['name'] && changes['name'].currentValue) {
+    }if (changes['name']&&changes['name'].currentValue) {
       this.playlist.title = changes['name'].currentValue;
       console.log("Aggiornato name:", this.playlist.title);
     }
