@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-audio-player-component',
@@ -9,25 +9,31 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
 })
 export class AudioPlayerComponentComponent {
   @Input() link!: any;
-  //@Input() name!: any;
+  @Input() name!: any;
   playlist = 
     {
-      //title: this.name,
+      title: this.name,
       link: this.link
     };
   constructor() { }
   public playAudio() {
-  console.log(this.playlist.link, this.link);
-  //console.log(this.playlist.title, this.name);
-  
-
+  console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
     let audio = new Audio();
     audio.src = this.playlist.link;
     audio.load();
     audio.play();
   }
   
-
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['link']&&changes['link'].currentValue){
+      this.playlist.link = changes['link'].currentValue;
+      console.log('new link', this.playlist.link);
+      this.playAudio();
+    }if (changes['name'] && changes['name'].currentValue) {
+      this.playlist.title = changes['name'].currentValue;
+      console.log("Aggiornato name:", this.playlist.title);
+    }
+  }
   ngOnInit(): void {
     this.playAudio();
   }

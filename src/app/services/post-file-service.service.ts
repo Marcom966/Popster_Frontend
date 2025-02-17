@@ -21,13 +21,13 @@ export class PostFileServiceService {
 
   }
   public postFile(formData: FormData): Observable<any>{
-    const url = `http://localhost:8080/api/v1/file`;
+    const url = `http://localhost:8080/api/v1/file/`;
     return this.http.post<any>(url, formData)
     .pipe(catchError(this.handleError));
   }
 
   public getAllFiles(): Observable<any>{
-    const url = `http://localhost:8080/api/v1/file`;
+    const url = `http://localhost:8080/api/v1/file/`;
     return this.http.get<any>(url)
       .pipe(catchError(this.handleError));
   }
