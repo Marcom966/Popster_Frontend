@@ -28,9 +28,8 @@ export class AudioPlayerComponentComponent {
   public playAudio() {
     this.requestSub = this.gettingFile.getFilebyId(this.playlist.link).subscribe((data: any) => {
       this.linkDue = data.url;
-      console.log('linkDue:', this.linkDue);
-      
-    };
+      console.log('linkDue:', this.linkDue);     
+    });
   console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
     let audio = new Audio();
     audio.src = this.playlist.link;
