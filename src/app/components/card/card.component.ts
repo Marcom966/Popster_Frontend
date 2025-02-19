@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
   constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
-    this.requestSub = this.filegetter.getFilebyId(this.data.id).subscribe((dataReturn: any)=>{
+    this.requestSub = this.filegetter.getFilebyIdJson(this.data.id).subscribe((dataReturn: any)=>{
       this.link = dataReturn.url.toString();
       console.log(this.link);
     })

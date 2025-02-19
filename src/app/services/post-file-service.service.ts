@@ -31,8 +31,13 @@ export class PostFileServiceService {
     return this.http.get<any>(url)
       .pipe(catchError(this.handleError));
   }
+  public getFilebyIdJson(id: string): Observable<any>{
+    const url = `http://localhost:8080/api/v1/file/${id}/info`;
+    return this.http.get<any>(url)
+      .pipe(catchError(this.handleError));
+  };
   public getFilebyId(id: string): Observable<any>{
-    const url = `http://localhost:8080/api/v1/file/${id}`;
+    const url = `http://localhost:8080/api/v1/file/${id}/download`;
     return this.http.get<any>(url)
       .pipe(catchError(this.handleError));
   };
