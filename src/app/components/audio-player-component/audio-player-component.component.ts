@@ -1,4 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, SimpleChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 @Component({
   selector: 'app-audio-player-component',
@@ -15,8 +17,20 @@ export class AudioPlayerComponentComponent {
       title: this.name,
       link: this.link
     };
-  constructor() { }
+
+  requestSub = new Subscription();
+  linkDue!: any;
+
+
+  constructor(private gettingFile: PostFileServiceService) { }
+
+
   public playAudio() {
+    this.requestSub = this.gettingFile.getFilebyId(this.playlist.link).subscribe((data: any) => {
+      this.linkDue = data.url;
+      console.log('linkDue:', this.linkDue);
+      
+    };
   console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
     let audio = new Audio();
     audio.src = this.playlist.link;
