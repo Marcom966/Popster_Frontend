@@ -26,7 +26,7 @@ export class AudioPlayerComponentComponent {
 
 
   public playAudio() {
-    this.requestSub = this.gettingFile.getFilebyId(this.playlist.link).subscribe((data: any) => {
+    this.requestSub = this.gettingFile.getFilebyId(this.link).subscribe((data: any) => {
       this.linkDue = data.url;
       console.log('linkDue:', this.linkDue);     
     });
