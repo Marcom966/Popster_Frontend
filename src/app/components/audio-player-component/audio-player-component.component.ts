@@ -54,10 +54,6 @@ export class AudioPlayerComponentComponent {
       this.playlist.title = changes['name'].currentValue;
       //console.log("Aggiornato name:", this.playlist.title);
     }
-    if(changes['id']&&changes['id'].currentValue){
-      this.id = changes['id'].currentValue;
-      //console.log("Aggiornato id:", this.id);
-    }
   }
   ngOnInit(): void {
     this.playAudio();

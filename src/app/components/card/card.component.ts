@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataInt } from 'src/app/Interfaces/data-int';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
@@ -27,6 +27,11 @@ export class CardComponent implements OnInit {
       console.log(this.id);
     })
     
+  }
+  ngOnChanges(changes: SimpleChanges): void{
+    if(changes['id']&&changes['id'].currentValue){
+      this.id = changes['id'].currentValue;
+    }
   }
   ngOnDestroy(): void{
     this.requestSub.unsubscribe();
