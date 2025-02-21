@@ -22,8 +22,9 @@ export class CardComponent implements OnInit {
   public listData(){
     this.name = this.data.name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id).subscribe((dataReturn: any)=>{
+      this.id = dataReturn.id.toString();
       this.link = dataReturn.url.toString();
-      console.log(this.link);
+      console.log(this.id);
     })
     
   }

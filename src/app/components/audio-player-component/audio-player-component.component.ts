@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, SimpleChanges } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, input, Input, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
@@ -12,6 +12,7 @@ import { PostFileServiceService } from 'src/app/services/post-file-service.servi
 export class AudioPlayerComponentComponent {
   @Input() link!: any;
   @Input() name!: any;
+  @Input() id!: any;
   playlist = 
     {
       title: this.name,
@@ -26,7 +27,7 @@ export class AudioPlayerComponentComponent {
 
 
   public playAudio() {
-    this.requestSub = this.gettingFile.getFilebyId(this.link).subscribe((data: any) => {
+    this.requestSub = this.gettingFile.getFilebyId(this.id).subscribe((data: any) => {
       this.linkDue = data.url;
       console.log('linkDue:'+ data);     
     });
