@@ -28,10 +28,15 @@ export class AudioPlayerComponentComponent {
 
   public playAudio() {
     console.log(this.id);
-    
-    this.requestSub = this.gettingFile.getFilebyId(this.id).subscribe((data: any) => {
-      this.linkDue = data.url;
-      console.log('linkDue:'+ data);     
+    if(!this.id){
+      console.error('id del file non definito trovato');
+      return;
+    }
+    this.requestSub = this.gettingFile.getFilebyId(this.id).subscribe((blob: any) => {
+      this.linkDue = window.URL.createObjectURL(blob);
+      console.log('linkDue:'+ this.linkDue);
+      console.log(blob.type);
+      
     });
   console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
     let audio = new Audio();
@@ -43,11 +48,15 @@ export class AudioPlayerComponentComponent {
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['link']&&changes['link'].currentValue){
       this.playlist.link = changes['link'].currentValue;
-      console.log('new link', this.playlist.link);
+      //console.log('new link', this.playlist.link);
       this.playAudio();
     }if (changes['name']&&changes['name'].currentValue) {
       this.playlist.title = changes['name'].currentValue;
-      console.log("Aggiornato name:", this.playlist.title);
+      //console.log("Aggiornato name:", this.playlist.title);
+    }
+    if(changes['id']&&changes['id'].currentValue){
+      this.id = changes['id'].currentValue;
+      //console.log("Aggiornato id:", this.id);
     }
   }
   ngOnInit(): void {
