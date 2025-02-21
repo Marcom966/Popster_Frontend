@@ -51,7 +51,7 @@ export class FileUploadComponent implements OnInit {
       if(this.nameOfficial.includes(" ")){
         this.nameConcat = this.nameOfficial.split(" ").join("");
       }
-      let blob = new Blob([JSON.stringify(this.nameConcat ? this.nameConcat : this.nameOfficial)], {type: 'multipart/form-data'});
+      let blob = new Blob([JSON.stringify(this.nameConcat ? this.nameConcat : this.nameOfficial)], {type: 'audioFile'});
       this.formData.append('file', blob, this.nameConcat ? this.nameConcat : this.nameOfficial);
       this.formData.append('userName', this.userName ?? '');
       this.formData.append('idFile', this.idFile);
