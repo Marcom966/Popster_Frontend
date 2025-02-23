@@ -18,7 +18,6 @@ export class AudioPlayerComponentComponent {
       title: this.name,
       link: this.link
     };
-
   requestSub = new Subscription();
   linkDue!: any;
 
@@ -58,7 +57,4 @@ export class AudioPlayerComponentComponent {
   ngOnInit(): void {
     this.playAudio();
   }
-  
-
-
 }
