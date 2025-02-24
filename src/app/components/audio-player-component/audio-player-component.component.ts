@@ -31,8 +31,8 @@ export class AudioPlayerComponentComponent {
       console.error('id del file non definito trovato');
       return;
     }
-    this.requestSub = this.gettingFile.getFilebyId(this.id).subscribe((blob: any) => {
-      this.linkDue = window.URL.createObjectURL(blob);
+    this.requestSub = this.gettingFile.getFilebyId(this.id).subscribe(async (blob: any) => {
+      this.linkDue = await window.URL.createObjectURL(blob);
       console.log('linkDue:'+ this.linkDue);
       console.log(blob.type);
       
