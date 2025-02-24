@@ -13,7 +13,7 @@
     <div class="body">
         <div class="uploadContainer">
             <h1 class="centerUplload">Upload a file</h1>
-            <form enctype="multipart/form-data" action="http://localhost:8080/api/v1/file" method="post">
+            <form>
                 <label for="upload" class="upload">
                     <span class="span" aria-hidden="true"></span>
                     <input class="inputFull" id="inputFile" name="file" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
@@ -21,9 +21,6 @@
                     <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
                 </label>
             </form>
-            <div class="uploaded" *ngIf="subscribed==true">
-                <p class="filename">File uploaded: {{name}}</p>
-            </div>
         </div>
     </div>
 </div>
