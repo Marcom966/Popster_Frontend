@@ -31,17 +31,19 @@ export class AudioPlayerComponentComponent {
       console.error('id del file non definito trovato');
       return;
     }
-    this.requestSub = this.gettingFile.getFilebyId(this.id).subscribe(async (blob: any) => {
-      this.linkDue = await window.URL.createObjectURL(blob);
+    this.requestSub = this.gettingFile.getFilebyId(this.id).subscribe(async (res: Blob) => {
+      this.linkDue = await window.URL.createObjectURL(res);
+      console.log(res+"TIPO: "+typeof(res));
+      console.log("ci entra qui");
       console.log('linkDue:'+ this.linkDue);
-      console.log(blob.type);
+      console.log(res.type);
+      console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
+      let audio = new Audio();
+      audio.src = this.playlist.link;
+      audio.load();
+      audio.play();
       
     });
-  console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
-    let audio = new Audio();
-    audio.src = this.playlist.link;
-    audio.load();
-    audio.play();
   }
   
   ngOnChanges(changes: SimpleChanges): void {
