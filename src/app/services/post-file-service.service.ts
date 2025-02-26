@@ -17,7 +17,7 @@ export class PostFileServiceService {
     }else if(error.status===500){
       console.error(error.message);
     }
-    return throwError(()=>new Error('something bad happened'+error.status)); 
+    return throwError(()=>new Error('something bad happened: '+error.status)); 
 
   }
   public postFile(formData: FormData): Observable<any>{
