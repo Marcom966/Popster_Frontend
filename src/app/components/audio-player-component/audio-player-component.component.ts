@@ -32,9 +32,8 @@ export class AudioPlayerComponentComponent {
       return;
     }
     this.requestSub = this.gettingFile.getFilebyIdJson(this.id).subscribe(async (res: Blob) => {
-      console.log(res);
       
-      this.linkDue = await window.URL.createObjectURL(res);
+      this.linkDue = await res;
       console.log(res+"TIPO: "+typeof(res));
       console.log("ci entra qui");
       console.log('linkDue:'+ this.linkDue);
