@@ -14,57 +14,42 @@ export class AudioPlayerComponentComponent {
   @Input() link!: any;
   @Input() name!: any;
   @Input() id!: any;
+  @Input() file!: Blob;
   playlist:any = {};
   requestSub = new Subscription();
   linkDue!: any;
+  noLink: boolean = false;
+  pressPlay: boolean = false;
 
 
-  constructor(private gettingFile: PostFileServiceService) { }
+  constructor() { }
 
 
   public playAudio() {
-    console.log(this.id);
-    if(!this.id){
-      console.error('id del file non definito trovato');
-      return;
-    }
-    this.requestSub = this.gettingFile.getFilebyIdJson(this.id).subscribe({
-      next: (res: any) => {
-        console.log(typeof(res));
-        
-      if(res instanceof Blob){
-        this.linkDue = URL.createObjectURL(res);
-        this.playlist = {
-          title: this.name,
-          link: this.linkDue
-        }
-        console.log(res+"TIPO: "+typeof(res));
-        console.log("ci entra qui");
-        console.log('linkDue:'+ this.linkDue);
-        console.log(res.type);
-        console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
-        let audio = new Audio();
-        audio.src = this.playlist.link;
-        audio.load();
-        audio.play().catch(error=>console.error('errore riproduzione audio', error));
-      }else{
-        console.error('errore nel caricamento del file');
-      }
-    }, error: (error)=>{
-      console.error('errore nel caricamento del file', error)
-    },
-    complete: ()=>{
-      console.log('download del file completato');
-      }
+  if(!this.link){
+    console.error('nessun link disponibile');
+    this.noLink = true;
+    return    
+  }
+  this.linkDue = this.link;
+  this.playlist = {
+    title: this.name,
+    link: this.linkDue
+  }
+  console.log(this.file+"TIPO: "+typeof(this.file));
+  console.log('linkDue:'+ this.linkDue);
+  console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
+  let audio = new Audio();
+  audio.src = this.playlist.link;
+  audio.load();
+  audio.play().then(()=>{
+      console.log('audio played sucessfully');
+    }).catch((error)=>{
+      console.error('audio not played, the browser, user interaction is required: '+error);
+      this.pressPlay = true;
     });
-  };
-  
+  }
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['link']&&changes['link'].currentValue){
-      this.playlist.link = changes['link'].currentValue;
-    }if (changes['name']&&changes['name'].currentValue) {
-      this.playlist.title = changes['name'].currentValue;
-    }
   }
   ngOnInit(): void {
     this.playAudio();

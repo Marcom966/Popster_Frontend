@@ -16,6 +16,7 @@ export class CardComponent implements OnInit {
   id!: string;
   link!: string;
   dataSendToxard!: any;
+  blob!: Blob;
 
 
   constructor(private filegetter: PostFileServiceService) { }
@@ -23,8 +24,8 @@ export class CardComponent implements OnInit {
     this.name = this.data.name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id).subscribe(async (dataReturn: any)=>{
       this.id = await dataReturn.id.toString();
-      this.link = dataReturn.url.toString();
-      console.log(this.id);
+      this.link =  await dataReturn.url.toString();
+      this.blob = new Blob([JSON.stringify(await dataReturn.data)], {type:await dataReturn.type});
     })
     
   }
