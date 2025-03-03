@@ -1,4 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, input, Input, SimpleChanges } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
@@ -13,11 +14,7 @@ export class AudioPlayerComponentComponent {
   @Input() link!: any;
   @Input() name!: any;
   @Input() id!: any;
-  playlist = 
-    {
-      title: this.name,
-      link: this.link
-    };
+  playlist:any = {};
   requestSub = new Subscription();
   linkDue!: any;
 
@@ -31,30 +28,40 @@ export class AudioPlayerComponentComponent {
       console.error('id del file non definito trovato');
       return;
     }
-    this.requestSub = this.gettingFile.getFilebyIdJson(this.id).subscribe(async (res: Blob) => {
-      
-      this.linkDue = await res;
-      console.log(res+"TIPO: "+typeof(res));
-      console.log("ci entra qui");
-      console.log('linkDue:'+ this.linkDue);
-      console.log(res.type);
-      console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
-      let audio = new Audio();
-      audio.src = this.playlist.link;
-      audio.load();
-      audio.play();
-      
+    this.requestSub = this.gettingFile.getFilebyIdJson(this.id).subscribe({
+      next: (res: any) => {
+      if(res instanceof Blob){
+        this.linkDue = URL.createObjectURL(res);
+        this.playlist = {
+          title: this.name,
+          link: this.linkDue
+        }
+        console.log(res+"TIPO: "+typeof(res));
+        console.log("ci entra qui");
+        console.log('linkDue:'+ this.linkDue);
+        console.log(res.type);
+        console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
+        let audio = new Audio();
+        audio.src = this.playlist.link;
+        audio.load();
+        audio.play().catch(error=>console.error('errore riproduzione audio', error));
+      }else{
+        console.error('errore nel caricamento del file');
+      }
+    }, error: (error)=>{
+      console.error('errore nel caricamento del file', error)
+    },
+    complete: ()=>{
+      console.log('download del file completato');
+      }
     });
-  }
+  };
   
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['link']&&changes['link'].currentValue){
       this.playlist.link = changes['link'].currentValue;
-      //console.log('new link', this.playlist.link);
-      this.playAudio();
     }if (changes['name']&&changes['name'].currentValue) {
       this.playlist.title = changes['name'].currentValue;
-      //console.log("Aggiornato name:", this.playlist.title);
     }
   }
   ngOnInit(): void {
