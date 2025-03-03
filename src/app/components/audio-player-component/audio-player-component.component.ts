@@ -15,7 +15,7 @@ export class AudioPlayerComponentComponent {
   @Input() name!: any;
   @Input() id!: any;
   @Input() file!: Blob;
-  playlist:any = {};
+  playlist: any = {};
   requestSub = new Subscription();
   linkDue!: any;
   noLink: boolean = false;
@@ -48,8 +48,6 @@ export class AudioPlayerComponentComponent {
       console.error('audio not played, the browser, user interaction is required: '+error);
       this.pressPlay = true;
     });
-  }
-  ngOnChanges(changes: SimpleChanges): void {
   }
   ngOnInit(): void {
     this.playAudio();
