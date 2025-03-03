@@ -30,6 +30,8 @@ export class AudioPlayerComponentComponent {
     }
     this.requestSub = this.gettingFile.getFilebyIdJson(this.id).subscribe({
       next: (res: any) => {
+        console.log(typeof(res));
+        
       if(res instanceof Blob){
         this.linkDue = URL.createObjectURL(res);
         this.playlist = {
