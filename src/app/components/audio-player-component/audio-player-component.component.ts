@@ -31,13 +31,14 @@ export class AudioPlayerComponentComponent {
       this.noLink = true;
       return    
     }
-  this.linkDue = this.link;
+  
+  this.linkDue = window.URL.createObjectURL(this.file);
 
   console.log(this.file+"TIPO: "+typeof(this.file));
-  console.log('linkDue:'+ this.linkDue);
-  console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
+  console.log('linkDue:'+ this.link);
+  console.log('sto riproducendo:'+ this.name +' '+this.link);
   let audio = new Audio();
-  audio.src = this.link;
+  audio.src = this.linkDue;
   audio.load();
   audio.volume = 1;
   audio.play().then(()=>{
