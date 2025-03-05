@@ -26,22 +26,20 @@ export class AudioPlayerComponentComponent {
 
 
   public playAudio() {
-  if(!this.link){
-    console.error('nessun link disponibile');
-    this.noLink = true;
-    return    
-  }
+    if(!this.link){
+      console.error('nessun link disponibile');
+      this.noLink = true;
+      return    
+    }
   this.linkDue = this.link;
-  this.playlist = {
-    title: this.name,
-    link: this.linkDue
-  }
+
   console.log(this.file+"TIPO: "+typeof(this.file));
   console.log('linkDue:'+ this.linkDue);
   console.log('sto riproducendo:'+ this.playlist.title +' '+this.playlist.link);
   let audio = new Audio();
-  audio.src = this.playlist.link;
+  audio.src = this.link;
   audio.load();
+  audio.volume = 1;
   audio.play().then(()=>{
       console.log('audio played sucessfully');
     }).catch((error)=>{
