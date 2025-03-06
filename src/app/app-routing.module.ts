@@ -10,6 +10,7 @@ import { FileUploadErrorComponent } from './components/file-upload-error/file-up
 import { UserHomepageComponent } from './components/user-homepage/user-homepage.component';
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 import { SupportComponentComponent } from './components/support-component/support-component.component';
+import { CardDetailComponentComponent } from './components/card-detail-component/card-detail-component.component';
 
 const routes: Routes = [{
   path: 'home', component: HomepageComponent
@@ -31,6 +32,8 @@ const routes: Routes = [{
   path: 'fileSuccessfull', component: FileSuccessfullComponent
 },{
   path: 'support', component: SupportComponentComponent
+},{
+  path: 'songDetails', component: CardDetailComponentComponent
 },{
   path: '**', redirectTo: 'home'
 }];
