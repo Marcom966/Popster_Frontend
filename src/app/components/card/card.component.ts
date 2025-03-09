@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { catchError, Subscription, throwError } from 'rxjs';
 import { DataInt } from 'src/app/Interfaces/data-int';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
@@ -22,7 +22,11 @@ export class CardComponent implements OnInit {
   constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
-    this.requestSub = this.filegetter.getFilebyIdJson(this.data.id).subscribe(async (dataReturn: any)=>{
+    this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob'})
+    .pipe(catchError(error=>{
+      return throwError(()=>new Error(error.message));
+    }))
+    .subscribe(async (dataReturn: any)=>{
       this.id = await dataReturn.id.toString();
       this.link =  await dataReturn.url.toString();
       this.blob = new Blob([JSON.stringify(await dataReturn.data)], {type:await dataReturn.type});
