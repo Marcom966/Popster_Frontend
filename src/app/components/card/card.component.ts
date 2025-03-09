@@ -29,7 +29,7 @@ export class CardComponent implements OnInit {
     .subscribe(async (dataReturn: any)=>{
       this.id = await dataReturn.id.toString();
       this.link =  await dataReturn.url.toString();
-      this.blob = new Blob([JSON.stringify(await dataReturn.data)], {type:await dataReturn.type});
+      this.blob = new Blob([ await dataReturn.data], {type:await dataReturn.type});
     })
     
   }
