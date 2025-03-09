@@ -31,11 +31,8 @@ export class AudioPlayerComponentComponent {
       this.noLink = true;
       return    
     }
-  console.log(this.file);
-  
-  this.linkDue = window.URL.createObjectURL(this.file);
 
-  console.log(this.linkDue+"TIPO: "+typeof(this.file));
+  console.log(this.link+"TIPO: "+typeof(this.file));
   console.log('sto riproducendo:'+ this.name +' '+this.link);
   let audio = new Audio();
   audio.src = this.link;

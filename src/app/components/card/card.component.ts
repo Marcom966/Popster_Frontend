@@ -22,7 +22,7 @@ export class CardComponent implements OnInit {
   constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
-    this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob'})
+    this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
     .pipe(catchError(error=>{
       return throwError(()=>new Error(error.message));
     }))
@@ -30,6 +30,7 @@ export class CardComponent implements OnInit {
       this.id = await dataReturn.id.toString();
       this.link =  await dataReturn.url.toString();
       this.blob = new Blob([ await dataReturn.data], {type:await dataReturn.type});
+      
     })
     
   }

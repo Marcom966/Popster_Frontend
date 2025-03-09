@@ -54,6 +54,7 @@ export class FileUploadComponent implements OnInit {
       this.formData.append('file', this.file, this.nameConcat ? this.nameConcat : this.nameOfficial);
       this.formData.append('userName', this.userName ?? '');
       this.formData.append('idFile', this.idFile);
+      
     }else if(this.file==null){
       return
     }    
