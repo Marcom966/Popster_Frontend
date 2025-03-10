@@ -1,0 +1,11 @@
+<ngx-audio-player
+    [autoPlay]="false" 
+    muted="muted"
+    [playlist]="playlist"
+    [disablePositionSlider]="true"
+    [displayVolumeControls]="true" 
+    [displayRepeatControls]="true"
+    [displayVolumeSlider]="false"
+    [displayTime]="true"
+    (trackEnded)="onEnded($event)"
+    ></ngx-audio-player>
