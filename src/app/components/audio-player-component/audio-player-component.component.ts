@@ -1,6 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, input, Input, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
+import { Track } from 'ngx-audio-player';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class AudioPlayerComponentComponent {
   @Input() name!: any;
   @Input() id!: any;
   @Input() file!: Blob;
-  playlist: any = {};
+  playlist: Track[] = [];
   requestSub = new Subscription();
   linkDue!: any;
   noLink: boolean = false;
@@ -31,6 +32,12 @@ export class AudioPlayerComponentComponent {
       this.noLink = true;
       return    
     }
+    this.playlist.push({
+      title: this.name,
+      link: this.link,
+      artist: 'demo',
+      duration: 0
+    });
 
   console.log(this.link+"TIPO: "+typeof(this.file));
   console.log('sto riproducendo:'+ this.name +' '+this.link);
@@ -44,6 +51,9 @@ export class AudioPlayerComponentComponent {
       console.error('audio not played, the browser, user interaction is required: '+error);
       this.pressPlay = true;
     });
+  }
+  public onEnded(event: any){
+    console.log(event);
   }
   ngOnInit(): void {
     this.playAudio();
