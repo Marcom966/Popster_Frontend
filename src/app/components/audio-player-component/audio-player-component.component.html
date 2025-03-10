@@ -1,3 +1,11 @@
 <button (click)="playAudio()">
-    <ngx-audio-player [playlist]="linkDue"></ngx-audio-player>
+    <ngx-audio-player
+    [autopPlay]="false" 
+    [audioFiles]="linkDue"
+    [disablePositionSlider]="true"
+    [displayVolumeControls]="true" 
+    [displayRepeatControls]="true"
+    [displayVolumeSlider]="false"
+    [displayTime]="true"
+    ></ngx-audio-player>
 </button>
