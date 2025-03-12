@@ -49,6 +49,8 @@ export class AudioPlayerComponentComponent {
       console.log('audio played sucessfully');
     }).catch((error)=>{
       console.error('audio not played, the browser, user interaction is required: '+error);
+      console.log(error.message);
+      
       this.pressPlay = true;
     });
   }
