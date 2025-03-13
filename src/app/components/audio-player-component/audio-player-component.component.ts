@@ -21,6 +21,7 @@ export class AudioPlayerComponentComponent {
   linkDue!: any;
   noLink: boolean = false;
   pressPlay: boolean = false;
+  notRecognized: boolean = false;
 
 
   constructor() { }
@@ -31,6 +32,10 @@ export class AudioPlayerComponentComponent {
       console.error('nessun link disponibile');
       this.noLink = true;
       return    
+    }
+    if(this.file.type.includes('not recognized')){
+      this.notRecognized = true;
+      return
     }
     this.playlist.push({
       title: this.name,

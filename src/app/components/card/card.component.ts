@@ -17,6 +17,7 @@ export class CardComponent implements OnInit {
   link!: string;
   dataSendToxard!: any;
   blob!: Blob;
+  errorNew: boolean = false;
 
 
   constructor(private filegetter: PostFileServiceService) { }
@@ -24,7 +25,11 @@ export class CardComponent implements OnInit {
     this.name = this.data.name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
     .pipe(catchError(error=>{
-      return throwError(()=>new Error(error.message));
+      return throwError(()=>{new Error(error)
+        if(error.message.toString().includes('file was in an uncompatible format')){
+          this.errorNew = true;
+        }
+      });
     }))
     .subscribe(async (dataReturn: any)=>{
       this.id = await dataReturn.id.toString();
