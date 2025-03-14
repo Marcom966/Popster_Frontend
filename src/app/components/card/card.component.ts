@@ -35,9 +35,7 @@ export class CardComponent implements OnInit {
       this.id = await dataReturn.id.toString();
       this.link =  await dataReturn.url.toString();
       this.blob = new Blob([ await dataReturn.data], {type:await dataReturn.type});
-      
-    })
-    
+    }) 
   }
   ngOnChanges(changes: SimpleChanges): void{
     if(changes['id']&&changes['id'].currentValue){
