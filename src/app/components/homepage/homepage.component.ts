@@ -49,7 +49,7 @@ export class HomepageComponent implements OnInit {
       this.name = localStorage.getItem('nameOfTheUser')?.toString();
       return
     }
-    this.requestSub = this.getUsers.getUsers().subscribe((resp)=>{
+    this.requestSub = this.getUsers.getUsers().subscribe(resp=>{
       let data = Object.entries(resp);
       for(let i=0; i<data.length; i++){
         arr.push(data[i]);
