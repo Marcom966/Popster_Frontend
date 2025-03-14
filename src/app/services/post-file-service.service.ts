@@ -22,7 +22,9 @@ export class PostFileServiceService {
   }
   public postFile(formData: FormData): Observable<any>{
     const url = `http://localhost:8080/api/v1/file/`;
-    return this.http.post<any>(url, formData)
+    return this.http.post<any>(url, formData, {
+      headers: new HttpHeaders({'Accept': 'application/json'}),
+      reportProgress: true, observe: 'response'})
     .pipe(catchError(this.handleError));
   }
 
