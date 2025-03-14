@@ -28,6 +28,7 @@ export class FileUploadComponent implements OnInit {
   formData!: FormData;
   res!: unknown;
   idFile!: string;
+  resp2!: any;
   
 
 
@@ -72,8 +73,9 @@ export class FileUploadComponent implements OnInit {
       });
     }))
     .subscribe(resp=>{
-      this.res = Object.values(resp)[0];
-      if((this.res as string).includes("File Uploaded successfully")){
+      this.res = Object.values(resp)[6];
+      this.resp2 = Object.values(this.res as { [key: string]: any })[0];
+      if((this.resp2 as string).includes("File Uploaded successfully")){      
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
       }
