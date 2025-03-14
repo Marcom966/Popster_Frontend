@@ -1,5 +1,6 @@
 .iHateThisColor {
     background-color: black;
+    background-attachment: fixed;
     height: 100vh;
     width: 100%;
     position: absolute;
