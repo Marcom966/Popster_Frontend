@@ -52,7 +52,7 @@ export class AudioPlayerComponentComponent {
   audio.volume = 1;
   audio.play().then(()=>{
       console.log('audio played sucessfully');
-    }).catch((error)=>{
+    }).catch(error=>{
       console.error('audio not played, the browser, user interaction is required: '+error);
       console.log(error.message);
       

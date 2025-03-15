@@ -87,7 +87,7 @@ export class HomepageComponent implements OnInit {
         }
       });
     }))
-    .subscribe((res)=>{
+    .subscribe(res=>{
       this.response = res;
       if(this.response.length==0){
         this.noFiles = true;
