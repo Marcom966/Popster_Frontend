@@ -25,7 +25,8 @@ export class CardComponent implements OnInit {
     this.name = this.data.name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
     .pipe(catchError(error=>{
-      return throwError(()=>{new Error(error)
+      return throwError(()=>{
+        new Error(error)
         if(error.message.toString().includes('file was in an uncompatible format')){
           this.errorNew = true;
         }
