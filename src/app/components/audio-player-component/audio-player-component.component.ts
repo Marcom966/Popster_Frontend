@@ -44,7 +44,9 @@ export class AudioPlayerComponentComponent {
       duration: 0
     });
 
-  console.log(this.link+"TIPO: "+typeof(this.file));
+  console.log(this.link+" TIPO: "+typeof(this.file));
+  console.log(this.file.type);
+  
   console.log('sto riproducendo:'+ this.name +' '+this.link);
   let audio = new Audio();
   audio.src = this.link;
