@@ -1,3 +1,8 @@
 <button (click)="playAudio()">
     <ngx-audio-player [link]="link" [name]="name"></ngx-audio-player>
 </button>
+<div class="audio-player">
+  <button (click)="pressPlay = true; playAudio()">Play Audio</button>
+  <div *ngIf="noLink">Nessun link disponibile</div>
+  <div *ngIf="notRecognized">Formato file non riconosciuto</div>
+</div>

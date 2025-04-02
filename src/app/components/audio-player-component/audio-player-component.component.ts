@@ -3,10 +3,11 @@ import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { Track } from 'ngx-audio-player';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-audio-player-component',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './audio-player-component.component.html',
   styleUrl: './audio-player-component.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
