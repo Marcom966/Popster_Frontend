@@ -54,12 +54,7 @@ export class AudioPlayerComponentComponent {
   audio.src = this.link;
   console.log("it's returning a json probably"+this.file.stream());
   
-  try {
-    audio.load();
-    console.log('audio loaded successfully');
-  } catch (error) {
-    console.error('audio not loaded, the browser, user interaction is required LOAD METHOD: ' + error);
-  }
+  audio.load();
   audio.volume = 1;
   audio.play().then(()=>{
       console.log('audio played sucessfully');
