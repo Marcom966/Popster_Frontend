@@ -52,7 +52,14 @@ export class AudioPlayerComponentComponent {
   console.log('sto riproducendo:'+ this.name +' '+this.link);
   let audio = new Audio();
   audio.src = this.link;
-  console.log("it's returning a json probably"+this.file.stream());
+  this.file.stream().getReader().read().then((data: any)=>{
+    console.log('data: '+data);
+    console.log('data: '+data.value); 
+    
+  }
+  ).catch(error=>{
+    console.error('error in the stream: '+error);
+  });
   
   this.file.stream();
   audio.load();
