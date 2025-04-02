@@ -23,10 +23,9 @@ export class AudioPlayerComponentComponent {
   noLink: boolean = false;
   pressPlay: boolean = false;
   notRecognized: boolean = false;
-
+  audioUrl: string | null = null;
 
   constructor() { }
-
 
   public playAudio() {
     if(!this.link){
@@ -38,47 +37,43 @@ export class AudioPlayerComponentComponent {
       this.notRecognized = true;
       return
     }
+
+    // Create object URL from blob
+    this.audioUrl = URL.createObjectURL(this.file);
+    
     this.playlist.push({
       title: this.name,
-      link: this.link,
+      link: this.audioUrl,
       artist: 'demo',
       duration: 0
     });
 
-  console.log('sto riproducendo:'+ this.name +' '+this.link);
-  let audio = new Audio();
-  audio.src = this.link;
-  this.file.stream().getReader().read().then((data: any)=>{
+    console.log('sto riproducendo:'+ this.name +' '+this.audioUrl);
     
-    let arrayfromObj = Array.from(data.value);
-    console.log('array from obj: '+arrayfromObj);
-    console.log('array from obj: '+arrayfromObj.length);
+    let audio = new Audio();
+    audio.src = this.audioUrl;
+    audio.load();
+    audio.volume = 1;
     
-    
-    console.log('data: '+data);
-    console.log('data: '+data.value.data); 
-    
+    // Only play if user has interacted with the page
+    if (this.pressPlay) {
+      audio.play().then(() => {
+        console.log('audio played successfully');
+      }).catch(error => {
+        console.error('audio not played:', error);
+        this.pressPlay = true;
+      });
+    }
   }
-  ).catch(error=>{
-    console.error('error in the stream: '+error);
-  });
-  
-  this.file.stream();
-  audio.load();
-  audio.volume = 1;
-  audio.play().then(()=>{
-      console.log('audio played sucessfully');
-    }).catch(error=>{
-      console.error('audio not played, the browser, user interaction is required: '+error);
-      console.log(error.message);
-      
-      this.pressPlay = true;
-    });
-  }
+
   public onEnded(event: any){
     console.log(event);
   }
-  ngOnInit(): void {
-    this.playAudio();
+
+  ngOnDestroy() {
+    // Clean up the object URL when component is destroyed
+    if (this.audioUrl) {
+      URL.revokeObjectURL(this.audioUrl);
+    }
   }
 }
