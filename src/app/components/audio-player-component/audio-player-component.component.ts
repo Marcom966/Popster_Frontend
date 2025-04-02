@@ -49,10 +49,11 @@ export class AudioPlayerComponentComponent {
   audio.src = this.link;
   this.file.stream().getReader().read().then((data: any)=>{
     
-    Array.from(data.value).forEach((byte: any)=>{
-      console.log(byte);
-      setTimeout(() => { return; }, 1000);
-    });
+    let arrayfromObj = Array.from(data.value);
+    console.log('array from obj: '+arrayfromObj);
+    console.log('array from obj: '+arrayfromObj.length);
+    
+    
     console.log('data: '+data);
     console.log('data: '+data.value.data); 
     
