@@ -44,17 +44,17 @@ export class AudioPlayerComponentComponent {
       duration: 0
     });
 
-  console.log(this.link+" TIPO: "+typeof(this.file));
-  console.log(this.file.type);
-  console.log("idk");
-  
-  
   console.log('sto riproducendo:'+ this.name +' '+this.link);
   let audio = new Audio();
   audio.src = this.link;
   this.file.stream().getReader().read().then((data: any)=>{
+    
+    Array.from(data.value).forEach((byte: any)=>{
+      console.log(byte);
+      setTimeout(() => { return; }, 1000);
+    });
     console.log('data: '+data);
-    console.log('data: '+data.value); 
+    console.log('data: '+data.value.data); 
     
   }
   ).catch(error=>{
