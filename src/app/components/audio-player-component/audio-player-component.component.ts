@@ -51,7 +51,8 @@ export class AudioPlayerComponentComponent {
   
   console.log('sto riproducendo:'+ this.name +' '+this.link);
   let audio = new Audio();
-  audio.src = this.link;
+  const blob = new Blob([this.file]);
+  audio.src = URL.createObjectURL(blob);
   console.log("it's returning a json probably"+this.file.stream());
   
   audio.load();
