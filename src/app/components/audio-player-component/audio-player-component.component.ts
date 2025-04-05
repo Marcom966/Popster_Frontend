@@ -56,7 +56,7 @@ export class AudioPlayerComponentComponent {
       this.audio.src = this.audioUrl;
       
       // Add event listeners
-      this.audio.addEventListener('error', (e) => {
+      this.audio.addEventListener('error', e=> {
         console.error('Errore nel caricamento audio:', e);
         this.notRecognized = true;
       });
