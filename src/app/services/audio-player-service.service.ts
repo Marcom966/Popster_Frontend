@@ -58,7 +58,7 @@ export class AudioPlayerServiceService {
         this.toPlayObject.pause();
         this.toPlayObject.currentTime = 0;
         this.removeEvent(this.toPlayObject, this.audioEvents, handler);
-        this.removeState();
+        this.resetState();
       };
     });
   }
@@ -81,8 +81,8 @@ export class AudioPlayerServiceService {
   }
   pause(){
     this.toPlayObject.pause();
-    this.state.playing = false;}
-  };
+    this.state.playing = false;
+  }
   stop(){
     this.stop$.next();
   }
@@ -94,7 +94,7 @@ export class AudioPlayerServiceService {
     this.toPlayObject.volume = 1;
     this.state.mute = false;
   }
-  seekTo(seconds){
+  seekTo(seconds: any){
     this.toPlayObject.currentTime = seconds;
   }
   formatTime(time: number, format: string = 'mm:ss') {
@@ -146,3 +146,4 @@ export class AudioPlayerServiceService {
     getState(): Observable<StreamState> {
       return this.stateChange.asObservable(); 
   }
+};
