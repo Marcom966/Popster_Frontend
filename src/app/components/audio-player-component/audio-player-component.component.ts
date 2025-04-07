@@ -19,7 +19,7 @@ export class AudioPlayerComponentComponent {
   @Input() file!: Blob;
   playlist: Track[] = [];
   requestSub = new Subscription();
-  linkDue!: any;
+  linkDue!: string;
   noLink: boolean = false;
   pressPlay: boolean = false;
   notRecognized: boolean = false;
@@ -35,7 +35,6 @@ export class AudioPlayerComponentComponent {
       return    
     }
 
-    // Check if the file is actually an audio file
     if(!this.file.type.startsWith('audio/')) {
       console.error('Il file non è un file audio valido:', this.file.type);
       this.notRecognized = true;
@@ -43,19 +42,13 @@ export class AudioPlayerComponentComponent {
     }
 
     try {
-      // Clean up previous audio URL if exists
       if (this.audioUrl) {
         URL.revokeObjectURL(this.audioUrl);
       }
-
-      // Create new object URL from blob
-      this.audioUrl = URL.createObjectURL(this.file);
-      
-      // Create new audio element
+      this.linkDue = this.link;
+      this.audioUrl = this.linkDue;
       this.audio = new Audio();
       this.audio.src = this.audioUrl;
-      
-      // Add event listeners
       this.audio.addEventListener('error', e=> {
         console.error('Errore nel caricamento audio:', e);
         this.notRecognized = true;
@@ -74,11 +67,7 @@ export class AudioPlayerComponentComponent {
           });
         }
       });
-
-      // Load the audio
       this.audio.load();
-
-      // Update playlist
       this.playlist = [{
         title: this.name,
         link: this.audioUrl,
@@ -98,7 +87,6 @@ export class AudioPlayerComponentComponent {
   }
 
   ngOnDestroy() {
-    // Clean up resources
     if (this.audioUrl) {
       URL.revokeObjectURL(this.audioUrl);
     }
