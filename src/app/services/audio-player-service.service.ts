@@ -117,9 +117,6 @@ export class AudioPlayerServiceService {
       case 'pause':
         this.state.playing = false;
         break;
-      case 'pause':
-        this.state.playing = false;
-        break;
       case 'timeupdate':
         this.state.currentTime = this.toPlayObject.currentTime;
         this.state.readableCurrentTime = this.formatTime(this.state.currentTime);
