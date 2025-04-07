@@ -1,12 +1,10 @@
-export class StreamState {
-    constructor(
-        public playing: boolean,
-        public readableCurrentTime: string,
-        public readableDuration: string,
-        public duration?: number,
-        public currentTime?: number,
-        public canPlay?: boolean,
-        public error?: boolean,
-        public mute?: boolean
-    ){}
+export interface StreamState {
+    playing: boolean;
+    readableCurrentTime: string;
+    readableDuration: string;
+    duration: number|undefined
+    currentTime: number|undefined;
+    canPlay: boolean;
+    error: boolean;
+    mute: boolean;
 }

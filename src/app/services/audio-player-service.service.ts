@@ -44,7 +44,7 @@ export class AudioPlayerServiceService {
     error: false,
     mute: false,
   };
-  private streamObservable(url){
+  private streamObservable(url: any){
     return new Observable(observer => {
       this.toPlayObject.src = url;
       this.toPlayObject.load();
@@ -62,17 +62,17 @@ export class AudioPlayerServiceService {
       };
     });
   }
-  private addEvents(obj, events, handler){
-    events.forEach(event => {
+  private addEvents(obj: any, events: any, handler: any){
+    events.forEach((event: any) => {
       obj.addEventListener(event, handler);
     });
   };
-  private removeEvent(obj, events, handler){
-    events.forEach(event => {
+  private removeEvent(obj: any, events: any, handler: any){
+    events.forEach((event: any) => {
       obj.removeEventListener(event, handler);
     });
   };
-  playStream(url){
+  playStream(url: any){
     return this.streamObservable(url).pipe(takeUntil(this.stop$));
   }
   play(){
@@ -82,7 +82,7 @@ export class AudioPlayerServiceService {
   pause(){
     this.toPlayObject.pause();
     this.state.playing = false;}
-  }
+  };
   stop(){
     this.stop$.next();
   }
