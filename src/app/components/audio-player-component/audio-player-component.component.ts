@@ -13,9 +13,9 @@ import { CommonModule } from '@angular/common';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AudioPlayerComponentComponent {
-  @Input() link!: any;
-  @Input() name!: any;
-  @Input() id!: any;
+  @Input() link!: string;
+  @Input() name!: string;
+  @Input() id!: string;
   @Input() file!: Blob;
   playlist: Track[] = [];
   requestSub = new Subscription();
@@ -29,28 +29,21 @@ export class AudioPlayerComponentComponent {
   constructor() { }
 
   public playAudio() {
-    if(!this.file){
-      console.error('nessun file disponibile');
+    if(!this.link){
+      console.error('nessun link disponibile');
       this.noLink = true;
       return    
     }
 
-    if(!this.file.type.startsWith('audio/')) {
-      console.error('Il file non è un file audio valido:', this.file.type);
-      this.notRecognized = true;
-      return;
-    }
-
     try {
-      if (this.audioUrl) {
-        URL.revokeObjectURL(this.audioUrl);
+      if (this.audio) {
+        this.audio.pause();
+        this.audio.src = '';
       }
-      this.linkDue = this.link;
-      this.audioUrl = this.linkDue;
       this.audio = new Audio();
-      this.audio.src = this.audioUrl;
-      this.audio.addEventListener('error', e=> {
+      this.audio.addEventListener('error', (e) => {
         console.error('Errore nel caricamento audio:', e);
+        console.error('URL dell\'audio:', this.link);
         this.notRecognized = true;
       });
 
@@ -67,15 +60,16 @@ export class AudioPlayerComponentComponent {
           });
         }
       });
+      this.audio.src = this.link;
       this.audio.load();
       this.playlist = [{
         title: this.name,
-        link: this.audioUrl,
+        link: this.link,
         artist: 'demo',
         duration: 0
       }];
 
-      console.log('sto riproducendo:', this.name, 'tipo:', this.file.type);
+      console.log('sto riproducendo:', this.name, 'URL:', this.link);
     } catch (error) {
       console.error('Errore nella creazione dell\'audio:', error);
       this.notRecognized = true;
@@ -87,9 +81,6 @@ export class AudioPlayerComponentComponent {
   }
 
   ngOnDestroy() {
-    if (this.audioUrl) {
-      URL.revokeObjectURL(this.audioUrl);
-    }
     if (this.audio) {
       this.audio.pause();
       this.audio.src = '';
