@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { catchError, Subscription, throwError } from 'rxjs';
 import { DataInt } from 'src/app/Interfaces/data-int';
@@ -35,7 +36,9 @@ export class CardComponent implements OnInit {
     .subscribe(async (dataReturn: any)=>{
       this.id = await dataReturn.id.toString();
       this.link =  await dataReturn.url.toString();
-      this.blob = new Blob([ await dataReturn.data], {type:await dataReturn.type});
+      this.filegetter.getFilebyId(this.id).subscribe(async (blobData: Blob) => {
+        this.blob = new Blob([blobData], { type: await dataReturn.type });
+      });
     }) 
   }
   ngOnChanges(changes: SimpleChanges): void{
