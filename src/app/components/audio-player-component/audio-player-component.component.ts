@@ -30,6 +30,7 @@ export class AudioPlayerComponentComponent {
   audioUrl: string | null = null;
   audio: HTMLAudioElement | null = null;
   state!: StreamState;
+  linkDue2!: string;
 
   constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) { }
 
@@ -39,6 +40,7 @@ export class AudioPlayerComponentComponent {
       this.noLink = true;
       return    
     }
+    this.linkDue2 = this.link+'/download';
     this.audioService.getState().subscribe((state: StreamState) => {
       this.state = state;
     });
