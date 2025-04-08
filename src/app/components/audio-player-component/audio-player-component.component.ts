@@ -41,66 +41,11 @@ export class AudioPlayerComponentComponent {
     }
     this.audioService.getState().subscribe((state: StreamState) => {
       this.state = state;
-
-    /*try {
-      if (this.audio) {
-        this.audio.pause();
-        this.audio.src = '';
-      }
-      if (this.audioUrl) {
-        URL.revokeObjectURL(this.audioUrl);
-      }
-      this.http.get(this.link, { responseType: 'blob' }).subscribe(
-        (blob: Blob) => {
-          this.audioUrl = URL.createObjectURL(blob);
-          this.audio = new Audio();
-          this.audio.src = this.audioUrl;
-          
-          this.audio.addEventListener('error', (e) => {
-            console.error('Errore nel caricamento audio:', e);
-            this.notRecognized = true;
-          });
-
-          this.audio.addEventListener('loadeddata', () => {
-            console.log('Audio caricato con successo');
-            this.audio!.volume = 1;
-            
-            if (this.pressPlay) {
-              this.audio!.play().then(() => {
-                console.log('audio played successfully');
-              }).catch(error => {
-                console.error('audio not played:', error);
-                this.pressPlay = true;
-              });
-            }
-          });
-          this.audio.load();
-          this.playlist = [{
-            title: this.name,
-            link: this.audioUrl,
-            artist: 'demo',
-            duration: 0
-          }];
-
-          console.log('sto riproducendo:', this.name);
-        },
-        (error) => {
-          console.error('Errore nel fetch del file audio:', error);
-          this.notRecognized = true;
-        }
-      );
-    } catch (error) {
-      console.error('Errore nella creazione dell\'audio:', error);
-      this.notRecognized = true;
-    }
-  }
-
-  public onEnded(event: any){
-    console.log(event);*/
     });
   }
   playStream(url: any){
     this.audioService.playStream(url).subscribe((event: any) => {
+      
       console.log(event);
     });
   }
