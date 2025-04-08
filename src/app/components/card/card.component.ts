@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
     }))
     .subscribe(async (dataReturn: any)=>{
       this.id = await dataReturn.id.toString();
-      this.link =  await dataReturn.url.toString();
+      this.link =  await dataReturn.url.toString()+'/download';
       this.filegetter.getFilebyId(this.id).subscribe(async (blobData: Blob) => {
         this.blob = new Blob([blobData], { type: await dataReturn.type });
       });
