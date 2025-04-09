@@ -1,18 +1,20 @@
 .audio-player {
   padding: 20px;
-  background: #f5f5f5;
+  background: transparent;
   border-radius: 8px;
   margin: 10px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: white;
 }
 
 .player-info {
   margin-bottom: 15px;
+  color: white;
 }
 
 .player-info h3 {
-  margin: 0;
-  color: #333;
+  margin: 22px 0 10px;
+  color: white;
   font-size: 1.2em;
 }
 
@@ -60,6 +62,7 @@
 .progress input[type="range"] {
   flex: 1;
   height: 5px;
+  appearance: none;
   -webkit-appearance: none;
   background: #ddd;
   border-radius: 5px;
