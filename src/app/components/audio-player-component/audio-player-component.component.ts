@@ -27,9 +27,24 @@ export class AudioPlayerComponentComponent {
   noLink: boolean = false;
   pressPlay: boolean = false;
   notRecognized: boolean = false;
-  state!: StreamState;
+  state: StreamState = {
+    playing: false,
+    readableCurrentTime: '',
+    readableDuration: '',
+    duration: undefined,
+    currentTime: undefined,
+    canPlay: false,
+    error: false,
+    mute: false
+  };
 
-  constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) { }
+  constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) {
+    // Inizializza lo stato dell'audio
+    this.audioService.getState().subscribe((state: StreamState) => {
+      this.state = state;
+      console.log('Stato audio aggiornato:', state);
+    });
+  }
 
   public playAudio() {
     if(!this.link){
@@ -39,12 +54,6 @@ export class AudioPlayerComponentComponent {
     }
 
     console.log('Tentativo di riproduzione audio con URL:', this.link);
-
-    // Inizializza lo stato dell'audio
-    this.audioService.getState().subscribe((state: StreamState) => {
-      this.state = state;
-      console.log('Stato audio aggiornato:', state);
-    });
 
     // Prepara il file per la riproduzione
     this.playStream(this.link);

@@ -8,10 +8,10 @@
     </div>
     
     <div class="player-controls">
-      <button (click)="playAudio()" [disabled]="state?.playing">
+      <button (click)="playAudio()" [disabled]="state.playing">
         <i class="fas fa-play"></i> Play
       </button>
-      <button (click)="pause()" [disabled]="!state?.playing">
+      <button (click)="pause()" [disabled]="!state.playing">
         <i class="fas fa-pause"></i> Pause
       </button>
       <button (click)="stop()">
@@ -27,10 +27,10 @@
     
     <div class="progress" *ngIf="state">
       <input type="range" 
-             [value]="state.currentTime" 
-             [max]="state.duration"
+             [value]="state.currentTime || 0" 
+             [max]="state.duration || 100"
              (change)="onSliderChangeEnd($event)">
-      <span>{{state.currentTime | date:'mm:ss'}} / {{state.duration | date:'mm:ss'}}</span>
+      <span>{{(state.currentTime || 0) | date:'mm:ss'}} / {{(state.duration || 0) | date:'mm:ss'}}</span>
     </div>
   </div>
 </div>
