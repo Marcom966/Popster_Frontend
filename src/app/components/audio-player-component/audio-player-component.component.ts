@@ -27,10 +27,7 @@ export class AudioPlayerComponentComponent {
   noLink: boolean = false;
   pressPlay: boolean = false;
   notRecognized: boolean = false;
-  audioUrl: string | null = null;
-  audio: HTMLAudioElement | null = null;
   state!: StreamState;
-  linkDue2!: string;
 
   constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) { }
 
@@ -40,52 +37,64 @@ export class AudioPlayerComponentComponent {
       this.noLink = true;
       return    
     }
-    this.linkDue2 = this.link+'/download';
+
+    console.log('Tentativo di riproduzione audio con URL:', this.link);
+
+    // Inizializza lo stato dell'audio
     this.audioService.getState().subscribe((state: StreamState) => {
       this.state = state;
+      console.log('Stato audio aggiornato:', state);
     });
+
+    // Prepara il file per la riproduzione
+    this.playStream(this.link);
   }
-  playStream(url: any){
-    this.audioService.playStream(url).subscribe((event: any) => {
-      
-      console.log(event);
-    });
+
+  playStream(url: string) {
+    console.log('Avvio riproduzione stream con URL:', url);
+    
+    this.audioService.playStream(url).subscribe(
+      (event: any) => {
+        console.log('Evento di riproduzione:', event);
+      },
+      (error) => {
+        console.error('Errore nella riproduzione:', error);
+        this.notRecognized = true;
+      }
+    );
   }
-  pause(){
+
+  pause() {
+    console.log('Pausa audio');
     this.audioService.pause();
   }
-  play(){
+
+  play() {
+    console.log('Ripresa audio');
     this.audioService.play();
   }
-  stop(){
+
+  stop() {
+    console.log('Stop audio');
     this.audioService.stop();
   }
-  mute(){
+
+  mute() {
+    console.log('Muto audio');
     this.audioService.mute();
   }
-  unmute(){
+
+  unmute() {
+    console.log('Unmute audio');
     this.audioService.unmute();
   }
-  onSliderChangeEnd(change: any){
+
+  onSliderChangeEnd(change: any) {
+    console.log('Cambio posizione audio:', change.value);
     this.audioService.seekTo(change.value);
   }
 
-  
-
   ngOnDestroy() {
-    if (this.audio) {
-      this.audio.pause();
-      this.audio.src = '';
-    }
-    if (this.audioUrl) {
-      URL.revokeObjectURL(this.audioUrl);
-    }
+    this.stop();
   }
-
-  ngOnInit(): void{
-    this.playStream(this.link);
-    this.pause();
-    this.playAudio();
-  }
-
 }

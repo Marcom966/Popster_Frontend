@@ -1,0 +1,83 @@
+.audio-player {
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.player-info {
+  margin-bottom: 15px;
+}
+
+.player-info h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.player-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.player-controls button {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s;
+}
+
+.player-controls button:hover {
+  background: #0056b3;
+}
+
+.player-controls button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.progress input[type="range"] {
+  flex: 1;
+  height: 5px;
+  -webkit-appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.progress input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.progress span {
+  font-size: 14px;
+  color: #666;
+  min-width: 100px;
+  text-align: right;
+}

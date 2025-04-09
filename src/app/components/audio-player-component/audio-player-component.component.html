@@ -1,8 +1,36 @@
-<button (click)="playAudio()">
-    <ngx-audio-player [link]="link" [name]="name"></ngx-audio-player>
-</button>
 <div class="audio-player">
-  <button (click)="pressPlay = true; playStream(link)">Play Audio</button>
   <div *ngIf="noLink">Nessun link disponibile</div>
   <div *ngIf="notRecognized">Formato file non riconosciuto</div>
+  
+  <div class="controls" *ngIf="!noLink && !notRecognized">
+    <div class="player-info">
+      <h3>{{name}}</h3>
+    </div>
+    
+    <div class="player-controls">
+      <button (click)="playAudio()" [disabled]="state?.playing">
+        <i class="fas fa-play"></i> Play
+      </button>
+      <button (click)="pause()" [disabled]="!state?.playing">
+        <i class="fas fa-pause"></i> Pause
+      </button>
+      <button (click)="stop()">
+        <i class="fas fa-stop"></i> Stop
+      </button>
+      <button (click)="mute()" *ngIf="!state?.mute">
+        <i class="fas fa-volume-up"></i> Mute
+      </button>
+      <button (click)="unmute()" *ngIf="state?.mute">
+        <i class="fas fa-volume-mute"></i> Unmute
+      </button>
+    </div>
+    
+    <div class="progress" *ngIf="state">
+      <input type="range" 
+             [value]="state.currentTime" 
+             [max]="state.duration"
+             (change)="onSliderChangeEnd($event)">
+      <span>{{state.currentTime | date:'mm:ss'}} / {{state.duration | date:'mm:ss'}}</span>
+    </div>
+  </div>
 </div>
