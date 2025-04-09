@@ -21,6 +21,7 @@ import { FileSuccessfullComponent } from './components/file-successfull/file-suc
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { AudioPlayerComponentComponent } from "./components/audio-player-component/audio-player-component.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -40,6 +41,6 @@ import { AudioPlayerComponentComponent } from "./components/audio-player-compone
     bootstrap: [AppComponent], imports: [BrowserModule,
     NgxAudioPlayerModule,
     AppRoutingModule,
-    FormsModule, OAuthModule.forRoot(), AudioPlayerComponentComponent], providers: [provideHttpClient(withInterceptorsFromDi())],
+    FormsModule, OAuthModule.forRoot(), AudioPlayerComponentComponent, FontAwesomeModule], providers: [provideHttpClient(withInterceptorsFromDi())],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class AppModule { }

@@ -9,19 +9,19 @@
     
     <div class="player-controls">
       <button (click)="playAudio()" [disabled]="state.playing">
-        <i class="fas fa-play"></i> Play
+        <i class="fa-duotone fa-solid fa-play"></i>
       </button>
       <button (click)="pause()" [disabled]="!state.playing">
-        <i class="fas fa-pause"></i> Pause
+        <i class="fa-solid fa-pause"></i>
       </button>
       <button (click)="stop()">
-        <i class="fas fa-stop"></i> Stop
+        <i class="fa-solid fa-stop"></i>
       </button>
       <button (click)="mute()" *ngIf="!state?.mute">
-        <i class="fas fa-volume-up"></i> Mute
+        <i class="fa-solid fa-volume-xmark"></i>
       </button>
       <button (click)="unmute()" *ngIf="state?.mute">
-        <i class="fas fa-volume-mute"></i> Unmute
+        <i class="fa-solid fa-volume-off"></i>
       </button>
     </div>
     
