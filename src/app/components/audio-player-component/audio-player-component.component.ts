@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { StreamState } from 'src/app/Interfaces/stream-state';
 import { AudioPlayerServiceService } from 'src/app/services/audio-player-service.service';
+import {} from '@fortawesome/angular-fontawesome'
 
 @Component({
   selector: 'app-audio-player-component',
