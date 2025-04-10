@@ -40,6 +40,7 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
   };
 
   private destroy$ = new Subject<void>();
+  private audioUrl: string | null = null;
 
   constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) {}
 
@@ -61,12 +62,25 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
 
     console.log('Tentativo di riproduzione audio con URL:', this.link);
 
-    this.playStream(this.link);
+    this.http.get(this.link, { responseType: 'blob' })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (blob: Blob) => {
+          if (this.audioUrl) {
+            URL.revokeObjectURL(this.audioUrl);
+          }
+          this.audioUrl = URL.createObjectURL(blob);
+          this.playStream(this.audioUrl);
+        },
+        error: (error) => {
+          console.error('Errore nel download del file:', error);
+          this.notRecognized = true;
+        }
+      });
   }
 
   playStream(url: string) {
     console.log('Avvio riproduzione stream con URL:', url);
-    
     this.audioService.playStream(url)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
@@ -111,6 +125,9 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.audioUrl) {
+      URL.revokeObjectURL(this.audioUrl);
+    }
     this.destroy$.next();
     this.destroy$.complete();
     this.stop();
