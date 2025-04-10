@@ -1,6 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, input, Input, SimpleChanges } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, input, Input, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs';
+import { Subscription, takeUntil, Subject } from 'rxjs';
 import { Track } from 'ngx-audio-player';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ import {} from '@fortawesome/angular-fontawesome'
   providers: [AudioPlayerServiceService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AudioPlayerComponentComponent {
+export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
   @Input() link!: string;
   @Input() name!: string;
   @Input() id!: string;
@@ -39,12 +39,17 @@ export class AudioPlayerComponentComponent {
     mute: false
   };
 
-  constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) {
-    // Inizializza lo stato dell'audio
-    this.audioService.getState().subscribe((state: StreamState) => {
-      this.state = state;
-      console.log('Stato audio aggiornato:', state);
-    });
+  private destroy$ = new Subject<void>();
+
+  constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) {}
+
+  ngOnInit() {
+    this.audioService.getState()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((state: StreamState) => {
+        this.state = state;
+        console.log('Stato audio aggiornato:', state);
+      });
   }
 
   public playAudio() {
@@ -62,15 +67,17 @@ export class AudioPlayerComponentComponent {
   playStream(url: string) {
     console.log('Avvio riproduzione stream con URL:', url);
     
-    this.audioService.playStream(url).subscribe(
-      (event: any) => {
-        console.log('Evento di riproduzione:', event);
-      },
-      (error) => {
-        console.error('Errore nella riproduzione:', error);
-        this.notRecognized = true;
-      }
-    );
+    this.audioService.playStream(url)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (event: any) => {
+          console.log('Evento di riproduzione:', event);
+        },
+        error: (error) => {
+          console.error('Errore nella riproduzione:', error);
+          this.notRecognized = true;
+        }
+      });
   }
 
   pause() {
@@ -104,6 +111,8 @@ export class AudioPlayerComponentComponent {
   }
 
   ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
     this.stop();
   }
 }
