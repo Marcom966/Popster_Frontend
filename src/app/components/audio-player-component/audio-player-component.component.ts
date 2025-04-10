@@ -62,14 +62,24 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
 
     console.log('Tentativo di riproduzione audio con URL:', this.link);
 
-    this.http.get(this.link, { responseType: 'blob' })
+    this.http.get(this.link, { 
+      responseType: 'blob',
+      observe: 'response'
+    })
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (blob: Blob) => {
+        next: (response) => {
+          const blob = response.body;
+          if (!blob) {
+            console.error('Nessun contenuto nel file');
+            this.notRecognized = true;
+            return;
+          }
+          const audioBlob = new Blob([blob], { type: 'audio/mpeg' });
           if (this.audioUrl) {
             URL.revokeObjectURL(this.audioUrl);
           }
-          this.audioUrl = URL.createObjectURL(blob);
+          this.audioUrl = URL.createObjectURL(audioBlob);
           this.playStream(this.audioUrl);
         },
         error: (error) => {
@@ -81,6 +91,7 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
 
   playStream(url: string) {
     console.log('Avvio riproduzione stream con URL:', url);
+    
     this.audioService.playStream(url)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
