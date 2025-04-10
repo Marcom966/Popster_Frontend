@@ -56,7 +56,6 @@ export class AudioPlayerComponentComponent {
 
     console.log('Tentativo di riproduzione audio con URL:', this.link);
 
-    // Prepara il file per la riproduzione
     this.playStream(this.link);
   }
 
