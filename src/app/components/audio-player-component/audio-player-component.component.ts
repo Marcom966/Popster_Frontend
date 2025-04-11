@@ -69,7 +69,7 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
       })
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (response) => {
+        next: response=>{
           const blob = response.body;
           if (!blob) {
             console.error('Nessun contenuto nel file');
@@ -85,27 +85,26 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
           console.log('Dimensione del Blob:', blob.size);
           this.playStream(this.audioUrl);
         },
-        error: (error) => {
+        error: error=> {
           console.error('Errore nel download del file:', error);
           this.notRecognized = true;
         }
       });
-    } catch (error) {
+    } catch (error){
       console.error('Errore nella creazione dell\'URL:', error);
       this.notRecognized = true;
     }
   }
 
-  playStream(url: string) {
+  playStream(url: string){
     console.log('Avvio riproduzione stream con URL:', url);
-    
     this.audioService.playStream(url)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (event: any) => {
+        next:(event: any)=>{
           console.log('Evento di riproduzione:', event);
         },
-        error: (error) => {
+        error: error=>{
           console.error('Errore nella riproduzione:', error);
           this.notRecognized = true;
         }
