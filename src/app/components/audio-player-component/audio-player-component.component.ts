@@ -54,38 +54,35 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
   }
 
   public playAudio() {
-    if(!this.link){
-      console.error('nessun link disponibile');
+    if(!this.id){
+      console.error('nessun ID file disponibile');
       this.noLink = true;
       return    
     }
 
-    console.log('Tentativo di riproduzione audio con URL:', this.link);
+    console.log('Tentativo di riproduzione audio con ID:', this.id);
 
-    this.http.get(this.link, { 
-      responseType: 'blob',
-      observe: 'response'
-    })
+    try {
+      this.http.get(`http://localhost:8080/api/v1/file/${this.id}/download`, { 
+        responseType: 'blob',
+        observe: 'response'
+      })
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
-          console.log('Risposta ricevuta:', response.url);
-          
           const blob = response.body;
-          //const blob1 = this.file;
           if (!blob) {
             console.error('Nessun contenuto nel file');
             this.notRecognized = true;
             return;
           }
-          const audioBlob = new Blob([blob], { type: 'audio/mpeg' });
           if (this.audioUrl) {
-            
             URL.revokeObjectURL(this.audioUrl);
           }
-          console.log('audioUrl: ', this.audioUrl);
-          
-          this.audioUrl = URL.createObjectURL(audioBlob);
+          this.audioUrl = URL.createObjectURL(blob);
+          console.log('URL creato:', this.audioUrl);
+          console.log('Tipo MIME del Blob:', blob.type);
+          console.log('Dimensione del Blob:', blob.size);
           this.playStream(this.audioUrl);
         },
         error: (error) => {
@@ -93,6 +90,10 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
           this.notRecognized = true;
         }
       });
+    } catch (error) {
+      console.error('Errore nella creazione dell\'URL:', error);
+      this.notRecognized = true;
+    }
   }
 
   playStream(url: string) {
