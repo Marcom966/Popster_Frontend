@@ -69,7 +69,10 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
+          console.log('Risposta ricevuta:', response.url);
+          
           const blob = response.body;
+          //const blob1 = this.file;
           if (!blob) {
             console.error('Nessun contenuto nel file');
             this.notRecognized = true;
@@ -77,8 +80,11 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
           }
           const audioBlob = new Blob([blob], { type: 'audio/mpeg' });
           if (this.audioUrl) {
+            
             URL.revokeObjectURL(this.audioUrl);
           }
+          console.log('audioUrl: ', this.audioUrl);
+          
           this.audioUrl = URL.createObjectURL(audioBlob);
           this.playStream(this.audioUrl);
         },
