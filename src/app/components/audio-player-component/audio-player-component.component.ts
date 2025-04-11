@@ -44,14 +44,7 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
 
   constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) {}
 
-  ngOnInit() {
-    this.audioService.getState()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((state: StreamState) => {
-        this.state = state;
-        console.log('Stato audio aggiornato:', state);
-      });
-  }
+
 
   public playAudio() {
     if(!this.id){
@@ -148,5 +141,14 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
     this.stop();
+  }
+
+  ngOnInit() {
+    this.audioService.getState()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((state: StreamState) => {
+        this.state = state;
+        console.log('Stato audio aggiornato:', state);
+      });
   }
 }
