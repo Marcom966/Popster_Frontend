@@ -96,6 +96,7 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
       .subscribe({
         next:(event: any)=>{
           console.log('Evento di riproduzione:', event);
+          this.notRecognized = true;
         },
         error: error=>{
           console.error('Errore nella riproduzione:', error);
