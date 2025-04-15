@@ -1,11 +1,14 @@
-<ngx-audio-player
-    [autoPlay]="false" 
-    muted="muted"
-    [playlist]="playlist"
-    [disablePositionSlider]="true"
-    [displayVolumeControls]="true" 
-    [displayRepeatControls]="true"
-    [displayVolumeSlider]="false"
-    [displayTime]="true"
-    (trackEnded)="onEnded($event)"
-    ></ngx-audio-player>
+<div class="audio-player-container">
+    <ngx-audio-player
+        [autoPlay]="false" 
+        [muted]="false"
+        [playlist]="playlist"
+        [disablePositionSlider]="true"
+        [displayVolumeControls]="true" 
+        [displayRepeatControls]="true"
+        [displayVolumeSlider]="false"
+        [displayTime]="true"
+        (trackEnded)="onEnded($event)"
+        class="custom-audio-player"
+        ></ngx-audio-player>
+</div>
