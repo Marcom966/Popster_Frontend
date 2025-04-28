@@ -35,6 +35,8 @@ const routes: Routes = [{
 },{
   path: 'songDetails', component: CardDetailComponentComponent
 },{
+  path: 'support', component: SupportComponentComponent
+},{
   path: '**', redirectTo: 'home'
 }];
 

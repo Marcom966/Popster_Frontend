@@ -1,1 +1,17 @@
-<p>support-component works!</p>
+<div class="support-component">
+    <div class="upperContainer">
+        <h1 class="h1New">Popster</h1>
+    </div>
+    <form class="support-form" #supportForm="ngForm" (ngSubmit)="onSubitSupport(supportForm)">
+        <h1 class="initialTitle">Contact the support here.</h1>
+        <p>Name:</p>
+        <input type="text" placeholder="Enter your name" name="name" ngModel/>
+        <p>Username:</p>
+        <input type="text" placeholder="Enter your username" name="userName" ngModel/>
+        <p>Enter here the error you get:</p>
+        <input type="text" placeholder="Enter the error" name="error" ngModel/>
+        <p>Upload any follow documenta</p>
+        <input type="file" placeholder="Upload any document" name="fileError" ngModel/>
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</div>

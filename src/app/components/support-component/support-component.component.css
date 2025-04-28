@@ -1,0 +1,28 @@
+.support-component{
+    color: white;
+    margin-top: 119px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.upperContainer{
+    background-color: yellow;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    border: 1px white solid;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 93px;
+}
+.h1New{
+    font-weight: bold;
+    font-family: 'san francisco', Helvetica, Arial, san-serif;
+    margin-top: 20px;
+}
+.initialTitle{
+    margin-left: 740px;
+    
+}
