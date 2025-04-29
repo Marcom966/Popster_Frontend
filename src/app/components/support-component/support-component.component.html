@@ -11,7 +11,7 @@
         <p>Enter here the error you get:</p>
         <input type="text" placeholder="Enter the error" name="error" ngModel/>
         <p>Upload any follow documenta</p>
-        <input type="file" placeholder="Upload any document" name="fileError" ngModel/>
+        <input type="file" placeholder="Upload any document" (change)="fileHandler($event)"/>
         <button type="submit" class="submit-button">Submit</button>
     </form>
 </div>

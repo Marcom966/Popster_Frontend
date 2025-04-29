@@ -14,6 +14,8 @@ export class SupportComponentComponent {
   public onSubitSupport(form: NgForm){
 
   }
-
+  public fileHandler(event: any) {
+    
+  }
 
 }
