@@ -26,3 +26,98 @@
     margin-left: 740px;
     margin-top: 20px !important;
 }
+.centerP{
+    position: absolute;
+    top: 189px;
+    left: 929px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.inputFirst{
+    position: absolute;
+    top: 226px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+    left: 858px;
+    text-align: center;
+}
+.pdue{
+    position: absolute;
+    top: 268px;
+    left: 913px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.secondInput{
+    position: absolute;
+    top: 305px;
+    border-radius: 40px;
+    background-color: transparent;
+    color: white;
+    left: 858px;
+    text-align: center;
+}
+.PThree{
+    position: absolute;
+    top: 347px;
+    left: 860px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.ThirdInput{
+    position: absolute;
+    top: 384px;
+    border-radius: 16px;
+    background-color: transparent;
+    color: white;
+    left: 858px;
+    height: 187px;
+    text-align: center;
+}
+.documentP{
+    position: absolute;
+    top: 589px;
+    left: 853px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+}
+.documentInput{
+    border: 2px solid white;
+    border-radius: 25px;
+    height: 34px;
+    position: absolute;
+    left: 764px;
+    top: 634px;
+}
+input[type=file]::file-selector-button{
+    width: 200px;
+    background-color: transparent;
+    display: inline-block;
+    border-radius: 25px;
+    height: 30px;
+    color: white;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;    
+    border: 2px solid white;
+
+}
+.submit-button{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 699px;
+    left: 837px;
+    width: 242px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;
+}
+.submit-button:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px white;
+}
