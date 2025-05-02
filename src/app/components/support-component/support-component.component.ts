@@ -32,6 +32,8 @@ export class SupportComponentComponent {
       this.username = localStorage.getItem('user_name')!;
       this.subscrption = this.getUserEmail.returnSpecificUser(this.username).subscribe((data)=>{
         this.username = data;
+        console.log('username e data: '+this.username, data);
+        
       });
     }
   }
