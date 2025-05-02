@@ -1,6 +1,6 @@
 <div class="audio-player">
   <div *ngIf="noLink">Nessun link disponibile</div>
-  <div class="errorClass" *ngIf="notRecognized">Formato file non riconosciuto</div>
+  <div class="errorClass" *ngIf="notRecognized==true">Formato file non riconosciuto</div>
   <div class="controls" *ngIf="!noLink && !notRecognized">
     <div *ngIf="!notRecognized" class="player-controls">
       <button (click)="playAudio()" [disabled]="state.playing">
