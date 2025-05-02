@@ -42,6 +42,11 @@ export class FetchUsersService {
     return this.http.post<any>(url, body, httpOtions)
       .pipe(catchError(this.handleError));
   }
+  public returnSpecificUser(user_name: string): Observable<any>{
+    const url = `http://localhost:8080/api/v1/user/${user_name}`;
+    return this.http.get<any>(url)
+    .pipe(catchError(this.handleError));
+  }
 
   
 }

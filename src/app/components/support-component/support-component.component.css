@@ -32,6 +32,7 @@
     left: 929px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
+    font-weight: bold;
 }
 .inputFirst{
     position: absolute;
@@ -45,9 +46,10 @@
 .pdue{
     position: absolute;
     top: 268px;
-    left: 913px;
+    left: 930px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
+    font-weight: bold   ;
 }
 .secondInput{
     position: absolute;
@@ -64,6 +66,7 @@
     left: 860px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
+    font-weight: bold;
 }
 .ThirdInput{
     position: absolute;
@@ -81,6 +84,7 @@
     left: 853px;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     font-size: medium;
+    font-weight: bold;
 }
 .documentInput{
     border: 2px solid white;
