@@ -39,9 +39,10 @@ export class SupportComponentComponent {
         console.log('username e data: '+this.userName, data);
         this.sendEmail(); 
       });
-    }else
+    }else{
       this.userName = '';
       this.sendEmail();
+    }
   }
   private sendEmail(){
     const templateParams = {
