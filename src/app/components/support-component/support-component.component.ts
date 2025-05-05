@@ -5,6 +5,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-support-component',
@@ -22,7 +23,7 @@ export class SupportComponentComponent {
   userName!: string;
   subscrption = new Subscription();
 
-  constructor(private getUserEmail: FetchUsersService) { 
+  constructor(private getUserEmail: FetchUsersService, private route: Router) { 
     emailjs.init("0eji7tf7oVZK4QVIk");
   }
 
@@ -61,6 +62,9 @@ export class SupportComponentComponent {
   }
   public fileHandler(event: any) {
     
+  }
+  public goBack(){
+    this.route.navigate(['/home']);
   }
 
 }
