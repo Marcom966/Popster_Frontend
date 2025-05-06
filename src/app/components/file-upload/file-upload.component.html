@@ -16,6 +16,10 @@
             <form>
                 <label for="upload" class="upload">
                     <span class="span" aria-hidden="true"></span>
+                    <p class="artist_name">Artist name:</p>
+                    <input class="input_artist" type="text" name="artist_name">
+                    <p class="song_name">Song name:</p>
+                    <input class="input_song" type="text" name="song_name">
                     <input class="inputFull" id="inputFile" name="file" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
                     <button type="reset" id="resetButton" class='reset'>X</button>
                     <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
