@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, Subscription, throwError } from 'rxjs';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
@@ -29,6 +30,8 @@ export class FileUploadComponent implements OnInit {
   res!: unknown;
   idFile!: string;
   resp2!: any;
+  artist_name!: string;
+  song_name!: string;
   
 
 
@@ -55,6 +58,8 @@ export class FileUploadComponent implements OnInit {
       this.formData.append('file', this.file, this.nameConcat ? this.nameConcat : this.nameOfficial);
       this.formData.append('userName', this.userName ?? '');
       this.formData.append('idFile', this.idFile);
+      this.formData.append('artist_name', this.artist_name);
+      this.formData.append('song_name', this.song_name);
       
     }else if(this.file==null){
       return
@@ -80,6 +85,10 @@ export class FileUploadComponent implements OnInit {
         this.toCongrats('fileSuccessfull');
       }
     });
+  }
+  public onSubmitFile(form: NgForm){
+    this.artist_name = form.value.artist_name;
+    this.song_name = form.value.song_name;
   }
   public toUser(){
     this.route.navigate(['userHomepage']);
