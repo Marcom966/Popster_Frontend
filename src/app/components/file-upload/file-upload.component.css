@@ -150,7 +150,8 @@ input[type=file]::file-selector-button{
     border-radius: 25px;
     height: 34px;
     position: absolute;
-    left: -55px;
+    left: -33px;
+    top: 111px;
 }
 .submitButton{
     background-color: transparent;
@@ -158,8 +159,8 @@ input[type=file]::file-selector-button{
     font-weight: bold;
     font-size: small;
     position: absolute;
-    top: 54px;
-    left: 51px;
+    top: 161px;
+    left: 41px;
     width: 131px;
     height: 30px;
     border-radius: 40px;
@@ -175,8 +176,8 @@ input[type=file]::file-selector-button{
   border-color: black;
 }
 .reset{
-    margin-left: -107px;
-    margin-top: -1px;
+    margin-left: -82px;
+    margin-top: 2px;
     background-color: transparent;
     color: white;
     border: 2px solid white;
@@ -187,5 +188,45 @@ input[type=file]::file-selector-button{
 .reset:hover{
     background-color: white;
     color: black;
+}
+.artist_name{
+    margin-top: -103px;
+    color: white;
+    font-weight: bold;
+    margin-left: 51px;
+}
+.input_artist{
+    margin-top: -103px;
+    margin-left: 3px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    width: 200px;
+    height: 34px;
+    border-radius: 25px;  
+}
+.song_name{
+    margin-top: 11px;
+    color: white;
+    font-weight: bold;
+    margin-left: 51px;
+}
+.input_song{
+    margin-top: 2px;
+    margin-left: 3px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    width: 200px;
+    height: 34px;
+    border-radius: 25px;  
+    position: absolute;
+}
+.uploadTheFile{
+    margin-top: 69px;
+    color: white;
+    font-weight: bold;
+    margin-left: -46px;
+    width: 399px;
 }
 

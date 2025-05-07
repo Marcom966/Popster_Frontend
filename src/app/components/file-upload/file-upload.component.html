@@ -20,6 +20,7 @@
                     <input class="input_artist" type="text" name="artist_name">
                     <p class="song_name">Song name:</p>
                     <input class="input_song" type="text" name="song_name">
+                    <p class="uploadTheFile">Upload the file here (Only audio files are accepted)</p>
                     <input class="inputFull" id="inputFile" name="file" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
                     <button type="reset" id="resetButton" class='reset'>X</button>
                     <button type="button" class="submitButton" (click)="onSubmit()">Upload</button>
