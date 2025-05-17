@@ -13,6 +13,8 @@ import { PostFileServiceService } from 'src/app/services/post-file-service.servi
 export class CardComponent implements OnInit {
   @Input() data!: any;
   name!: string;
+  artistNamw!: string;
+  songName!: string;
   requestSub = new Subscription;
   id!: string;
   link!: string;
@@ -24,6 +26,8 @@ export class CardComponent implements OnInit {
   constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
+    this.artistNamw = this.data.artist_name.toString();
+    this.songName = this.data.song_name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
     .pipe(catchError(error=>{
       return throwError(()=>{
