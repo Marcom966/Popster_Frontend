@@ -21,6 +21,7 @@ export class CardComponent implements OnInit {
   dataSendToxard!: any;
   blob!: Blob;
   errorNew: boolean = false;
+  username!: string|null;
 
 
   constructor(private filegetter: PostFileServiceService) { }
@@ -28,6 +29,7 @@ export class CardComponent implements OnInit {
     this.name = this.data.name.toString();
     this.artistNamw = this.data.artist_name.toString();
     this.songName = this.data.song_name.toString();
+    this.username = this.data.user_name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
     .pipe(catchError(error=>{
       return throwError(()=>{
