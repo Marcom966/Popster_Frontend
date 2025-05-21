@@ -1,3 +1,4 @@
+import { O } from '@angular/cdk/observe-content.d-c08bc882';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -32,6 +33,7 @@ export class FileUploadComponent implements OnInit {
   resp2!: any;
   artist_name!: string;
   song_name!: string;
+  passDown!: { artistname: string, songname: string };
   
 
 
@@ -39,6 +41,14 @@ export class FileUploadComponent implements OnInit {
 
   public main(){
     this.username = localStorage.getItem('user_name');
+    }
+  public onSubmitFile(form: NgForm){
+    this.artist_name = form.value.artist_name;
+    console.log(this.artist_name);
+    this.song_name = form.value.song_name;
+    console.log(this.song_name);
+    this.passDown.artistname = this.artist_name;
+    this.passDown.songname = this.song_name;
     }
   public onChangeFile(event: any){
     this.formData = new FormData();
@@ -58,6 +68,9 @@ export class FileUploadComponent implements OnInit {
       this.formData.append('file', this.file, this.nameConcat ? this.nameConcat : this.nameOfficial);
       this.formData.append('userName', this.userName ?? '');
       this.formData.append('idFile', this.idFile);
+      console.log(this.passDown);
+      console.log(this.song_name);
+    
       this.formData.append('artist_name', this.artist_name);
       this.formData.append('song_name', this.song_name);
       
@@ -85,10 +98,6 @@ export class FileUploadComponent implements OnInit {
         this.toCongrats('fileSuccessfull');
       }
     });
-  }
-  public onSubmitFile(form: NgForm){
-    this.artist_name = form.value.artist_name;
-    this.song_name = form.value.song_name;
   }
   public toUser(){
     this.route.navigate(['userHomepage']);
