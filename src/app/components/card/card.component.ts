@@ -27,9 +27,6 @@ export class CardComponent implements OnInit {
   constructor(private filegetter: PostFileServiceService) { }
   public listData(){
     this.name = this.data.name.toString();
-    this.artistNamw = this.data.artist_name.toString();
-    this.songName = this.data.song_name.toString();
-    this.username = this.data.user_name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
     .pipe(catchError(error=>{
       return throwError(()=>{
@@ -40,10 +37,13 @@ export class CardComponent implements OnInit {
       });
     }))
     .subscribe(async (dataReturn: any)=>{
-      this.id = await dataReturn.id.toString();
-      this.link =  await dataReturn.url.toString()+'/download';
+      this.id = await dataReturn['id'].toString();
+      this.link =  await dataReturn['url'].toString()+'/download';
+      this.artistNamw = await dataReturn['artistName'].toString();
+      this.songName = await dataReturn['songName'].toString();
+      this.username = await dataReturn['usernName'].toString();
       this.filegetter.getFilebyId(this.id).subscribe(async (blobData: Blob) => {
-        this.blob = new Blob([blobData], { type: await dataReturn.type });
+        this.blob = new Blob([blobData], { type: await dataReturn['type']});
       });
     }) 
   }

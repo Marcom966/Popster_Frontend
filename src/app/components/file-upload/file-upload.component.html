@@ -13,7 +13,7 @@
     <div class="body">
         <div class="uploadContainer">
             <h1 class="centerUplload">Upload a file</h1>
-            <form #fileForm="ngForm" (ngSubmit)="onSubmitFile(fileForm)">
+            <form #fileForm="ngForm" (ngSubmit)="onChangeFile(fileForm, $event)">
                 <label for="upload" class="upload">
                     <span class="span" aria-hidden="true"></span>
                     <p class="artist_name">Artist name:</p>
@@ -21,7 +21,7 @@
                     <p class="song_name">Song name:</p>
                     <input class="input_song" type="text" name="song_name" ngModel>
                     <p class="uploadTheFile">Upload the file here (Only audio files are accepted)</p>
-                    <input class="inputFull" id="inputFile" name="file" type="file" accept="*" (change)="onChangeFile($event)" #fileUpload>
+                    <input class="inputFull" id="inputFile" name="file" type="file" accept="*" (change)="onChangeFile(fileForm,$event)" #fileUpload>
                     <button type="reset" id="resetButton" class='reset'>X</button>
                     <button type="submit" class="submitButton" (click)="onSubmit()">Upload</button>
                 </label>

@@ -33,7 +33,6 @@ export class FileUploadComponent implements OnInit {
   resp2!: any;
   artist_name!: string;
   song_name!: string;
-  passDown!: { artistname: string, songname: string };
   
 
 
@@ -41,16 +40,10 @@ export class FileUploadComponent implements OnInit {
 
   public main(){
     this.username = localStorage.getItem('user_name');
-    }
-  public onSubmitFile(form: NgForm){
+    } 
+  public onChangeFile(form: NgForm, event: any){
     this.artist_name = form.value.artist_name;
-    console.log(this.artist_name);
     this.song_name = form.value.song_name;
-    console.log(this.song_name);
-    this.passDown.artistname = this.artist_name;
-    this.passDown.songname = this.song_name;
-    }
-  public onChangeFile(event: any){
     this.formData = new FormData();
     this.file = event.target.files[0];
     if(this.file){
@@ -68,7 +61,7 @@ export class FileUploadComponent implements OnInit {
       this.formData.append('file', this.file, this.nameConcat ? this.nameConcat : this.nameOfficial);
       this.formData.append('userName', this.userName ?? '');
       this.formData.append('idFile', this.idFile);
-      console.log(this.passDown);
+      console.log(this.artist_name);
       console.log(this.song_name);
     
       this.formData.append('artist_name', this.artist_name);
@@ -76,7 +69,8 @@ export class FileUploadComponent implements OnInit {
       
     }else if(this.file==null){
       return
-    }    
+    }
+      
   }
   public onSubmit(){
     this.requestSub = this.files.postFile(this.formData)
