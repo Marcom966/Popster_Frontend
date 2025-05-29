@@ -19,3 +19,8 @@
   color: transparent;
   border: 2px solid white;
 }
+break{
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
