@@ -19,8 +19,31 @@
   color: transparent;
   border: 2px solid white;
 }
-break{
+.break{
     color: white;
     font-size: large;
     font-weight: bold;
+}
+.centerDue{
+    font-size: 24px;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+.center{
+    margin-left: 142px;
+}
+.pname2{
+    margin-left: 71px;
+}
+.artistName{
+    margin-left: 127px;
+}
+.pname{
+    margin-left: 140px;
+}
+.centerTre{
+    margin-left: 117px;
+}
+.uploaded{
+    margin-left: 190px;
 }
