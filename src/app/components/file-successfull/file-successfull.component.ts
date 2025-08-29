@@ -11,7 +11,7 @@ export class FileSuccessfullComponent implements OnInit {
 
   constructor(private route: Router) { }
   public toUpload(){
-    this.route.navigate(['fileUpload']);
+    this.route.navigate(['homepage']);
   }
 
   ngOnInit(): void {
