@@ -4,8 +4,8 @@
         <h1 class="h1New">Popster</h1>
     </div>
     <nav class="navbar">
-        <button class="logbutton" (click)="logged ? logOut() : logIn()">{{logged ? "Log out" : "Log in/subscribe"}}</button>
-        <button class="FileUpload" (click)="logged ? fileUpload() : redirect()">Upload a file</button>
+        <button type="button" class="logbutton" (click)="logged ? logOut() : logIn()">{{logged ? "Log out" : "Log in/subscribe"}}</button>
+        <button type="button" class="FileUpload" (click)="logged ? fileUpload() : redirect()">Upload a file</button>
         <div class="header">
             <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : ''}}</h1>
         </div>
