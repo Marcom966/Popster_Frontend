@@ -29,6 +29,18 @@
     margin-top: 8px;
     margin-left: 5px;
 }
+.changeButton{
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 104px;
+}
+.changeButton:hover{
+    box-shadow: 0 0 15px #fff;
+}
 .center{
     margin-left: 142px;
 }

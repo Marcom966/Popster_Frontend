@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, Subscription, throwError } from 'rxjs';
 import { DataInt } from 'src/app/Interfaces/data-int';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
@@ -24,7 +25,7 @@ export class CardComponent implements OnInit {
   username!: string|null;
 
 
-  constructor(private filegetter: PostFileServiceService) { }
+  constructor(private filegetter: PostFileServiceService, public route: Router) { }
   public listData(){
     this.name = this.data.name.toString();
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
@@ -59,4 +60,8 @@ export class CardComponent implements OnInit {
     this.listData();
   }
 
+  public goToDetails(){
+    this.route.navigate(['songDetails']);
+  }
 }
+

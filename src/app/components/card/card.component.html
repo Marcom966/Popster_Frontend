@@ -1,5 +1,7 @@
 <div class="card p10 cards">
-    <h1 class="centerDue">{{songName ? songName : name}}</h1>
+    <h1 class="centerDue">{{songName ? songName : name}}
+        <button type="button" class="changeButton" (click)="goToDetails()">Go to file details</button>
+    </h1>
     <br class="break">
     <h2 class="center">File Name:</h2>
     <p class="pname2">{{name}}</p>
