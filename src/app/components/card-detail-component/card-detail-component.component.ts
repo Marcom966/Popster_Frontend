@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './card-detail-component.component.css'
 })
 export class CardDetailComponentComponent {
+  username!: string|null;
 
 }
