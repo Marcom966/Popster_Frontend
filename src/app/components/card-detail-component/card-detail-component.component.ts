@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FileDataInterface } from 'src/app/Interfaces/file-data-interface';
 
 @Component({
   selector: 'app-card-detail-component',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CardDetailComponentComponent {
   username!: string|null;
+  dataToPassInterface!: FileDataInterface;
   constructor(private route: Router) {}
 
   public main(){

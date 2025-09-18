@@ -3,6 +3,7 @@ import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/
 import { Router } from '@angular/router';
 import { catchError, Subscription, throwError } from 'rxjs';
 import { DataInt } from 'src/app/Interfaces/data-int';
+import { FileDataInterface } from 'src/app/Interfaces/file-data-interface';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class CardComponent implements OnInit {
   blob!: Blob;
   errorNew: boolean = false;
   username!: string|null;
+  datatoPassDown!: FileDataInterface;
 
 
   constructor(private filegetter: PostFileServiceService, public route: Router) { }
@@ -62,6 +64,15 @@ export class CardComponent implements OnInit {
 
   public goToDetails(){
     this.route.navigate(['songDetails']);
+    this.datatoPassDown = new FileDataInterface(
+      this.id,
+      this.name,
+      this.link,
+      this.artistNamw,
+      this.songName,
+      this.username!,
+      this.blob
+    );
   }
 }
 
