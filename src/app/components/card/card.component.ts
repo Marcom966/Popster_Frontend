@@ -64,15 +64,13 @@ export class CardComponent implements OnInit {
 
   public goToDetails(){
     this.route.navigate(['songDetails']);
-    this.datatoPassDown = new FileDataInterface(
-      this.id,
-      this.name,
-      this.link,
-      this.artistNamw,
-      this.songName,
-      this.username!,
-      this.blob
-    );
+    localStorage.setItem('dataname', this.name);
+    localStorage.setItem('dataid', this.id);
+    localStorage.setItem('dataartistname', this.artistNamw);
+    localStorage.setItem('datasongname', this.songName);
+    localStorage.setItem('datausername', this.username? this.username : 'unknown');
+    localStorage.setItem('datalink', this.link);
+    localStorage.setItem('datablob', this.blob? this.blob.toString() : 'unknown');
   }
 }
 
