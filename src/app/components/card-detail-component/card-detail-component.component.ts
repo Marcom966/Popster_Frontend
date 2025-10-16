@@ -29,7 +29,9 @@ export class CardDetailComponentComponent {
     this.dataSongName = localStorage.getItem('dataSongName');
     this.dataUserName = localStorage.getItem('dataUserName');
     this.dataLink = localStorage.getItem('dataLink');
-    this.dataBlob = localStorage.getItem('dataBlob');
+    this.dataBlob = localStorage.getItem('datablob');
+    console.log(this.dataBlob);
+    
   }
   public backToHome(){
     this.route.navigate(['/home']);
