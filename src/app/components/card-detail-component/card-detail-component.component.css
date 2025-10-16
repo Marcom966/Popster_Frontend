@@ -64,3 +64,11 @@
     font-family: 'san francisco', Helvetica, Arial, san-serif;
     margin-top: 20px;
 }
+.playerContainer{
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    width: 600px;
+    height: 300px;
+    text-align: center;
+}

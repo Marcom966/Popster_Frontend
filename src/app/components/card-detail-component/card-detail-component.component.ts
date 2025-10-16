@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { AudioPlayerServiceService } from 'src/app/services/audio-player-service
 
 @Component({
   selector: 'app-card-detail-component',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './card-detail-component.component.html',
   styleUrl: './card-detail-component.component.css'
 })

@@ -9,4 +9,34 @@
             <h1></h1>
         </div>
     </nav>
+    <div class="playerContainer">
+        <div class="errorClass" *ngIf="notRecognized==true">Formato file non riconosciuto</div>
+            <div class="controls" *ngIf="!noLink && !notRecognized">
+                <div *ngIf="!notRecognized" class="player-controls">
+                    <button (click)="playAudio()" [disabled]="state.playing">
+                        <i class="fa-duotone fa-solid fa-play"></i>
+                    </button>
+                    <button (click)="pause()" [disabled]="!state.playing">
+                        <i class="fa-solid fa-pause"></i>
+                    </button>
+                    <button (click)="stop()">
+                        <i class="fa-solid fa-stop"></i>
+                    </button>
+                    <button (click)="mute()" *ngIf="!state?.mute">
+                        <i class="fa-solid fa-volume-xmark"></i>
+                    </button>
+                    <button (click)="unmute()" *ngIf="state?.mute">
+                        <i class="fa-solid fa-volume-off"></i>
+                    </button>
+                </div>
+    
+                <div class="progress" *ngIf="state">
+                <input type="range" 
+                    [value]="state.currentTime || 0" 
+                    [max]="state.duration || 100"
+                    (change)="onSliderChangeEnd($event)">
+                <span>{{(state.currentTime || 0) | date:'mm:ss'}} / {{(state.duration || 0) | date:'mm:ss'}}</span>
+            </div>
+        </div>
+    </div>
 </div>
