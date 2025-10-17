@@ -52,7 +52,6 @@ export class CardDetailComponentComponent {
     this.dataUserName = localStorage.getItem('dataUserName');
     this.dataLink = localStorage.getItem('dataLink');
     this.dataBlob = localStorage.getItem('datablob');
-    
   }
 
 
