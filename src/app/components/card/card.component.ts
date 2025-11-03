@@ -63,6 +63,19 @@ export class CardComponent implements OnInit {
   }
 
   public goToDetails(){
+    const request = window.indexedDB.open('fileStorage', 1);
+    request.onsuccess = (event: any) => {
+    let dbopen = event.target.result;
+    if(dbopen){
+      const ObjectToStrore = dbopen.creasteObjectStore('fileName', {keyPath: 'myKey'}, 'data', this.blob? this.blob.toString() : 'unknown');
+
+      }
+    };
+    request.onerror = (event: any) => {
+    let errorDb = event.target.errorCode;
+      console.error('IndexeddB Error:', errorDb);
+    };
+
     this.route.navigate(['songDetails']);
     localStorage.setItem('dataname', this.name);
     localStorage.setItem('dataid', this.id);
@@ -70,7 +83,7 @@ export class CardComponent implements OnInit {
     localStorage.setItem('datasongname', this.songName);
     localStorage.setItem('datausername', this.username? this.username : 'unknown');
     localStorage.setItem('datalink', this.link);
-    localStorage.setItem('datablob', this.blob? this.blob.toString() : 'unknown');
+    //localStorage.setItem('datablob', this.blob? this.blob.toString() : 'unknown');
   }
 }
 
