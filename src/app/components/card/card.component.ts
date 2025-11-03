@@ -67,7 +67,7 @@ export class CardComponent implements OnInit {
     request.onsuccess = (event: any) => {
     let dbopen = event.target.result;
     if(dbopen){
-      const ObjectToStrore = dbopen.creasteObjectStore('fileName', {keyPath: 'myKey'}, 'data', this.blob? this.blob.toString() : 'unknown');
+      const ObjectToStrore = dbopen.creasteObjectStore('fileName', {keyPath: 'myKey'}, 'data', this.blob? this.blob : undefined);
 
       }
     };
