@@ -66,14 +66,14 @@ export class CardComponent implements OnInit {
     const request = window.indexedDB.open('fileStorage', 1);
     request.onupgradeneeded = (event: any) => {
       const db = event.target.result;
-      if(!db.objectStoreNames.contains(this.name)){
-        db.createObjectStore(this.name, {keyPath: 'myKey'});
+      if(!db.objectStoreNames.contains('files')){
+        db.createObjectStore('files', {keyPath: 'myKey'});
       }
     }
     request.onsuccess = (event: any) => {
       const db = event.target.result;
-      const trans = db.transaction(this.name);
-      const store = trans.objectStore(this.name);
+      const trans = db.transaction('files');
+      const store = trans.objectStore('files');
       const toStiore = {
         myKey: this.id,
         name: this.name,
