@@ -22,10 +22,10 @@
                     <button (click)="stop()">
                         <i class="fa-solid fa-stop"></i>
                     </button>
-                    <button (click)="mute()" *ngIf="!state?.mute">
+                    <button (click)="mute()" *ngIf="!state.mute">
                         <i class="fa-solid fa-volume-xmark"></i>
                     </button>
-                    <button (click)="unmute()" *ngIf="state?.mute">
+                    <button (click)="unmute()" *ngIf="state.mute">
                         <i class="fa-solid fa-volume-off"></i>
                     </button>
                 </div>
