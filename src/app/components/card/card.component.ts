@@ -64,26 +64,45 @@ export class CardComponent implements OnInit {
 
   public goToDetails(){
     const request = window.indexedDB.open('fileStorage', 1);
-    request.onsuccess = (event: any) => {
-    let dbopen = event.target.result;
-    if(dbopen){
-      const ObjectToStrore = dbopen.creasteObjectStore('fileName', {keyPath: 'myKey'}, 'data', this.blob? this.blob : undefined);
-
+    request.onupgradeneeded = (event: any) => {
+      const db = event.target.result;
+      if(!db.objectStoreNames.contains(this.name)){
+        db.createObjectStore(this.name, {keyPath: 'myKey'});
       }
-    };
-    request.onerror = (event: any) => {
-    let errorDb = event.target.errorCode;
-      console.error('IndexeddB Error:', errorDb);
-    };
+    }
+    request.onsuccess = (event: any) => {
+      const db = event.target.result;
+      const trans = db.transaction(this.name);
+      const store = trans.objectStore(this.name);
+      const toStiore = {
+        myKey: this.id,
+        name: this.name,
+        artist: this.artistNamw,
+        song: this.songName,
+        blob: this.blob
+      };
+      const ptReq= store.put(toStiore);
+      ptReq.onsuccess = () => {
+        console.log('Data stored successfully in IndexedDB');
+      };
+      ptReq.onerror = (e: any) => {
+        console.error('Error storing data in IndexedDB:', e.target.errorCode);
+      };
+      trans.oncomplete = () => {
+        db.close();
+      };
 
-    this.route.navigate(['songDetails']);
-    localStorage.setItem('dataname', this.name);
-    localStorage.setItem('dataid', this.id);
-    localStorage.setItem('dataartistname', this.artistNamw);
-    localStorage.setItem('datasongname', this.songName);
-    localStorage.setItem('datausername', this.username? this.username : 'unknown');
-    localStorage.setItem('datalink', this.link);
+
+      this.route.navigate(['songDetails']);
+      localStorage.setItem('dataname', this.name);
+      localStorage.setItem('dataid', this.id);
+      localStorage.setItem('dataartistname', this.artistNamw);
+      localStorage.setItem('datasongname', this.songName);
+      localStorage.setItem('datausername', this.username? this.username : 'unknown');
+      localStorage.setItem('datalink', this.link);
     //localStorage.setItem('datablob', this.blob? this.blob.toString() : 'unknown');
+    }
   }
-}
+
+};
 
