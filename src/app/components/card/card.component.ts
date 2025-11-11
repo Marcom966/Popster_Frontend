@@ -64,13 +64,13 @@ export class CardComponent implements OnInit {
 
   public goToDetails(){
     const request = window.indexedDB.open('fileStorage', 1);
-    request.onupgradeneeded = (event: any) => {
+    request.onupgradeneeded = (event: any)=>{
       const db = event.target.result;
       if(!db.objectStoreNames.contains('files')){
         db.createObjectStore('files', {keyPath: 'myKey'});
       }
     }
-    request.onsuccess = (event: any) => {
+    request.onsuccess = (event: any)=>{
       const db = event.target.result;
       const trans = db.transaction('files', 'readwrite');
       const store = trans.objectStore('files');
@@ -82,13 +82,13 @@ export class CardComponent implements OnInit {
         blob: this.blob
       };
       const ptReq= store.put(toStiore);
-      ptReq.onsuccess = () => {
+      ptReq.onsuccess = ()=>{
         console.log('Data stored successfully in IndexedDB');
       };
-      ptReq.onerror = (e: any) => {
+      ptReq.onerror = (e: any)=>{
         console.error('Error storing data in IndexedDB:', e.target.errorCode);
       };
-      trans.oncomplete = () => {
+      trans.oncomplete = ()=>{
         db.close();
       };
 
