@@ -50,18 +50,7 @@ export class CardComponent implements OnInit {
       });
     }) 
   }
-  ngOnChanges(changes: SimpleChanges): void{
-    if(changes['id']&&changes['id'].currentValue){
-      this.id = changes['id'].currentValue;
-    }
-  }
-  ngOnDestroy(): void{
-    this.requestSub.unsubscribe();
-  }
-  ngOnInit(): void {
-    this.listData();
-  }
-
+  
   public goToDetails(){
     const request = window.indexedDB.open('fileStorage', 1);
     request.onupgradeneeded = (event: any)=>{
@@ -109,6 +98,19 @@ export class CardComponent implements OnInit {
 
     }
   }
+
+  ngOnChanges(changes: SimpleChanges): void{
+    if(changes['id']&&changes['id'].currentValue){
+      this.id = changes['id'].currentValue;
+    }
+  }
+  ngOnDestroy(): void{
+    this.requestSub.unsubscribe();
+  }
+  ngOnInit(): void {
+    this.listData();
+  }
+
 
 };
 
