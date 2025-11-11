@@ -43,6 +43,9 @@ export class CardDetailComponentComponent {
   };
   constructor(private route: Router, private http: HttpClient, private audioService: AudioPlayerServiceService) {}
 
+  private destroy$ = new Subject<void>();
+  private audioUrl: string | null = null;
+
   public main(){
     this.username = localStorage.getItem('user_name');
     this.dataName = localStorage.getItem('dataName');
@@ -53,9 +56,6 @@ export class CardDetailComponentComponent {
     this.dataLink = localStorage.getItem('dataLink');
   }
 
-
-  private destroy$ = new Subject<void>();
-  private audioUrl: string | null = null;
 
 
 
