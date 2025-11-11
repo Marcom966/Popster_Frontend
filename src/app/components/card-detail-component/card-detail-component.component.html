@@ -12,6 +12,10 @@
     <div class="playerContainer">
         <div class="errorClass" *ngIf="notRecognized==true">Formato file non riconosciuto</div>
             <div class="controls" *ngIf="!noLink && !notRecognized">
+                <div class="songDetails" *ngIf="!noLink &&!notRecognized">
+                    {{dataArtistName}}
+                    {{dataSongName}}
+                </div>
                 <div *ngIf="!notRecognized" class="player-controls">
                     <button (click)="playAudio()" [disabled]="state.playing">
                         <i class="fa-duotone fa-solid fa-play"></i>
