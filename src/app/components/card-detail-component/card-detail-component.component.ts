@@ -46,7 +46,7 @@ export class CardDetailComponentComponent {
   public main(){
     this.username = localStorage.getItem('user_name');
     this.dataName = localStorage.getItem('dataName');
-    this.dataId = localStorage.getItem('dataId');
+    this.dataId = localStorage.getItem('dataid');
     this.dataArtistName = localStorage.getItem('dataArtistName');
     this.dataSongName = localStorage.getItem('dataSongName');
     this.dataUserName = localStorage.getItem('dataUserName');
@@ -115,12 +115,6 @@ export class CardDetailComponentComponent {
         console.error('errore nel recupero del file', error);
         this.noLink = true;
       };
-    }
-    this.loadDataFromIndexedDb();
-    if(!this.dataBlob){
-      console.error('nessun ID file disponibile');
-      this.noLink = true;
-      return    
     }
 
     console.log('Tentativo di riproduzione audio con ID:', this.dataBlob);
