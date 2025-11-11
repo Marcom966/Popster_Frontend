@@ -67,7 +67,7 @@ export class CardDetailComponentComponent {
     request.onsuccess= (event: any)=>{
       const db = event.target.result;
       const trans = db.transaction('files', 'readonly');
-      const store = db.objectStore('files');
+      const store = trans.objectStore('files');
       const getreQ = store.get(this.dataId);
       getreQ.onsuccess = (event: any)=>{
         const result = event.target.result;
@@ -89,6 +89,33 @@ export class CardDetailComponentComponent {
 
 
   public playAudio() {
+    const request = indexedDB.open('fileStorage',1);
+    request.onerror = (event: any)=>{
+      console.error("errore nell'apertura di indexedDb", event.target.error);
+      this.noLink = true;
+    }
+    request.onsuccess = (event: any)=>{
+      const db = event.target.result;
+      const trans = db.transaction(['files'], 'readonly');
+      const store = trans.objectStore('files');
+      const getReq = store.get(this.dataId);
+      getReq.onsuccess = (event: any)=>{
+        const result = event.target.result;
+        if(result && result.blob){
+          console.log('file recuperato con successo:', result);
+          this.audioUrl = URL.createObjectURL(result.blob);
+          this.playStream(this.audioUrl);
+        }else{
+          console.error('nessun file trovato per ID', this.dataId);
+          this.noLink = true;
+        }
+      db.close();
+      };
+      getReq.onerror = (error: any)=>{
+        console.error('errore nel recupero del file', error);
+        this.noLink = true;
+      };
+    }
     this.loadDataFromIndexedDb();
     if(!this.dataBlob){
       console.error('nessun ID file disponibile');
