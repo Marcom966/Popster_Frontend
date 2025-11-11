@@ -51,41 +51,12 @@ export class CardDetailComponentComponent {
     this.dataSongName = localStorage.getItem('dataSongName');
     this.dataUserName = localStorage.getItem('dataUserName');
     this.dataLink = localStorage.getItem('dataLink');
-    //this.dataBlob = localStorage.getItem('datablob');
   }
 
 
   private destroy$ = new Subject<void>();
   private audioUrl: string | null = null;
 
-  private loadDataFromIndexedDb(): void{
-    const request = indexedDB.open('fileStorage',1);
-    request.onerror = (event:any)=>{
-      console.error('errore apertura indexedDb database', event.target.error);
-      this.noLink = true;
-    };
-    request.onsuccess= (event: any)=>{
-      const db = event.target.result;
-      const trans = db.transaction('files', 'readonly');
-      const store = trans.objectStore('files');
-      const getreQ = store.get(this.dataId);
-      getreQ.onsuccess = (event: any)=>{
-        const result = event.target.result;
-        if(result && result.blob){
-          console.log('file recuperato con successo:', result);
-          this.audioUrl = result.blob;
-        }else{
-          console.error('nessun file recuperato da Db per ID:', this.dataId);
-          this.noLink = true;
-        }
-        db.close();
-      };
-      getreQ.onerror = (error: any)=>{
-        console.error('errore nel recupero del file', error);
-        this.noLink = true;
-      };
-    };
-  }
 
 
   public playAudio() {
@@ -121,14 +92,10 @@ export class CardDetailComponentComponent {
 
     try {
       const blob = this.audioUrl;
-      if (!blob) {
-      this.notRecognized = true;
-      return;
-      }
-      this.playStream(blob);
+      this.playStream(blob?.toString() ?? '');
     } catch (error){
-      console.error('Errore nella creazione dell\'URL:', error);
-      this.notRecognized = true;
+        console.error('Errore nella creazione dell\'URL:', error);
+        this.notRecognized = true;
     }
   }
 
