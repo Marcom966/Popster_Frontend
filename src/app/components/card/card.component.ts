@@ -89,7 +89,6 @@ export class CardComponent implements OnInit {
       localStorage.setItem('datasongname', this.songName);
       localStorage.setItem('datausername', this.username? this.username : 'unknown');
       localStorage.setItem('datalink', this.link);
-    //localStorage.setItem('datablob', this.blob? this.blob.toString() : 'unknown');
 
     
       request.onerror = (event: any) => {
