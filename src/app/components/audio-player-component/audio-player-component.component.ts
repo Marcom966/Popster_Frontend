@@ -149,7 +149,7 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-      this.faPlayIcon = faPlay;
+    this.faPlayIcon = faPlay;
     this.faPauseIcon = faPause;
     this.faStopIcon = faStop;
     this.faVolumeMuteIcon = faVolumeMute;
