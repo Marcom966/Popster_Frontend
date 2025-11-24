@@ -7,10 +7,13 @@ import { Subject, Subscription, takeUntil } from 'rxjs';
 import { FileDataInterface } from 'src/app/Interfaces/file-data-interface';
 import { StreamState } from 'src/app/Interfaces/stream-state';
 import { AudioPlayerServiceService } from 'src/app/services/audio-player-service.service';
+import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome'
+import { faPlay, faPause, faStop, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-card-detail-component',
-  imports: [CommonModule],
+  imports: [CommonModule, FaIconComponent,FontAwesomeModule],
   templateUrl: './card-detail-component.component.html',
   styleUrl: './card-detail-component.component.css'
 })
@@ -31,6 +34,11 @@ export class CardDetailComponentComponent {
   noLink: boolean = false;
   pressPlay: boolean = false;
   notRecognized: boolean = false;
+  faPlayIcon!: any;
+  faPauseIcon!: any;
+  faStopIcon!: any;
+  faVolumeMuteIcon!: any;
+  faVolumeUpIcon!: any;
   state: StreamState = {
     playing: false,
     readableCurrentTime: '',
@@ -48,14 +56,12 @@ export class CardDetailComponentComponent {
 
   public main(){
     this.username = localStorage.getItem('user_name');
-    this.dataName = localStorage.getItem('dataName');
+    this.dataName = localStorage.getItem('dataname');
     this.dataId = localStorage.getItem('dataid');
-    this.dataArtistName = localStorage.getItem('dataArtistName');
-    console.log(this.dataArtistName);
-    this.dataSongName = localStorage.getItem('dataSongName');
-    console.log(this.dataSongName);
-    this.dataUserName = localStorage.getItem('dataUserName');
-    this.dataLink = localStorage.getItem('dataLink');
+    this.dataArtistName = localStorage.getItem('dataasrtistname');
+    this.dataSongName = localStorage.getItem('datasongname');
+    this.dataUserName = localStorage.getItem('datausername');
+    this.dataLink = localStorage.getItem('datalink');
   }
 
 
@@ -163,6 +169,11 @@ export class CardDetailComponentComponent {
   }
 
   ngOnInit() {
+    this.faPlayIcon = faPlay;
+    this.faPauseIcon = faPause;
+    this.faStopIcon = faStop;
+    this.faVolumeMuteIcon = faVolumeMute;
+    this.faVolumeUpIcon = faVolumeUp;
     this.main();
     this.audioService.getState()
       .pipe(takeUntil(this.destroy$))

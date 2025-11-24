@@ -89,8 +89,6 @@ export class CardComponent implements OnInit {
       localStorage.setItem('datasongname', this.songName);
       localStorage.setItem('datausername', this.username? this.username : 'unknown');
       localStorage.setItem('datalink', this.link);
-
-    
       request.onerror = (event: any) => {
         console.error('IndexedDB open error:', event.target.error);
       };
