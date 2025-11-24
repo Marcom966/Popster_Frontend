@@ -38,8 +38,8 @@ export class AudioPlayerServiceService {
     playing: false,
     readableCurrentTime: '',
     readableDuration: '',
-    duration: undefined,
-    currentTime: undefined,
+    duration: 0,
+    currentTime: 0,
     canPlay: false,
     error: false,
     mute: false,
@@ -77,31 +77,35 @@ export class AudioPlayerServiceService {
   }
   play(){
     this.toPlayObject.play();
-    this.state.playing = true;
+    //this.state.playing = true;
   }
   pause(){
     this.toPlayObject.pause();
-    this.state.playing = false;
+    //this.state.playing = false;
   }
   stop(){
     this.toPlayObject.pause();
     this.toPlayObject.currentTime = 0;
-    this.stop$.next();
     this.state.playing = false;
     this.state.currentTime = 0;
     this.state.readableCurrentTime = this.formatTime(0);
-    this.stateChange.next(this.state);
+    this.stateChange.next({...this.state});
   }
   mute(){
     this.toPlayObject.volume = 0;
     this.state.mute = true;
+    this.stateChange.next({...this.state});
   }
   unmute(){
     this.toPlayObject.volume = 1;
     this.state.mute = false;
+    this.stateChange.next({...this.state});
   }
   seekTo(seconds: any){
     this.toPlayObject.currentTime = seconds;
+    this.state.currentTime = seconds;
+    this.state.readableCurrentTime = this.formatTime(seconds);
+    this.stateChange.next({...this.state});
   }
   formatTime(time: number, format: string = 'mm:ss') {
     const momentTime = time*1000;
@@ -112,7 +116,7 @@ export class AudioPlayerServiceService {
 
   private updateStateEvents(event: Event): void {
     switch (event.type) {
-      case 'canPlay':
+      case 'canplay':
         this.state.duration = this.toPlayObject.duration;
         this.state.readableDuration = this.formatTime(this.state.duration);
         this.state.canPlay = true;
@@ -132,19 +136,20 @@ export class AudioPlayerServiceService {
         this.state.error = true;
         break;
       }
-    this.stateChange.next(this.state);
+    this.stateChange.next({...this.state});
     }
     private resetState(){
       this.state = {
         playing: false,
         readableCurrentTime: '',
         readableDuration: '',
-        duration: undefined,
-        currentTime: undefined,
+        duration: 0,
+        currentTime: 0,
         canPlay: false,
         error: false,
         mute: false,
       };
+    this.stateChange.next({...this.state});
     }
     getState(): Observable<StreamState> {
       return this.stateChange.asObservable(); 
