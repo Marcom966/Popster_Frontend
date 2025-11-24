@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { StreamState } from 'src/app/Interfaces/stream-state';
 import { AudioPlayerServiceService } from 'src/app/services/audio-player-service.service';
-import {} from '@fortawesome/angular-fontawesome'
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
+import { faPlay, faPause, faStop, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-audio-player-component',
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './audio-player-component.component.html',
   styleUrl: './audio-player-component.component.css',
   providers: [AudioPlayerServiceService],
@@ -28,6 +29,11 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
   noLink: boolean = false;
   pressPlay: boolean = false;
   notRecognized: boolean = false;
+  faPlayIcon!: any;
+  faPauseIcon!: any;
+  faStopIcon!: any
+  faVolumeMuteIcon!: any;
+  faVolumeUpIcon!: any;
   state: StreamState = {
     playing: false,
     readableCurrentTime: '',
@@ -143,6 +149,11 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+      this.faPlayIcon = faPlay;
+    this.faPauseIcon = faPause;
+    this.faStopIcon = faStop;
+    this.faVolumeMuteIcon = faVolumeMute;
+    this.faVolumeUpIcon = faVolumeUp;
     this.audioService.getState()
       .pipe(takeUntil(this.destroy$))
       .subscribe((state: StreamState) => {

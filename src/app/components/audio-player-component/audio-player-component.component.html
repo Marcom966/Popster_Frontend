@@ -4,19 +4,29 @@
   <div class="controls" *ngIf="!noLink && !notRecognized">
     <div *ngIf="!notRecognized" class="player-controls">
       <button (click)="playAudio()" [disabled]="state.playing">
-        <i class="fa-duotone fa-solid fa-play"></i>
+        <i class="fa-duotone fa-solid">
+          <fa-icon [icon]="faPlayIcon"></fa-icon>
+        </i>
       </button>
       <button (click)="pause()" [disabled]="!state.playing">
-        <i class="fa-solid fa-pause"></i>
+        <i class="fa-solid">
+          <fa-icon [icon]="faPauseIcon"></fa-icon>
+        </i>
       </button>
       <button (click)="stop()">
-        <i class="fa-solid fa-stop"></i>
+        <i class="fa-solid">
+          <fa-icon [icon]="faStopIcon"></fa-icon>
+        </i>
       </button>
       <button (click)="mute()" *ngIf="!state.mute">
-        <i class="fa-solid fa-volume-xmark"></i>
+        <i class="fa-solid">
+          <fa-icon [icon]="faVolumeMuteIcon"></fa-icon>
+        </i>
       </button>
       <button (click)="unmute()" *ngIf="state.mute">
-        <i class="fa-solid fa-volume-off"></i>
+        <i class="fa-solid">
+          <fa-icon [icon]="faVolumeUpIcon"></fa-icon>
+        </i>
       </button>
     </div>
     
