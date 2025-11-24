@@ -13,8 +13,8 @@
         <div class="errorClass" *ngIf="notRecognized==true">Formato file non riconosciuto</div>
             <div class="controls" *ngIf="!noLink && !notRecognized">
                 <div class="songDetails" *ngIf="!noLink &&!notRecognized">
-                    {{dataArtistName}}
-                    {{dataSongName}}
+                    Artist: {{dataArtistName ? dataArtistName : ''}}
+                    Song: {{dataSongName ? dataSongName : ''}}
                 </div>
                 <div *ngIf="!notRecognized" class="player-controls">
                     <button (click)="playAudio()" [disabled]="state.playing">
