@@ -113,3 +113,24 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
+.player-controls {
+    margin-bottom: 20px;
+}
+.player-controls button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.player-controls button:disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.progress{
+    width: 80%;
+    margin-left: 857px;
+    background-color: transparent;
+}
