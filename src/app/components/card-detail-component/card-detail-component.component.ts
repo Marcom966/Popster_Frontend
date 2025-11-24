@@ -58,7 +58,7 @@ export class CardDetailComponentComponent {
     this.username = localStorage.getItem('user_name');
     this.dataName = localStorage.getItem('dataname');
     this.dataId = localStorage.getItem('dataid');
-    this.dataArtistName = localStorage.getItem('dataasrtistname');
+    this.dataArtistName = localStorage.getItem('dataartistname');
     this.dataSongName = localStorage.getItem('datasongname');
     this.dataUserName = localStorage.getItem('datausername');
     this.dataLink = localStorage.getItem('datalink');
