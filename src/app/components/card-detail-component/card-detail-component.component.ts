@@ -98,13 +98,6 @@ export class CardDetailComponentComponent {
 
     console.log('Tentativo di riproduzione audio con ID:', this.dataBlob);
 
-    try {
-      const blob = this.audioUrl;
-      this.playStream(blob?.toString() ?? '');
-    } catch (error){
-        console.error('Errore nella creazione dell\'URL:', error);
-        this.notRecognized = true;
-    }
   }
 
   playStream(url: string){

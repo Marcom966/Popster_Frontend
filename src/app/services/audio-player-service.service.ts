@@ -84,7 +84,13 @@ export class AudioPlayerServiceService {
     this.state.playing = false;
   }
   stop(){
+    this.toPlayObject.pause();
+    this.toPlayObject.currentTime = 0;
     this.stop$.next();
+    this.state.playing = false;
+    this.state.currentTime = 0;
+    this.state.readableCurrentTime = this.formatTime(0);
+    this.stateChange.next(this.state);
   }
   mute(){
     this.toPlayObject.volume = 0;
