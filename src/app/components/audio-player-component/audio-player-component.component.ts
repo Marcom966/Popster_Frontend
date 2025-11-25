@@ -47,8 +47,9 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
   private audioUrl: string | null = null;
+  private dragging: boolean = false;
 
-  constructor(private http: HttpClient, private audioService: AudioPlayerServiceService) {}
+  constructor(private http: HttpClient, public audioService: AudioPlayerServiceService) {}
 
 
 
@@ -134,9 +135,14 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
     this.audioService.unmute();
   }
 
+  onsliderChange(event: any) {
+    this.dragging = true;
+  }
+
   onSliderChangeEnd(change: any) {
     console.log('Cambio posizione audio:', change.value);
     this.audioService.seekTo(change.value);
+    this.dragging = false;
   }
 
   ngOnDestroy() {
