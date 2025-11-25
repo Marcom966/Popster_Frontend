@@ -77,7 +77,14 @@ export class CardComponent implements OnInit {
       };
       const ptReq= store.put(toStiore);
       ptReq.onsuccess = ()=>{
-        console.log('Data stored successfully in IndexedDB');
+        console.log('IndexedDb write completed');
+        this.route.navigate(['songDetails']);
+        localStorage.setItem('dataname', this.name);
+        localStorage.setItem('dataid', this.id);
+        localStorage.setItem('dataartistname', this.artistNamw);
+        localStorage.setItem('datasongname', this.songName);
+        localStorage.setItem('datausername', this.username? this.username : 'unknown');
+        localStorage.setItem('datalink', this.link);
       };
       ptReq.onerror = (e: any)=>{
         console.error('Error storing data in IndexedDB:', e.target.errorCode);
@@ -85,15 +92,6 @@ export class CardComponent implements OnInit {
       trans.oncomplete = ()=>{
         db.close();
       };
-
-
-      this.route.navigate(['songDetails']);
-      localStorage.setItem('dataname', this.name);
-      localStorage.setItem('dataid', this.id);
-      localStorage.setItem('dataartistname', this.artistNamw);
-      localStorage.setItem('datasongname', this.songName);
-      localStorage.setItem('datausername', this.username? this.username : 'unknown');
-      localStorage.setItem('datalink', this.link);
       request.onerror = (event: any) => {
         console.error('IndexedDB open error:', event.target.error);
       };
