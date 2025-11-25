@@ -46,8 +46,9 @@
                 <input type="range" 
                     [value]="state.currentTime || 0" 
                     [max]="state.duration || 100"
+                    (input)="onSliderChange($event)"
                     (change)="onSliderChangeEnd($event)">
-                <span>{{(state.currentTime || 0) | date:'mm:ss'}} / {{(state.duration || 0) | date:'mm:ss'}}</span>
+                <span>{{audioService.formatTime(state.currentTime||0) }} / {{audioService.formatTime(state.duration||0) }}</span>
             </div>
         </div>
     </div>

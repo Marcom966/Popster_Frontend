@@ -49,10 +49,11 @@ export class CardDetailComponentComponent {
     error: false,
     mute: false
   };
-  constructor(private route: Router, private http: HttpClient, private audioService: AudioPlayerServiceService) {}
+  constructor(private route: Router, private http: HttpClient, public audioService: AudioPlayerServiceService) {}
 
   private destroy$ = new Subject<void>();
   private audioUrl: string | null = null;
+  private dragging: boolean = false;
 
   public main(){
     this.username = localStorage.getItem('user_name');
@@ -144,12 +145,17 @@ export class CardDetailComponentComponent {
     this.audioService.unmute();
   }
 
+  onSliderChange(event: any) {
+    this.dragging = true;
+  }
+
   onSliderChangeEnd(event: any) {
     let time = Number(event.target.value);
     console.log('Cambio posizione audio:', time);
     if(Number.isFinite(time)){
       this.audioService.seekTo(time);
     }
+    this.dragging = false;
   }
 
   public backToHome(){
