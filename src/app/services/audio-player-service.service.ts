@@ -102,6 +102,10 @@ export class AudioPlayerServiceService {
     this.stateChange.next({...this.state});
   }
   seekTo(seconds: any){
+    let time = Number(seconds);
+    if(Number.isFinite(time)){
+      return;
+    };
     this.toPlayObject.currentTime = seconds;
     this.state.currentTime = seconds;
     this.state.readableCurrentTime = this.formatTime(seconds);
@@ -117,7 +121,8 @@ export class AudioPlayerServiceService {
   private updateStateEvents(event: Event): void {
     switch (event.type) {
       case 'canplay':
-        this.state.duration = this.toPlayObject.duration;
+        let dur = this.toPlayObject.duration;
+        this.state.duration = Number.isFinite(dur) ? dur : 0;
         this.state.readableDuration = this.formatTime(this.state.duration);
         this.state.canPlay = true;
         break;

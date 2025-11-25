@@ -143,9 +143,12 @@ export class CardDetailComponentComponent {
     this.audioService.unmute();
   }
 
-  onSliderChangeEnd(change: any) {
-    console.log('Cambio posizione audio:', change.value);
-    this.audioService.seekTo(change.value);
+  onSliderChangeEnd(event: any) {
+    let time = Number(event.target.value);
+    console.log('Cambio posizione audio:', time);
+    if(Number.isFinite(time)){
+      this.audioService.seekTo(time);
+    }
   }
 
   public backToHome(){
