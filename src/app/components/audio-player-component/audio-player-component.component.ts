@@ -135,7 +135,7 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
     this.audioService.unmute();
   }
 
-  onsliderChange(event: any) {
+  onSliderChange(event: any) {
     this.dragging = true;
   }
 
