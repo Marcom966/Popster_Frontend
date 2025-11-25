@@ -46,7 +46,12 @@ export class CardComponent implements OnInit {
       this.songName = await dataReturn['songName'].toString();
       this.username = await dataReturn['usernName'].toString();
       this.filegetter.getFilebyId(this.id).subscribe(async (blobData: Blob) => {
-        this.blob = new Blob([blobData], { type: await dataReturn['type']});
+        let mime = dataReturn['type'];
+        if(!blobData.type && mime){
+          this.blob = new Blob([await blobData.arrayBuffer()], { type: mime});
+        }else{
+          this.blob = blobData;
+        }
       });
     }) 
   }

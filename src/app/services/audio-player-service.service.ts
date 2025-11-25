@@ -106,9 +106,12 @@ export class AudioPlayerServiceService {
     if(Number.isFinite(time)){
       return;
     };
-    this.toPlayObject.currentTime = seconds;
-    this.state.currentTime = seconds;
-    this.state.readableCurrentTime = this.formatTime(seconds);
+    if(this.toPlayObject.readyState < 1){
+      return;
+    };
+    this.toPlayObject.currentTime = time;
+    this.state.currentTime = time;
+    this.state.readableCurrentTime = this.formatTime(time);
     this.stateChange.next({...this.state});
   }
   formatTime(time: number, format: string = 'mm:ss') {

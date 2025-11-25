@@ -84,6 +84,7 @@ export class CardDetailComponentComponent {
           console.log('file recuperato con successo:', result);
           this.audioUrl = URL.createObjectURL(result.blob);
           this.playStream(this.audioUrl);
+          console.log('blob type: ', result.blob.type);
         }else{
           console.error('nessun file trovato per ID', this.dataId);
           this.noLink = true;
