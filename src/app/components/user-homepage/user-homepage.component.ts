@@ -26,10 +26,12 @@ export class UserHomepageComponent implements OnInit {
     this.requsestSub = this.getfiles.getAllFiles()
     .pipe(catchError((error)=>{
       return throwError(()=>{
-        if(error){
+        if(error.toString().includes('0')){
           this.noFiles = true;
+        }else if(error.status==400){
           this.somethingElse = true;
-        }});
+        }
+      });
     }))
     .subscribe(resp=>{
       this.response = resp;
@@ -40,20 +42,16 @@ export class UserHomepageComponent implements OnInit {
       });
     })
   }
-
   public backTotheHomepage(){
     this.route.navigate(['/homepage']);
   }
   public toUserDetails(){
     this.route.navigate(['/userDetails']);
   }
-
   public toSupport(){
     this.route.navigate(['/support']);
   }
-
   ngOnInit(): void {
     this.main();
   }
-
 }

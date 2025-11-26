@@ -11,6 +11,7 @@ import { UserHomepageComponent } from './components/user-homepage/user-homepage.
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 import { SupportComponentComponent } from './components/support-component/support-component.component';
 import { CardDetailComponentComponent } from './components/card-detail-component/card-detail-component.component';
+import { UserDetailComponentComponent } from './components/user-detail-component/user-detail-component.component';
 
 const routes: Routes = [{
   path: 'home', component: HomepageComponent
@@ -36,6 +37,8 @@ const routes: Routes = [{
   path: 'songDetails', component: CardDetailComponentComponent
 },{
   path: 'support', component: SupportComponentComponent
+},{
+  path: 'userDetails', component: UserDetailComponentComponent
 },{
   path: '**', redirectTo: 'home'
 }];
