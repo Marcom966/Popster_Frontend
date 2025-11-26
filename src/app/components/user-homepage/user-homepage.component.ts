@@ -13,8 +13,10 @@ import { PostFileServiceService } from 'src/app/services/post-file-service.servi
 export class UserHomepageComponent implements OnInit {
   username!: string|null;
   requsestSub = new Subscription();
-  data!: any;
+  response: any[] = [];
+  data: any[] = [];
   noFiles: boolean = false;
+  userNameFromBackend!: string;
 
   constructor(public http: HttpClient, public getfiles: PostFileServiceService, private route: Router) { }
 
@@ -28,10 +30,14 @@ export class UserHomepageComponent implements OnInit {
         }});
     }))
     .subscribe(resp=>{
-      this.data = resp;
-      console.log(this.data);
-      
-  })}
+      this.response = resp;
+      this.response.forEach((element: any)=>{
+        if(element['usernName']==this.username){
+          this.data.push(element);
+        }
+      });
+    })
+  }
 
   public backTotheHomepage(){
     this.route.navigate(['/homepage']);

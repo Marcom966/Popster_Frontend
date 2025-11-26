@@ -1,0 +1,192 @@
+.iHateThisColor {
+    background-color: black;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    color: white;
+}
+.upperContainer{
+    background-color: yellow;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    border: 1px white solid;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 93px;
+}
+
+.navbar{
+    width:100%;
+    height: 60px;
+    position: absolute;
+    left: -1px;
+    right: 0px;
+    top: 93px;
+    background-color: transparent;
+    border: 0.5px solid white;
+    box-shadow: 0 0 15px #fff
+
+}
+.welcome{
+    color: white;
+    background-color: transparent;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    position: absolute;
+    top: 21px;
+    left: 895px;
+    font-weight: bold;
+}
+.subscribe{
+    color: white;
+    background-color: transparent;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    position: absolute;
+    top: 102px;
+    left: 180px;
+}
+.wrong{
+    color: red;
+    background-color: transparent;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    position: absolute;
+    top: 105px;
+    left: 180px;
+}
+.logbutton{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    width: 157px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;
+}
+.logbutton:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.CardGrids{
+    color: black;
+}
+.footer{
+    top: 763px;
+    position: relative;
+    color: white;
+    border: 1px solid white;
+    box-shadow: 0 0 15px #fff;
+    width: 100%;
+    left: 0px;
+    height: 156px;
+}
+.FileUpload{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 15px;
+    left: 1757px;
+    width: 131px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;   
+}
+.FileUpload:hover{
+    box-shadow: 0 0 2px #fff;
+}
+.hompageUno{
+    top: 176px;
+    position: absolute;
+    left: 812px;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.errorHomepage{
+    top: 176px;
+    position: absolute;
+    left: 752px;
+    color: white;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+}
+.container{
+    max-width: 100vh;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.h1New{
+    font-weight: bold;
+    font-family: 'san francisco', Helvetica, Arial, san-serif;
+    margin-top: 20px;
+}
+.somethingElseclass{
+    background-color: black;
+    position: absolute;
+    top: 391px;
+    left: 491px;
+    font-family: 'san francisco', Helvetica, Arial, san-serif;
+    font-weight: bold;
+    color: red;
+    font-size: 40px;
+}
+.buttonSupport{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 494px;
+    left: 815px;
+    width: 268px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;
+}
+.buttonSupport:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.CardcontainerHm{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: space-between;
+    margin-left: 222px
+}
+.onlyOneCard{
+    left: 724px;
+    position: absolute;
+}
+.twocardsRow{
+    position: absolute;
+    left: 468px;
+}
+.cardContainer{
+    background-color: white;
+    width: 300px;
+    height: 400px;
+
+}
+.bigDiv{
+    margin-top: 20px;
+}
+.nuovoContainer{
+    height: 100%;
+    margin-top: 152px;
+}
+
+
