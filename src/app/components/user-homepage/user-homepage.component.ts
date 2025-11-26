@@ -17,6 +17,7 @@ export class UserHomepageComponent implements OnInit {
   data: any[] = [];
   noFiles: boolean = false;
   userNameFromBackend!: string;
+  somethingElse: boolean = false;
 
   constructor(public http: HttpClient, public getfiles: PostFileServiceService, private route: Router) { }
 
@@ -27,6 +28,7 @@ export class UserHomepageComponent implements OnInit {
       return throwError(()=>{
         if(error){
           this.noFiles = true;
+          this.somethingElse = true;
         }});
     }))
     .subscribe(resp=>{
@@ -44,6 +46,10 @@ export class UserHomepageComponent implements OnInit {
   }
   public toUserDetails(){
     this.route.navigate(['/userDetails']);
+  }
+
+  public toSupport(){
+    this.route.navigate(['/support']);
   }
 
   ngOnInit(): void {
