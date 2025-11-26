@@ -4,7 +4,7 @@
     </div>
     <nav class="navbar">
         <button type="button" class="logbutton" (click)="backTotheHomepage()">Back to the Homepage</button>
-        <button type="button" class="FileUpload" (click)="ToUserDetails()">Dettagli Utente</button>
+        <button type="button" class="FileUpload" (click)="toUserDetails()">Dettagli Utente</button>
         <div class="header">
             <h1 class="welcome">Welcome {{username}}</h1>
         </div>
@@ -15,16 +15,16 @@
         </div>
         <div class="bigDiv" *ngIf="noFiles==false">
             <div class="CardcontainerHm">
-                <div [ngClass]="response!=undefined&&response.length==2 ? 'row twocardsRow' : 'row'">
-                    <div [ngClass]="response!=undefined&&response.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'" *ngFor="let r of response">   
-                        <app-card [ngClass]="response!=undefined&&response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+                <div [ngClass]="data!=undefined&&data.length==2 ? 'row twocardsRow' : 'row'">
+                    <div [ngClass]="data!=undefined&&data.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'" *ngFor="let r of data">   
+                        <app-card [ngClass]="data!=undefined&&data.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div Class="somethingElseclass"  *ngIf="sometghingEWlse==true">An error has occured, please contact our administrators</div>
-    <button type="button" class="buttonSupport" *ngIf="sometghingEWlse==true" (click)="toSupport()">Contact support</button>
+    <!---<div Class="somethingElseclass"  *ngIf="sometghingEWlse==true">An error has occured, please contact our administrators</div>
+    <button type="button" class="buttonSupport" *ngIf="sometghingEWlse==true" (click)="toSupport()">Contact support</button>--->
     <div class="footer">
         <app-footer></app-footer>
     </div>
