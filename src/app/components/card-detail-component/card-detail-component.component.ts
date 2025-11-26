@@ -102,7 +102,7 @@ export class CardDetailComponentComponent {
 
   }
 
-  playStream(url: string){
+  public playStream(url: string){
     this.audioService.playStream(url)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
@@ -120,42 +120,46 @@ export class CardDetailComponentComponent {
       });
   }
 
-  pause() {
+  public pause() {
     console.log('Pausa audio');
     this.audioService.pause();
   }
 
-  play() {
+  public play() {
     console.log('Ripresa audio');
     this.audioService.play();
   }
 
-  stop() {
+  public stop() {
     console.log('Stop audio');
     this.audioService.stop();
   }
 
-  mute() {
+  public mute() {
     console.log('Muto audio');
     this.audioService.mute();
   }
 
-  unmute() {
+  public unmute() {
     console.log('Unmute audio');
     this.audioService.unmute();
   }
 
-  onSliderChange(event: any) {
+  public onSliderChange(event: any) {
     this.dragging = true;
   }
 
-  onSliderChangeEnd(event: any) {
+  public onSliderChangeEnd(event: any) {
     let time = Number(event.target.value);
     console.log('Cambio posizione audio:', time);
     if(Number.isFinite(time)){
       this.audioService.seekTo(time);
     }
     this.dragging = false;
+  }
+
+  public goToUserHomepage(){
+    this.route.navigate(['/userHomepage']);
   }
 
   public backToHome(){

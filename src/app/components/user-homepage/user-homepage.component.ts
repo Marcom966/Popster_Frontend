@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
     standalone: false
 })
 export class UserHomepageComponent implements OnInit {
+  username!: string|null;
   public main(){
-    return 'ciao';
+    this.username = localStorage.getItem('user_name');
   }
 
   constructor() { }
