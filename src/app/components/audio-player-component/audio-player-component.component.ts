@@ -9,6 +9,7 @@ import { StreamState } from 'src/app/Interfaces/stream-state';
 import { AudioPlayerServiceService } from 'src/app/services/audio-player-service.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import { faPlay, faPause, faStop, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { N } from '@angular/core/navigation_types.d-u4EOrrdZ';
 
 @Component({
   selector: 'app-audio-player-component',
@@ -135,8 +136,9 @@ export class AudioPlayerComponentComponent implements OnInit, OnDestroy {
     this.audioService.unmute();
   }
 
-  onSliderChange(event: any) {
-    this.dragging = true;
+  onSliderInput(event: any){
+    const time = Number(event.target.value);
+    this.audioService.seekTo(time);
   }
 
   onSliderChangeEnd(change: any) {

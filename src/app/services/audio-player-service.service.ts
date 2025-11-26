@@ -103,7 +103,7 @@ export class AudioPlayerServiceService {
   }
   seekTo(seconds: any){
     let time = Number(seconds);
-    if(Number.isFinite(time)){
+    if(!Number.isFinite(time)){
       return;
     };
     if(this.toPlayObject.readyState < 1){
