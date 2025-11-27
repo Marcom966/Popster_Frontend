@@ -82,7 +82,9 @@
 }
 .footer{
     top: 763px;
-    position: relative;
+    bottom: 0pt;
+    position: fixed;
+    background-attachment: scroll;
     color: white;
     border: 1px solid white;
     box-shadow: 0 0 15px #fff;
