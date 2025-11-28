@@ -9,13 +9,14 @@ import { StreamState } from 'src/app/Interfaces/stream-state';
 import { AudioPlayerServiceService } from 'src/app/services/audio-player-service.service';
 import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome'
 import { faPlay, faPause, faStop, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-card-detail-component',
-  imports: [CommonModule, FaIconComponent,FontAwesomeModule],
+  imports: [CommonModule, FaIconComponent, FontAwesomeModule],
   templateUrl: './card-detail-component.component.html',
-  styleUrl: './card-detail-component.component.css'
+  styleUrl: './card-detail-component.component.css',
 })
 export class CardDetailComponentComponent {
   @Input() dataToPlay!: FileDataInterface;
