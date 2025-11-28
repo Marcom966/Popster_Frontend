@@ -1,8 +1,10 @@
 <div class="footer">
     <div class="copyright">
         <div class="toUsernamePage">
-            <button class="toUserPage" (click)="toUserPage()">{{username}}'s profile</button>
+            <button class="toUserPage" *ngIf="username" (click)="toUserPage()">{{username ? (username+"'s profile") : ''}}</button>
         </div>
         <p>© 2024 Popster, Marco Meneghetti. All rights reserved.</p>
+        <div class="toAllFilesPage">
+            <button class="toAllFiles" *ngIf="username" (click)="toAllFilesPage()">See all files uploaded by {{username}}</button>
     </div>
 </div>

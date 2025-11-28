@@ -18,6 +18,10 @@ export class FooterComponent implements OnInit {
   public toUserPage():void{
     this.route.navigate(['/userDetails']);
   }
+
+  public toAllFilesPage():void{
+    this.route.navigate(['/userHomepage']);
+  }
   
   ngOnInit(): void {
     this.main();
