@@ -1,10 +1,12 @@
 <div class="footer">
     <div class="copyright">
         <div class="toUsernamePage">
-            <button class="toUserPage" *ngIf="username" (click)="toUserPage()">{{username ? (username+"'s profile") : ''}}</button>
+            <div class="userNotFound" *ngIf="!username">Click on the top button to subscribe</div>
+            <button class="toUserPage" *ngIf="username" (click)="toUserPage()">{{username ? (username+"'s profile") : 'Subscribe'}}</button>
         </div>
         <p>© 2024 Popster, Marco Meneghetti. All rights reserved.</p>
         <div class="toAllFilesPage">
+            <div class="userNotFoundDue" *ngIf="!username">Welcome to Popster</div>
             <button class="toAllFiles" *ngIf="username" (click)="toAllFilesPage()">See all files uploaded by {{username}}</button>
     </div>
 </div>
