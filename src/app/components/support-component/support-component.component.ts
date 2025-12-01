@@ -31,7 +31,7 @@ export class SupportComponentComponent {
   public onSubitSupport(form: NgForm){
     this.name = form.value.name;
     this.email = form.value.username;
-    this.error = form.value.error;
+    this.error = form.value.error+'Popster error message from user: ';
     this.attachments = form.value.attachments;
     if(localStorage.getItem('user_name')!=null){
       this.username = localStorage.getItem('user_name')!;
