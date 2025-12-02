@@ -168,14 +168,13 @@ export class CardDetailComponentComponent {
   }
 
   public deleteFile(){
-    this.requestSub = this.http.delete(`http://localhost:8080/api/v1/file/${this.dataId}`).subscribe({
-      next: response => {
-        window.alert('File deleted successfully'+response.toString());
-      },
-      error: (error) => {
-        console.error('Error deleting file:', error);
-      }
-    });
+    if (this.dataId) {
+      this.requestSub = this.http.delete(this.dataId).subscribe(()=>{
+        window.alert('File deleted successfully.');
+      });
+    } else {
+      console.error('Error: dataId is null or undefined.');
+    }
   }
 
   public changeFile(){
