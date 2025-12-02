@@ -134,3 +134,55 @@
     margin-left: 857px;
     background-color: transparent;
 }
+.buttonFile{
+    margin-top: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 334px;
+    margin-left: 797px;
+    height: 47px;
+}
+.deleteFile{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 6px;
+    margin-left: -1px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+.deleteFile:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.changeFile{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 6px;
+    margin-left: 5px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 25px;
+    margin-right: -7px;
+}
+.changeFile:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.downloadFile{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 6px;
+    margin-left: 11px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+.downloadFile:hover{
+    box-shadow: 0 0 15px #fff;
+}

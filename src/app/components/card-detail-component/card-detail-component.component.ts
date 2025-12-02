@@ -167,6 +167,18 @@ export class CardDetailComponentComponent {
     this.route.navigate(['/home']);
   }
 
+  public deleteFile(){
+
+  }
+
+  public changeFile(){
+
+  }
+
+  public downloadFile(){
+    
+  }
+
   ngOnDestroy() {
     if (this.audioUrl) {
       URL.revokeObjectURL(this.audioUrl);
