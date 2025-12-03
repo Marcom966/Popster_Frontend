@@ -169,8 +169,9 @@ export class CardDetailComponentComponent {
 
   public deleteFile(){
     if (this.dataId) {
-      this.requestSub = this.http.delete(this.dataId).subscribe(()=>{
-        window.alert('File deleted successfully.');
+      this.requestSub = this.http.delete(this.dataId).subscribe((resp)=>{
+        console.log(resp);
+        
       });
     } else {
       console.error('Error: dataId is null or undefined.');
