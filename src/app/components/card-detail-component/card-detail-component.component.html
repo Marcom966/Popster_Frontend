@@ -50,11 +50,16 @@
                     (change)="onSliderChangeEnd($event)">
                 <span>{{audioService.formatTime(state.currentTime||0) }} / {{audioService.formatTime(state.duration||0) }}</span>
             </div>
+            <div class="buttonFile">
+                <button type="button" class="deleteFile" (click)="deleteFile()">Delete File</button>
+                <button type="button" class="changeFile" (click)="changeFile()">Modify File</button>
+                <button type="button" class="downloadFile" (click)="downloadFile()">Download File</button>
+            </div>
         </div>
-        <div class="buttonFile">
-            <button type="button" class="deleteFile" (click)="deleteFile()">Delete File</button>
-            <button type="button" class="changeFile" (click)="changeFile()">Modify File</button>
-            <button type="button" class="downloadFile" (click)="downloadFile()">Download File</button>
+        <div class="noFileClass" *ngIf="(noLink&&notRecognized)||noLink||notRecognized">
+            <h2 class="noFileAvailable">The file has been deleted or it's in an unsupported format</h2>
+            <p class="pUnder">Click the button to return to the homepage and {{notRecognized ? "reupload the file" : "upload a file"}}</p>
+            <button type="button" [ngClass]="notRecognized ? 'NotRecognized' : 'goBackHome'" (click)="notRecognized ? deleteFile() : backToHome()">{{notRecognized ? "Delete the File" : "Back to the Homepage"}}</button>
         </div>
     </div>
 </div>

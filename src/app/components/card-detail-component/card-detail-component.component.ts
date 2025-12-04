@@ -10,6 +10,7 @@ import { AudioPlayerServiceService } from 'src/app/services/audio-player-service
 import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome'
 import { faPlay, faPause, faStop, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { FooterComponent } from '../footer/footer.component';
+import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 
 @Component({
@@ -50,7 +51,7 @@ export class CardDetailComponentComponent {
     error: false,
     mute: false
   };
-  constructor(private route: Router, private http: HttpClient, public audioService: AudioPlayerServiceService) {}
+  constructor(private route: Router, private http: HttpClient, public audioService: AudioPlayerServiceService, private ToDeleteFile: PostFileServiceService) {}
 
   private destroy$ = new Subject<void>();
   private audioUrl: string | null = null;
@@ -169,9 +170,13 @@ export class CardDetailComponentComponent {
 
   public deleteFile(){
     if (this.dataId) {
-      this.requestSub = this.http.delete(this.dataId).subscribe((resp)=>{
-        console.log(resp);
-        
+      this.requestSub = this.ToDeleteFile.deleteFileById(this.dataId).subscribe((resp)=>{
+        let message = resp['message'];
+        if(message.includes('has been successfully deleted')){
+          window.alert('File deleted successfully.');
+          URL.revokeObjectURL(this.audioUrl!);
+          this.noLink = true;
+        }
       });
     } else {
       console.error('Error: dataId is null or undefined.');
