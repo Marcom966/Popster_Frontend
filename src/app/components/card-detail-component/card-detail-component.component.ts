@@ -22,6 +22,7 @@ import { PostFileServiceService } from 'src/app/services/post-file-service.servi
 export class CardDetailComponentComponent {
   @Input() dataToPlay!: FileDataInterface;
   username!: string|null;
+  password!: string|null;
   dataToPassInterface!: FileDataInterface;
   dataName!: string|null;
   dataId!: string|null;
@@ -59,12 +60,15 @@ export class CardDetailComponentComponent {
 
   public main(){
     this.username = localStorage.getItem('user_name');
+    this.password = localStorage.getItem('password');
     this.dataName = localStorage.getItem('dataname');
     this.dataId = localStorage.getItem('dataid');
     this.dataArtistName = localStorage.getItem('dataartistname');
     this.dataSongName = localStorage.getItem('datasongname');
     this.dataUserName = localStorage.getItem('datausername');
     this.dataLink = localStorage.getItem('datalink');
+    console.log(this.username, this.dataUserName);
+    
   }
 
 
@@ -182,6 +186,7 @@ export class CardDetailComponentComponent {
         }catch(err){
           console.error("Errore durante l'eliminazione da IndexedDB:", err);
         }
+        localStorage.clear();
       });
     } else {
       console.error('Error: dataId is null or undefined.');

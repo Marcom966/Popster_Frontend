@@ -50,7 +50,7 @@
                     (change)="onSliderChangeEnd($event)">
                 <span>{{audioService.formatTime(state.currentTime||0) }} / {{audioService.formatTime(state.duration||0) }}</span>
             </div>
-            <div class="buttonFile">
+            <div class="buttonFile" *ngIf="username&&password&&username==dataUserName">
                 <button type="button" class="deleteFile" (click)="deleteFile()">Delete File</button>
                 <button type="button" class="changeFile" (click)="changeFile()">Modify File</button>
                 <button type="button" class="downloadFile" (click)="downloadFile()">Download File</button>
