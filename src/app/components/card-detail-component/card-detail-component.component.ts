@@ -170,12 +170,17 @@ export class CardDetailComponentComponent {
 
   public deleteFile(){
     if (this.dataId) {
-      this.requestSub = this.ToDeleteFile.deleteFileById(this.dataId).subscribe((resp)=>{
+      this.requestSub = this.ToDeleteFile.deleteFileById(this.dataId).subscribe(async (resp)=>{
         let message = resp['message'];
         if(message.includes('has been successfully deleted')){
           window.alert('File deleted successfully.');
           URL.revokeObjectURL(this.audioUrl!);
           this.noLink = true;
+        }
+        try{
+          await this.deleteFromIndexedDB(this.dataId!);
+        }catch(err){
+          console.error("Errore durante l'eliminazione da IndexedDB:", err);
         }
       });
     } else {
@@ -190,6 +195,30 @@ export class CardDetailComponentComponent {
   public downloadFile(){
 
   }
+
+  private deleteFromIndexedDB(id: string): Promise<void>{
+    return new Promise((resolve, reject)=>{
+      const request = indexedDB.open('fileStorage',1);
+      request.onerror = ()=>{
+        reject("errore nell'aperura di IndexedDb");
+      };
+      
+      request.onsuccess = (event: any)=>{
+        const db = event.target.result;
+        const trans = db.transaction(['files'], 'readwrite');
+        const store = trans.objectStore('files');
+        const deleteReq = store.delete(id);
+        deleteReq.onsuccess = ()=>{
+          console.log('file eliminato con successo da IndexedDB:', id);
+          resolve();
+        };
+        deleteReq.onerror = ()=>{
+          reject('errore nell\'eliminazione del file da IndexedDB');
+        };
+      };
+    });
+  }
+
 
   ngOnDestroy() {
     if (this.audioUrl) {

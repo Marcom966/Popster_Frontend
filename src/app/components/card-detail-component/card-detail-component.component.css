@@ -186,3 +186,46 @@
 .downloadFile:hover{
     box-shadow: 0 0 15px #fff;
 }
+.goBackHome{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 200px;
+    height: 40px;
+}
+.goBackHome:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.NotRecognized{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 200px;
+    height: 40px;
+}
+.NotRecognized:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.noFileAvailable{
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
+    margin-top: 57px;
+}
+.pUnder{
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-weight: medium;
+    color: white;
+    margin-top: 20px;
+}
