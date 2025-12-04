@@ -170,7 +170,7 @@ export class CardDetailComponentComponent {
 
   public deleteFile(){
     if (this.dataId) {
-      this.requestSub = this.ToDeleteFile.deleteFileById(this.dataId).subscribe(async (resp)=>{
+      this.requestSub = this.ToDeleteFile.deleteFileById(this.dataId).subscribe(async(resp)=>{
         let message = resp['message'];
         if(message.includes('has been successfully deleted')){
           window.alert('File deleted successfully.');
