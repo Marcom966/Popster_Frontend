@@ -66,11 +66,8 @@ export class CardDetailComponentComponent {
     this.dataArtistName = localStorage.getItem('dataartistname');
     this.dataSongName = localStorage.getItem('datasongname');
     this.dataUserName = localStorage.getItem('datausername');
-    this.dataLink = localStorage.getItem('datalink');
-    console.log(this.username, this.dataUserName);
-    
+    this.dataLink = localStorage.getItem('datalink');    
   }
-
 
 
 
@@ -186,7 +183,12 @@ export class CardDetailComponentComponent {
         }catch(err){
           console.error("Errore durante l'eliminazione da IndexedDB:", err);
         }
-        localStorage.clear();
+        localStorage.removeItem('dataname');
+        localStorage.removeItem('dataid');
+        localStorage.removeItem('dataartistname');
+        localStorage.removeItem('datasongname');
+        localStorage.removeItem('datalink');
+        localStorage.removeItem('datausername');
       });
     } else {
       console.error('Error: dataId is null or undefined.');
@@ -218,7 +220,7 @@ export class CardDetailComponentComponent {
           resolve();
         };
         deleteReq.onerror = ()=>{
-          reject('errore nell\'eliminazione del file da IndexedDB');
+          reject("errore nell'eliminazione del file da IndexedDB");
         };
       };
     });
