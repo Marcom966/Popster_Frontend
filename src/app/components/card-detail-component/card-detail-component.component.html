@@ -10,10 +10,16 @@
         <div class="errorClass" *ngIf="notRecognized==true">Formato file non riconosciuto</div>
             <div class="controls" *ngIf="!noLink && !notRecognized">
                 <div class="songDetails" *ngIf="!noLink &&!notRecognized">
-                    <div class="fileClass">Original File Name: {{dataName ? dataName : 'Not set'}}</div>
-                    <div class="artistClass">Artist: {{dataArtistName ? dataArtistName : 'Not set'}}</div>
-                    <div class="songClass">Song: {{dataSongName ? dataSongName : 'Not Set'}}</div>
-                    <div class="uploaderClass">Uploaded by: {{dataUserName ? dataUserName : 'Not set'}}</div>
+                    <form class="clickedForm" *ngIf="clicked" #formChangeFile="ngForm" (ngSubmit)="saveChangesForm(formChangeFile)">
+                        <div class="fileClass">Original File Name: {{dataName ? dataName : 'Not set'}}</div>
+                        <div class="artistClass">Artist: {{dataArtistName ? dataArtistName : 'Not set'}}
+                            <input type="text" class="artistNameInput" name="artistNameInput" *ngIf="clicked" ngModel>
+                        </div>
+                        <div class="songClass">Song: {{dataSongName ? dataSongName : 'Not Set'}}
+                            <input type="text" class="songNameInput" name="songNameInput" *ngIf="clicked" ngModel>
+                        </div>
+                        <div class="uploaderClass">Uploaded by: {{dataUserName ? dataUserName : 'Not set'}}</div>
+                    </form>
                 </div>
                 <div *ngIf="!notRecognized" class="player-controls">
                     <button (click)="playAudio()" [disabled]="state.playing">

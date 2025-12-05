@@ -11,11 +11,12 @@ import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawe
 import { faPlay, faPause, faStop, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { FooterComponent } from '../footer/footer.component';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
+import { FormsModule, NgForm } from '@angular/forms';
 
 
 @Component({
   selector: 'app-card-detail-component',
-  imports: [CommonModule, FaIconComponent, FontAwesomeModule],
+  imports: [CommonModule, FaIconComponent, FontAwesomeModule, FormsModule],
   templateUrl: './card-detail-component.component.html',
   styleUrl: './card-detail-component.component.css',
 })
@@ -43,6 +44,9 @@ export class CardDetailComponentComponent {
   faVolumeMuteIcon!: any;
   faVolumeUpIcon!: any;
   clicked: boolean = false;
+  artistName!: string;
+  songName!: string;
+  formData = new FormData();
   state: StreamState = {
     playing: false,
     readableCurrentTime: '',
@@ -198,11 +202,17 @@ export class CardDetailComponentComponent {
 
   public changeFile(){
     this.clicked = true;
-
   }
 
   public saveChanges(){
 
+  }
+
+  public saveChangesForm(form: NgForm){
+    this.artistName = form.value.artistName;
+    this.songName = form.value.songName;
+    this.formData.append('artistName', this.artistName);
+    this.formData.append('songName', this.songName);
   }
 
   public downloadFile(){
