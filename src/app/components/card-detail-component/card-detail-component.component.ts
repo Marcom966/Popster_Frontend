@@ -49,6 +49,8 @@ export class CardDetailComponentComponent {
   songName!: string;
   formData = new FormData();
   buttonType: string = 'button';
+  artistNameNew!: string;
+  songNameNew!: string;
   state: StreamState = {
     playing: false,
     readableCurrentTime: '',
@@ -215,12 +217,13 @@ export class CardDetailComponentComponent {
     this.formData.append('songName', this.songName);
   }
 
-  
+
   public saveChanges(){
     this.formChangeFile.valid ? this.saveChangesForm(this.formChangeFile) : console.error('Form non valido');
     this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe((resp)=>{
-      let message = resp['message'];
-      console.log(message);
+      this.artistNameNew = resp['body']['artistName'];
+      this.songNameNew = resp['body']['songName'];
+      window.alert('File changed successfully.');
     });
   }
 
