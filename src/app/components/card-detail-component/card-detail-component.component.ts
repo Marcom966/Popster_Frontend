@@ -42,7 +42,6 @@ export class CardDetailComponentComponent {
   faStopIcon!: any;
   faVolumeMuteIcon!: any;
   faVolumeUpIcon!: any;
-  fileDeleted: boolean = false;
   state: StreamState = {
     playing: false,
     readableCurrentTime: '',
@@ -190,7 +189,6 @@ export class CardDetailComponentComponent {
         localStorage.removeItem('datasongname');
         localStorage.removeItem('datalink');
         localStorage.removeItem('datausername');
-        this.fileDeleted = true;
       });
     } else {
       console.error('Error: dataId is null or undefined.');
