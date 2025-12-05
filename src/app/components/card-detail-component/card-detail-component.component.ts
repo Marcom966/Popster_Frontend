@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Track } from 'ngx-audio-player';
 import { Subject, Subscription, takeUntil } from 'rxjs';
@@ -22,6 +22,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 })
 export class CardDetailComponentComponent {
   @Input() dataToPlay!: FileDataInterface;
+  @ViewChild('formChangeFile') formChangeFile!: NgForm;
   username!: string|null;
   password!: string|null;
   dataToPassInterface!: FileDataInterface;
@@ -212,12 +213,11 @@ export class CardDetailComponentComponent {
     this.songName = form.value.songNameInput;
     this.formData.append('artistName', this.artistName);
     this.formData.append('songName', this.songName);
-    console.log(this.formData);
-    
   }
 
+  
   public saveChanges(){
-    console.log(this.formData);
+    this.formChangeFile.valid ? this.saveChangesForm(this.formChangeFile) : console.error('Form non valido');
     this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe((resp)=>{
       let message = resp['message'];
       console.log(message);
