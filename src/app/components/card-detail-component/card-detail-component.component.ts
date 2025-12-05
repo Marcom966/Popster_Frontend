@@ -212,8 +212,8 @@ export class CardDetailComponentComponent {
   }
 
   public saveChangesForm(form: NgForm){
-    this.artistName = form.value.artistName;
-    this.songName = form.value.songName;
+    this.artistName = form.value.artistNameInput;
+    this.songName = form.value.songNameInput;
     this.formData.append('artistName', this.artistName);
     this.formData.append('songName', this.songName);
   }
