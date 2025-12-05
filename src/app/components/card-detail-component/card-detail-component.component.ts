@@ -205,7 +205,10 @@ export class CardDetailComponentComponent {
   }
 
   public saveChanges(){
-
+    this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe((resp)=>{
+      let message = resp['message'];
+      console.log(message);
+    });
   }
 
   public saveChangesForm(form: NgForm){
