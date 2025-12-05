@@ -42,6 +42,7 @@ export class CardDetailComponentComponent {
   faStopIcon!: any;
   faVolumeMuteIcon!: any;
   faVolumeUpIcon!: any;
+  clicked: boolean = false;
   state: StreamState = {
     playing: false,
     readableCurrentTime: '',
@@ -196,6 +197,11 @@ export class CardDetailComponentComponent {
   }
 
   public changeFile(){
+    this.clicked = true;
+
+  }
+
+  public saveChanges(){
 
   }
 
