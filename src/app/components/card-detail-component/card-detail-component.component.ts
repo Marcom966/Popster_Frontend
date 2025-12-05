@@ -205,6 +205,7 @@ export class CardDetailComponentComponent {
   }
 
   public saveChanges(){
+    console.log(this.formData);
     this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe((resp)=>{
       let message = resp['message'];
       console.log(message);
@@ -216,6 +217,8 @@ export class CardDetailComponentComponent {
     this.songName = form.value.songNameInput;
     this.formData.append('artistName', this.artistName);
     this.formData.append('songName', this.songName);
+    console.log(this.formData);
+    
   }
 
   public downloadFile(){

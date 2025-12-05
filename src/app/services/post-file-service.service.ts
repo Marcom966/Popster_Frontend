@@ -51,7 +51,8 @@ export class PostFileServiceService {
   }
 
   public changeFileById(id: string, formData: FormData): Observable<any>{
-    return this.http.put<any>(`http://localhost:8080/api/v1/file/${id}`, formData, {
+    const url = `http://localhost:8080/api/v1/file/${id}`;
+    return this.http.put<any>(url, formData, {
       headers: new HttpHeaders({'Accept': 'application/json'}),
       reportProgress: true, observe: 'response'})
       .pipe(catchError(this.handleError));
