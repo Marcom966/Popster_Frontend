@@ -224,6 +224,8 @@ export class CardDetailComponentComponent {
       this.artistNameNew = resp['body']['artistName'];
       this.songNameNew = resp['body']['songName'];
       window.alert('File changed successfully.');
+      this.clicked = false;
+      this.buttonType = 'button';
     });
   }
 
