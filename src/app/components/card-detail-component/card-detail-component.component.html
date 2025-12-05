@@ -60,7 +60,7 @@
             </div>
             <div [ngClass]="clicked ? 'largeButtons' : 'buttonFile'" *ngIf="username==dataUserName">
                 <button type="button" class="deleteFile" (click)="deleteFile()">Delete File</button>
-                <button type="button" [ngClass]="clicked ? 'saveChanges' : 'changeFile'" (click)="clicked ? saveChanges() : changeFile()">{{clicked ? 'Save Changes' : 'Modify File'}}</button>
+                <button [type]="buttonType" [ngClass]="clicked ? 'saveChanges' : 'changeFile'" (click)="clicked ? saveChanges() : changeFile()">{{clicked ? 'Save Changes' : 'Modify File'}}</button>
                 <button type="button" class="downloadFile" (click)="downloadFile()">Download File</button>
             </div>
         </div>

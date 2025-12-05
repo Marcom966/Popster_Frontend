@@ -47,6 +47,7 @@ export class CardDetailComponentComponent {
   artistName!: string;
   songName!: string;
   formData = new FormData();
+  buttonType: string = 'button';
   state: StreamState = {
     playing: false,
     readableCurrentTime: '',
@@ -202,6 +203,17 @@ export class CardDetailComponentComponent {
 
   public changeFile(){
     this.clicked = true;
+    this.buttonType = 'submit';
+  }
+
+
+  public saveChangesForm(form: NgForm){
+    this.artistName = form.value.artistNameInput;
+    this.songName = form.value.songNameInput;
+    this.formData.append('artistName', this.artistName);
+    this.formData.append('songName', this.songName);
+    console.log(this.formData);
+    
   }
 
   public saveChanges(){
@@ -212,14 +224,6 @@ export class CardDetailComponentComponent {
     });
   }
 
-  public saveChangesForm(form: NgForm){
-    this.artistName = form.value.artistNameInput;
-    this.songName = form.value.songNameInput;
-    this.formData.append('artistName', this.artistName);
-    this.formData.append('songName', this.songName);
-    console.log(this.formData);
-    
-  }
 
   public downloadFile(){
 
