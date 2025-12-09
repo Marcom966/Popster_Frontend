@@ -220,7 +220,7 @@ export class CardDetailComponentComponent {
 
   public saveChanges(){
     this.formChangeFile.valid ? this.saveChangesForm(this.formChangeFile) : console.error('Form non valido');
-    this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe((resp)=>{
+    this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe(resp=>{
       this.artistNameNew = resp['body']['artistName'];
       this.songNameNew = resp['body']['songName'];
       if((this.artistNameNew==null||this.artistNameNew=='')||(this.songNameNew==null||this.songNameNew=='')){
