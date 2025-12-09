@@ -223,6 +223,12 @@ export class CardDetailComponentComponent {
     this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe((resp)=>{
       this.artistNameNew = resp['body']['artistName'];
       this.songNameNew = resp['body']['songName'];
+      if((this.artistNameNew==null||this.artistNameNew=='')||(this.songNameNew==null||this.songNameNew=='')){
+        window.alert('Fields are still empty. No changes made.');
+        this.clicked = false;
+        this.buttonType = 'button';
+        return;
+      }
       window.alert('File changed successfully.');
       this.clicked = false;
       this.buttonType = 'button';

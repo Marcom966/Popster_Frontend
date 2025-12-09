@@ -229,3 +229,88 @@
     color: white;
     margin-top: 20px;
 }
+.artistNameInput{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 15px;
+    color: white;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    font-weight: bold;
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+}
+.artistNameInput:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.artistNameInput:focus{
+    outline: none;
+    box-shadow: 0 0 15px #fff;
+}
+.songNameInput{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 15px;
+    color: white;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: medium;
+    font-weight: bold;
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+}
+.songNameInput:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.songNameInput:focus{
+    outline: none;
+    box-shadow: 0 0 15px #fff;
+}
+.reset{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 33px;
+    height: 32px;
+    margin-left: 9px;
+}
+.reset:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.saveChanges{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 5px;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 120px;
+    height: 30px;
+    margin-left: 10px;
+}
+.saveChanges:hover{
+    box-shadow: 0 0 15px #fff;
+}
+.saveChanges:disabled{
+    color: gray;
+    border: 2px solid gray;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.largeButtons{
+    margin-top: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 369px;
+    margin-left: 777px;
+    height: 45px;
+}
