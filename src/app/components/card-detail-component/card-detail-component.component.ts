@@ -231,7 +231,17 @@ export class CardDetailComponentComponent {
 
 
   public downloadFile(){
-
+    this.requestSub = this.ToDeleteFile.getFilebyId(this.dataId!).subscribe(resp=>{
+      const blob = new Blob([resp], {type: 'application/octet-stream'});
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = this.dataName || 'downloaded_file';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(downloadUrl);   
+    });
   }
 
   private deleteFromIndexedDB(id: string): Promise<void>{
