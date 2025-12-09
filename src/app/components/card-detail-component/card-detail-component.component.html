@@ -11,7 +11,7 @@
             <div class="controls" *ngIf="!noLink && !notRecognized">
                 <div class="songDetails" *ngIf="!noLink &&!notRecognized">
                     <form class="clickedForm" *ngIf="clicked||!noLink&&!notRecognized" #formChangeFile="ngForm" (ngSubmit)="saveChangesForm(formChangeFile)">
-                        <div class="fileClass">Original File Name: {{dataName ? dataName : 'Not set'}}</div>
+                        <div class="fileClass">Original File Name: {{dataName}}</div>
                         <div class="artistClass">Artist: {{dataArtistName ? dataArtistName : clicked ? '' : artistNameNew ? artistNameNew : 'Not Set'}}
                             <input type="text" class="artistNameInput" name="artistNameInput" *ngIf="clicked" ngModel>
                             <button type="reset" id="resetButtonFirst" class='reset' *ngIf="clicked">X</button>
@@ -20,7 +20,7 @@
                             <input type="text" class="songNameInput" name="songNameInput" *ngIf="clicked" ngModel>
                             <button type="reset" id="resetButton" class='reset' *ngIf="clicked">X</button>
                         </div>
-                        <div class="uploaderClass">Uploaded by: {{dataUserName ? dataUserName : 'Not set'}}</div>
+                        <div class="uploaderClass">Uploaded by: {{dataUserName}}</div>
                     </form>
                 </div>
                 <div *ngIf="!notRecognized" class="player-controls">
