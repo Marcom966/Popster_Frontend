@@ -250,7 +250,6 @@ export class CardDetailComponentComponent {
       request.onerror = ()=>{
         reject("errore nell'aperura di IndexedDb");
       };
-      
       request.onsuccess = (event: any)=>{
         const db = event.target.result;
         const trans = db.transaction(['files'], 'readwrite');
