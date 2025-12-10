@@ -191,6 +191,7 @@ export class CardDetailComponentComponent {
           await this.deleteFromIndexedDB(this.dataId!);
         }catch(err){
           console.error("Errore durante l'eliminazione da IndexedDB:", err);
+          window.alert('File deleted from server, but error occurred while deleting from local storage.');
         }
         localStorage.removeItem('dataname');
         localStorage.removeItem('dataid');
