@@ -12,6 +12,7 @@ import { FileSuccessfullComponent } from './components/file-successfull/file-suc
 import { SupportComponentComponent } from './components/support-component/support-component.component';
 import { CardDetailComponentComponent } from './components/card-detail-component/card-detail-component.component';
 import { UserDetailComponentComponent } from './components/user-detail-component/user-detail-component.component';
+import { AllUsersComponentComponent } from './components/all-users-component/all-users-component.component';
 
 const routes: Routes = [{
   path: 'home', component: HomepageComponent
@@ -39,6 +40,8 @@ const routes: Routes = [{
   path: 'support', component: SupportComponentComponent
 },{
   path: 'userDetails', component: UserDetailComponentComponent
+},{
+  path: 'manageUsers', component: AllUsersComponentComponent
 },{
   path: '**', redirectTo: 'home'
 }];
