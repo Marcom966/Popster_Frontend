@@ -18,11 +18,13 @@ export class UserHomepageComponent implements OnInit {
   noFiles: boolean = false;
   userNameFromBackend!: string;
   somethingElse: boolean = false;
+  userNameFile!: string|null;
 
   constructor(public http: HttpClient, public getfiles: PostFileServiceService, private route: Router) { }
 
   public main(){
     this.username = localStorage.getItem('user_name');
+    this.userNameFile = localStorage.getItem('user_name_that_uploaded');
     this.requsestSub = this.getfiles.getAllFiles()
     .pipe(catchError((error)=>{
       return throwError(()=>{
@@ -36,7 +38,7 @@ export class UserHomepageComponent implements OnInit {
     .subscribe(resp=>{
       this.response = resp;
       this.response.forEach((element: any)=>{
-        if(element['usernName']==this.username){
+        if(element['usernName']==this.username||element['usernName']==this.userNameFile){
           this.data.push(element);
         }
       });
@@ -50,6 +52,9 @@ export class UserHomepageComponent implements OnInit {
   }
   public toSupport(){
     this.route.navigate(['/support']);
+  }
+  public redirect(){
+    this.route.navigate(['fileUploadError']);
   }
   ngOnInit(): void {
     this.main();

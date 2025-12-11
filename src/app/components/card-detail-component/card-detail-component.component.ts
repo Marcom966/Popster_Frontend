@@ -172,6 +172,7 @@ export class CardDetailComponentComponent {
 
   public goToUserHomepage(){
     this.route.navigate(['/userHomepage']);
+    localStorage.setItem('user_name_that_uploaded', this.dataUserName!);
   }
 
   public backToHome(){

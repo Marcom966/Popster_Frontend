@@ -4,9 +4,9 @@
     </div>
     <nav class="navbar">
         <button type="button" class="logbutton" (click)="backTotheHomepage()">Back to the Homepage</button>
-        <button type="button" class="FileUpload" (click)="toUserDetails()">Dettagli Utente</button>
+        <button type="button" class="FileUpload" (click)="username ? toUserDetails() : redirect()">Dettagli utente</button>
         <div class="header">
-            <h1 class="welcome">Welcome {{username}}</h1>
+            <h1 *ngIf="username" class="welcome">Welcome {{username}}</h1>
         </div>
     </nav>
     <div class="nuovoContainer">
