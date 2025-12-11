@@ -75,6 +75,7 @@ export class HomepageComponent implements OnInit {
   };
 
   public listData(){
+    localStorage.setItem('page_name', 'homepage');
     this.requestSub = this.getFiles.getAllFiles()
     .pipe(catchError(err=>{
       return throwError(()=>{

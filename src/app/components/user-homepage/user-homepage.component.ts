@@ -19,6 +19,8 @@ export class UserHomepageComponent implements OnInit {
   userNameFromBackend!: string;
   somethingElse: boolean = false;
   userNameFile!: string|null;
+  dataLength!: number;
+  pagename: string = 'userhomepage';
 
   constructor(public http: HttpClient, public getfiles: PostFileServiceService, private route: Router) { }
 
@@ -42,7 +44,13 @@ export class UserHomepageComponent implements OnInit {
           this.data.push(element);
         }
       });
-    })
+      if(this.data.length==0){
+        this.noFiles = true;
+      };
+      this.dataLength = this.data.length;
+      localStorage.setItem('length_of_file_array', this.dataLength.toString());
+      localStorage.setItem('page_name', this.pagename);
+    });
   }
   public backTotheHomepage(){
     this.route.navigate(['/homepage']);

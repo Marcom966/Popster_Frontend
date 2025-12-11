@@ -8,5 +8,6 @@
         <div class="toAllFilesPage">
             <div class="userNotFoundDue" *ngIf="!username">Welcome to Popster</div>
             <button class="toAllFiles" *ngIf="username" (click)="toAllFilesPage()">See all files uploaded by {{username}}</button>
+            <div class="fileLenght" *ngIf="pageName=='userhomepage'">User files: {{lenght=='0' ? 'No files uploaded' : lenght}}</div>
     </div>
 </div>
