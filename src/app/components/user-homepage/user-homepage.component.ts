@@ -20,13 +20,15 @@ export class UserHomepageComponent implements OnInit {
   somethingElse: boolean = false;
   userNameFile!: string|null;
   dataLength!: number;
-  pagename: string = 'userhomepage';
+  pagename!: string;
 
   constructor(public http: HttpClient, public getfiles: PostFileServiceService, private route: Router) { }
 
   public main(){
     this.username = localStorage.getItem('user_name');
     this.userNameFile = localStorage.getItem('user_name_that_uploaded');
+    this.pagename = localStorage.getItem('page_name')||'userhomepage';
+    this.pagename = 'userhomepage';
     this.requsestSub = this.getfiles.getAllFiles()
     .pipe(catchError((error)=>{
       return throwError(()=>{
