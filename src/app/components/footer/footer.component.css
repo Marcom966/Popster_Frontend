@@ -3,9 +3,10 @@
     bottom: 0pt;
     left: 0pt;
     width: 100%;
-    background-color: transparent;
-    border: 2px solit white;
+    background-color: black;
+    border: 2px solid white;
     background-attachment: scroll;
+    box-shadow: 0 0 15px #fff;
 }
 .copyright{
     text-align: center;

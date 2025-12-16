@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { async, catchError, Subscription, throwError } from 'rxjs';
+import { catchError, finalize, Subscription, throwError } from 'rxjs';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 @Component({
@@ -21,22 +21,28 @@ export class UserHomepageComponent implements OnInit {
   userNameFile!: string|null;
   dataLength!: number;
   pagename!: string;
+  isLoading: boolean = true;
 
   constructor(public http: HttpClient, public getfiles: PostFileServiceService, private route: Router) { }
 
   public main(){
+    this.isLoading = true;
     this.username = localStorage.getItem('user_name');
     this.userNameFile = localStorage.getItem('user_name_that_uploaded');
     this.requsestSub = this.getfiles.getAllFiles()
-    .pipe(catchError((error)=>{
-      return throwError(()=>{
-        if(error.toString().includes('0')){
+    .pipe(
+      catchError(error => {
+        if (error.toString().includes('0')) {
           this.noFiles = true;
-        }else if(error.status==400){
+        } else if (error.status == 400) {
           this.somethingElse = true;
         }
-      });
-    }))
+        return throwError(() => error);
+      }),
+      finalize(() => {
+        this.isLoading = false;
+      })
+    )
     .subscribe(async(resp: any)=>{
       this.response = await resp;
       this.response.forEach((element: any)=>{
