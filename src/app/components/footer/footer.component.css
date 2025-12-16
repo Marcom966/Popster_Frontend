@@ -65,3 +65,12 @@
     right: 30px;
     width: 124px;
 }
+.fileLenght{
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 172px;
+}
