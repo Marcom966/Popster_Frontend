@@ -35,6 +35,7 @@ export class HomepageComponent implements OnInit {
   toshow!: string;
   noFiles: boolean = false;
   sometghingEWlse: boolean = false;
+  pagename!: string;
   
 
   constructor(public getUsers: FetchUsersService, public route: Router, private getFiles: PostFileServiceService) { }
@@ -119,6 +120,8 @@ export class HomepageComponent implements OnInit {
     this.requestSub.unsubscribe();
   }
   ngOnInit(): void {
+    this.pagename = 'homepage';
+    localStorage.setItem('page_name', this.pagename);
     this.verify();
     this.listData();
   }
