@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, Subscription, throwError } from 'rxjs';
+import { async, catchError, Subscription, throwError } from 'rxjs';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
 
 @Component({
@@ -37,8 +37,8 @@ export class UserHomepageComponent implements OnInit {
         }
       });
     }))
-    .subscribe(resp=>{
-      this.response = resp;
+    .subscribe(async(resp: any)=>{
+      this.response = await resp;
       this.response.forEach((element: any)=>{
         if(element['usernName']==this.username||element['usernName']==this.userNameFile){
           this.data.push(element);
