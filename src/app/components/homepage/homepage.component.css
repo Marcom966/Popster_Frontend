@@ -190,5 +190,20 @@
     height: 100%;
     margin-top: 152px;
 }
+@media (max-width: 1536px) {
+    .FileUpload{
+        left: 1349px;
+        
+    }
+    .onlyOneCard{
+        left: 618px;
+    }
+    .twocardsRow{
+        left: 320px;
+    }
+    .row{
+        margin-left: -195px;
+    }
+}
 
 
