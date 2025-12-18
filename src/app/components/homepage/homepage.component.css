@@ -196,6 +196,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  top: 391px;
+  left: 491px;
 }
 .spinner {
   border: 8px solid #f3f3f3;
@@ -205,6 +207,13 @@
   height: 60px;
   animation: spin 2s linear infinite;
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 1536px) {
     .FileUpload{
         left: 1349px;
