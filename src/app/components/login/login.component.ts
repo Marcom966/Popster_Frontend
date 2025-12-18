@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   pageOpened!: boolean;
   somethingElse: boolean = false;
   Post: boolean = false;
+  role: string = "user";
   constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, @Inject(GoogleauthServiceService) private googleAuthService: GoogleauthServiceService) { }
 
   public onSubmit(form: NgForm){
@@ -74,10 +75,11 @@ export class LoginComponent implements OnInit {
     let name = this.name;
     let surname = this.surname;
     let password = this.password;
+    let role = this.role;
     if(!password){
       this.notPassword=true;
     }
-    this.requestSub = this.fetchUsers.postUsers(user_name, password, name, surname, birth, eMail)
+    this.requestSub = this.fetchUsers.postUsers(user_name, password, name, surname, birth, eMail, role)
     .pipe(catchError(err=>{
       return throwError(()=>{
         let error = new Error(err).message.toString();

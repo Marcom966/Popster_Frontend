@@ -31,14 +31,14 @@ export class FetchUsersService {
   }
 
 
-  public postUsers(user_name: string, password: string, name: string, surname: string, birth: Date, eMail: string): Observable<any>{
-    const body = JSON.stringify({ user_name, password, name, surname, birth, eMail })
+  public postUsers(user_name: string, password: string, name: string, surname: string, birth: Date, eMail: string, role: string): Observable<any>{
+    const body = JSON.stringify({ user_name, password, name, surname, birth, eMail, role })
     const httpOtions ={
       headers: new HttpHeaders({
         "Content-Type":"application/json",
       })
     };
-    const url = `http://localhost:8080/api/v1/user?user_name=${user_name}&password=${password}&name=${name}&surname=${surname}&birth=${birth}&eMail=${eMail}`;
+    const url = `http://localhost:8080/api/v1/user?user_name=${user_name}&password=${password}&name=${name}&surname=${surname}&birth=${birth}&eMail=${eMail}&role=${role}`;
     return this.http.post<any>(url, body, httpOtions)
       .pipe(catchError(this.handleError));
   }
