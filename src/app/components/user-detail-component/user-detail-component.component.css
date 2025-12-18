@@ -64,3 +64,12 @@
     font-family: 'san francisco', Helvetica, Arial, san-serif;
     margin-top: 20px;
 }
+.userDetail{
+    margin-top: 200px;
+    text-align: center;
+}
+.generalName{
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: xx-large;
+    font-weight: bold;
+}

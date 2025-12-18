@@ -15,21 +15,31 @@ export class UserDetailComponentComponent {
   isLoading: boolean = false;
   username!: string;
   requestSub = new Subscription();
+  name!: string;
+  surname!: string;
+  birth!: Date;
+  eMail!: string;
+  password!: string; 
+  nickname!: string;
   constructor(private route: Router, private getTheuser: FetchUsersService) { }
 
   public main(){
     this.username = localStorage.getItem('user_name') || '';
     this.requestSub = this.getTheuser.returnSpecificUser(this.username)
     .pipe(
-      catchError((error) => {
+      catchError(error=> {
         console.error('Error occurred:', error);
         return throwError(() => new Error('An error occurred while fetching the user.'));
       })
     )
     .subscribe(resp=>{
-      console.log(resp);
+      this.name = resp['name'];
+      this.surname = resp['surname'];
+      this.birth = resp['birth'];
+      this.eMail = resp['eMail'];
+      this.password = resp['password'];
+      this.nickname = resp['nickname'];
     })
-    
   }
 
   public backTotheHomepage() {
