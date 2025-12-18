@@ -5,7 +5,7 @@ import { DataInt } from 'src/app/Interfaces/data-int';
 import { TypeOfUser } from 'src/app/Interfaces/type-of-user';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 @Component({
@@ -36,6 +36,7 @@ export class HomepageComponent implements OnInit {
   noFiles: boolean = false;
   sometghingEWlse: boolean = false;
   pagename!: string;
+  isLoading: boolean = true;
   
 
   constructor(public getUsers: FetchUsersService, public route: Router, private getFiles: PostFileServiceService) { }
@@ -88,8 +89,12 @@ export class HomepageComponent implements OnInit {
           console.error(`Backend returned code ${err.status}, body was: `+er)
         }
       });
+    }),
+    finalize(()=>{
+      this.isLoading = false;
     }))
     .subscribe(res=>{
+      this.isLoading = false;
       this.response = res;
       if(this.response.length==0){
         this.noFiles = true;

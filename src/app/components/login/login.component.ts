@@ -116,14 +116,14 @@ export class LoginComponent implements OnInit {
       });
     }))
     .subscribe(resp=>{
-    resp.forEach((user:any)=>{
-      this.nameNew = user['user_name'];
-      this.passNew = user['password'];
-      this.nameFromDatabase = user['name'];
-      if(this.NameAlready==this.nameNew&&this.passAlready==this.passNew){
-        this.Destination('home');
-        localStorage.setItem('user_name', this.NameAlready);
-        localStorage.setItem('password', this.passAlready);
+      resp.forEach((user:any)=>{
+        this.nameNew = user['user_name'];
+        this.passNew = user['password'];
+        this.nameFromDatabase = user['name'];
+        if(this.NameAlready==this.nameNew&&this.passAlready==this.passNew){
+          this.Destination('home');
+          localStorage.setItem('user_name', this.NameAlready);
+          localStorage.setItem('password', this.passAlready);
         }else{
           if(this.somethingElse==true){
             this.nickAndPassDontMatch=false;
@@ -131,7 +131,7 @@ export class LoginComponent implements OnInit {
           this.nickAndPassDontMatch=true;
         }        
       });       
-    });  
+    });   
   }
   public toSupport(){
     this.route.navigate(['support']);

@@ -11,6 +11,10 @@
         </div>
     </nav>
     <div class="nuovoContainer">
+        <div class="loading-container" *ngIf="isLoading">
+            <div class="spinner"></div>
+            <div class="loading-text">Loading...</div>
+        </div>
         <div class="uselessNess">
             <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : ''}}</h1>
         </div>
