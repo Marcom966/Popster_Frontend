@@ -1,1 +1,13 @@
-<p>user-detail-component works!</p>
+<div class="loading-container" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading...</div>
+</div>
+<div class="iHateThisColor">
+    <div class="upperContainer">
+        <h1 class="h1New">Popster</h1>
+    </div>
+        <nav class="navbar">
+        <button type="button" class="logbutton" (click)="backTotheHomepage()">Back to the Homepage</button>
+        <button type="button" class="FileUpload" (click)="backtoUserFiles()">Back to user files</button>
+    </nav>
+</div>

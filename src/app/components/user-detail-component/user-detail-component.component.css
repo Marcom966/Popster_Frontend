@@ -1,0 +1,66 @@
+.iHateThisColor {
+    background-color: black;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    color: white;
+}
+.upperContainer{
+    background-color: yellow;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: large;
+    border: 1px white solid;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 93px;
+}
+
+.navbar{
+    width:100%;
+    height: 60px;
+    position: absolute;
+    left: -1px;
+    right: 0px;
+    top: 93px;
+    background-color: transparent;
+    border: 0.5px solid white;
+    box-shadow: 0 0 15px #fff
+
+}
+.logbutton{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    width: 157px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;
+}
+.FileUpload{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 15px;
+    left: 1757px;
+    width: 131px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;   
+}
+.h1New{
+    font-weight: bold;
+    font-family: 'san francisco', Helvetica, Arial, san-serif;
+    margin-top: 20px;
+}
