@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { catchError, throwError } from 'rxjs';
+import { catchError, finalize, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-user-detail-component',
@@ -30,6 +30,9 @@ export class UserDetailComponentComponent {
       catchError(error=> {
         console.error('Error occurred:', error);
         return throwError(() => new Error('An error occurred while fetching the user.'));
+      }),    
+      finalize(()=>{
+        this.isLoading = false; 
       })
     )
     .subscribe(resp=>{
