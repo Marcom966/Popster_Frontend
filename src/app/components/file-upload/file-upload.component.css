@@ -229,4 +229,22 @@ input[type=file]::file-selector-button{
     margin-left: -46px;
     width: 399px;
 }
+@media (max-width: 1536px){
+    .centerUplload{
+        left: 650px;
+    }
+    .instructions{
+        left: 667px;
+    }
+    .artist_name{
+        margin-left: -140px;
+    }
+    .input_artist{
+        margin-left: -192px;
+    }
+    .song_name{
+        margin-left: -138px;
+    }
+
+}
 
