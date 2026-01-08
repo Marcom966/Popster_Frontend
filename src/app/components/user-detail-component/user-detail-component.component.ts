@@ -21,6 +21,7 @@ export class UserDetailComponentComponent {
   eMail!: string;
   password!: string; 
   nickname!: string;
+  role!: string;
   constructor(private route: Router, private getTheuser: FetchUsersService) { }
 
   public main(){
@@ -41,7 +42,9 @@ export class UserDetailComponentComponent {
       this.birth = resp['birth'];
       this.eMail = resp['eMail'];
       this.password = resp['password'];
-      this.nickname = resp['nickname'];
+      this.nickname = resp['user_name'];
+      this.role = resp['role'];
+      
     })
   }
 
