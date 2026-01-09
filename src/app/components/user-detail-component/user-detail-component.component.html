@@ -11,11 +11,23 @@
         <button type="button" class="FileUpload" (click)="backtoUserFiles()">Back to user files</button>
     </nav>
     <div class="userDetail">
-        <h1 class="generalName">Name: {{name}}</h1>
-        <h1 class="generalName">Surname: {{surname}}</h1>
-        <h1 class="generalName">Email: {{eMail}}</h1>
-        <h1 class="generalName">Role: {{role}}</h1>
-        <h1 class="generalName">Nickname: {{nickname}}</h1>
-        <h1 class="generalName">Birthday: {{birth}}</h1>
+        <form class="clickedForm"  #formChangeUser="ngForm" (ngSubmit)="saveChangesUser(formChangeUser)">
+            <h1 class="userDetailTitle">{{nickname}}'s Details</h1>
+            <p class="generalName">Name: {{name}}</p>
+                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
+                <button type="reset" id="generalButtonButton" class='reset' *ngIf="clickedForm">X</button>
+            <p class="generalName">Surname: {{surname}}</p>
+                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
+                <button type="reset" id="surnameButton" class='reset' *ngIf="clickedForm">X</button>
+            <p class="generalName">Email: {{eMail}}</p>
+                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
+                <button type="reset" id="emailButton" class='reset' *ngIf="clickedForm">X</button>
+            <p class="generalName">Role: {{role}}</p>
+            <p class="generalName">Nickname: {{nickname}}</p>
+                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
+                <button type="reset" id="resetButtonFirst" class='reset' *ngIf="clickedForm">X</button>
+            <p class="generalName">Birthday: {{birth}}</p>
+            <button type="submit" class="saveChangesButton" *ngIf="logged" [disabled]="formChangeUser.invalid" (click)="clickedForm ? changeUserDetails() : saveChanges()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
+        </form>
     </div>
 </div>

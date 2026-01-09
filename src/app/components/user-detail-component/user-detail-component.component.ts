@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { catchError, finalize, throwError } from 'rxjs';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-detail-component',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './user-detail-component.component.html',
   styleUrl: './user-detail-component.component.css'
 })
@@ -22,10 +23,13 @@ export class UserDetailComponentComponent {
   password!: string; 
   nickname!: string;
   role!: string;
+  clickedForm: boolean = false;
+  logged: boolean = false;
   constructor(private route: Router, private getTheuser: FetchUsersService) { }
 
   public main(){
     this.username = localStorage.getItem('user_name') || '';
+    this.username ? this.logged = true : this.logged = false;
     this.requestSub = this.getTheuser.returnSpecificUser(this.username)
     .pipe(
       catchError(error=> {
@@ -43,9 +47,18 @@ export class UserDetailComponentComponent {
       this.eMail = resp['eMail'];
       this.password = resp['password'];
       this.nickname = resp['user_name'];
-      this.role = resp['role'];
-      
+      this.role = resp['role']; 
     })
+  }
+
+  public saveChangesUser(formChangeUser: NgForm) {
+
+  }
+  public saveChanges(){
+
+  }
+  public changeUserDetails(){
+    this.clickedForm = true;
   }
 
   public backTotheHomepage() {
