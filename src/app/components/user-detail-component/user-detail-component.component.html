@@ -27,7 +27,7 @@
                 <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
                 <button type="reset" id="resetButtonFirst" class='reset' *ngIf="clickedForm">X</button>
             <p class="generalName">Birthday: {{birth}}</p>
-            <button type="submit" class="saveChangesButton" *ngIf="logged" [disabled]="formChangeUser.invalid" (click)="clickedForm ? changeUserDetails() : saveChanges()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
+            <button type="submit" class="saveChangesButton" *ngIf="logged" [disabled]="formChangeUser.invalid" (click)="clickedForm ? saveChanges() : changeUserDetails()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
         </form>
     </div>
 </div>
