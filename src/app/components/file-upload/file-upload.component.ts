@@ -28,11 +28,12 @@ export class FileUploadComponent implements OnInit {
   nameOfficial!: string;
   erroor: boolean = false;
   formData!: FormData;
-  res!: unknown;
+  res!: any;
   idFile!: string;
   resp2!: any;
   artist_name!: string;
   song_name!: string;
+  
   
 
 
@@ -41,11 +42,11 @@ export class FileUploadComponent implements OnInit {
   public main(){
     this.username = localStorage.getItem('user_name');
     } 
-  public onChangeFile(form: NgForm, event: any){
+  public onChangeFile(form: NgForm, event: any){ 
     this.artist_name = form.value.artist_name;
     this.song_name = form.value.song_name;
     this.formData = new FormData();
-    this.file = event.target.files[0];
+    this.file = event?.target?.files?.[0];
     if(this.file){
       this.idFile = crypto.randomUUID();
       this.name = this.file.name;
@@ -64,12 +65,18 @@ export class FileUploadComponent implements OnInit {
       this.formData.append('artist_name', this.artist_name);
       this.formData.append('song_name', this.song_name);
       
-    }else if(this.file==null){
+    }else if(!this.file){
+      this.file = null;
+      console.warn("no file has been uploaded yet");
       return
     }
       
   }
   public onSubmit(){
+    if(!this.file||!this.formData){
+      console.error("No file selected");
+      return;
+    }
     this.requestSub = this.files.postFile(this.formData)
     .pipe(catchError(err=>{
       return throwError(()=>{
@@ -82,9 +89,9 @@ export class FileUploadComponent implements OnInit {
       });
     }))
     .subscribe(resp=>{
-      this.res = Object.values(resp)[6];
-      this.resp2 = Object.values(this.res as { [key: string]: any })[0];
-      if((this.resp2 as string).includes("File Uploaded successfully")){      
+      this.res = resp['body'];
+      this.resp2 = this.res['message'];
+      if((this.resp2 as string)?.includes("File Uploaded successfully")){      
         this.subscribed = true;
         this.toCongrats('fileSuccessfull');
       }

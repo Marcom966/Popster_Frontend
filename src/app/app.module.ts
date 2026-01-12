@@ -24,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SupportComponentComponent } from './components/support-component/support-component.component';
 import { CardDetailComponentComponent } from './components/card-detail-component/card-detail-component.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AudioPlayerComponentComponent } from './components/audio-player-component/audio-player-component.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -44,6 +45,6 @@ import { HttpClientModule } from '@angular/common/http';
     NgxAudioPlayerModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule, OAuthModule.forRoot(), FontAwesomeModule],
+    FormsModule, OAuthModule.forRoot(), FontAwesomeModule, AudioPlayerComponentComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class AppModule { }
