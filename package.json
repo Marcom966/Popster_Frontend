@@ -23,7 +23,7 @@
     "@fortawesome/angular-fontawesome": "^4.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@ng-bootstrap/ng-bootstrap": "^20.0.0",
-    "@nguniversal/express-engine": "^16.2.0",
+    "@nguniversal/express-engine": "^15.2.1",
     "@popperjs/core": "^2.11.8",
     "ajv": "^6.12.6",
     "angular-oauth2-oidc": "^17.0.2",

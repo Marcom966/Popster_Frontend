@@ -20,7 +20,6 @@ import { NewDirectiveDirective } from './new-directive.directive';
 import { FileSuccessfullComponent } from './components/file-successfull/file-successfull.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
-import { AudioPlayerComponentComponent } from "./components/audio-player-component/audio-player-component.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SupportComponentComponent } from './components/support-component/support-component.component';
 import { CardDetailComponentComponent } from './components/card-detail-component/card-detail-component.component';
