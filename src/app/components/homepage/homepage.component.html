@@ -22,9 +22,9 @@
             <div class="bigDiv">
                 <div class="CardcontainerHm">
                     <div [ngClass]="response!=undefined&&response.length==2 ? 'row twocardsRow' : 'row'">
-                        @for (r of response; track $index) {
+                        @for (res of response; track res) {
                             <div [ngClass]="response!=undefined&&response.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'">   
-                                <app-card [ngClass]="response!=undefined&&response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+                                <app-card [ngClass]="response!=undefined&&response.length==1 ? 'onlyOneCard' : ''" [data]="res"></app-card>
                             </div>
                         }
                     </div>
