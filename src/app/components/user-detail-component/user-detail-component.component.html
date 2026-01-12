@@ -27,9 +27,9 @@
                 <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
                 <button type="reset" id="resetButtonFirst" class='reset' *ngIf="clickedForm">X</button>
             <p class="generalName">Birthday: {{birth}}</p>
-            <p class="changePassword">Change Password:</p>
-                <input type="password" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
-                <button type="reset" id="resetButtonSecond" class='reset' *ngIf="clickedForm">X</button>
+            <button type="button" id="passwordButton" class="changePassword" *ngIf="clickedForm" (click)="attentionPassword()">Change Password:</button>
+                <input type="password" class="changesInput" name="artistNameInput" *ngIf="changingPassword" ngModel>
+                <button type="reset" id="resetButtonSecond" class='reset' *ngIf="changingPassword">X</button>
             <button type="submit" class="saveChangesButton" *ngIf="logged" [disabled]="formChangeUser.invalid" (click)="clickedForm ? saveChanges() : changeUserDetails()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
         </form>
     </div>

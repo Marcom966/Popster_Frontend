@@ -25,6 +25,11 @@ export class UserDetailComponentComponent {
   role!: string;
   clickedForm: boolean = false;
   logged: boolean = false;
+  updateName!: string;
+  updateSurname!: string;
+  updateEmail!: string;
+  updatePassword!: string;
+  changingPassword: boolean = false;
   constructor(private route: Router, private getTheuser: FetchUsersService) { }
 
   public main(){
@@ -52,10 +57,30 @@ export class UserDetailComponentComponent {
   }
 
   public saveChangesUser(formChangeUser: NgForm) {
-
+    if (formChangeUser.valid) {
+      this.updateName = formChangeUser.value.name || this.name;
+      this.updateSurname = formChangeUser.value.surname || this.surname;
+      this.updateEmail = formChangeUser.value.eMail || this.eMail;
+      this.updatePassword = formChangeUser.value.password || this.password;
+    }
   }
   public saveChanges(){
-
+    this.requestSub = this.getTheuser.updateUser(this.username, this.updatePassword, this.updateName, this.updateSurname, this.updateEmail)
+    .pipe(
+      catchError(error=> {
+        console.error('Error occurred:', error);
+        return throwError(() => new Error('An error occurred while updating the user.'));
+      })
+    )
+    .subscribe(resp => {
+      if(resp==null){
+        window.alert("User details updated successfully.");
+      };
+    });
+  }
+  public attentionPassword(){
+    this.changingPassword = true;
+    window.alert("YOU ARE ABOUT TO CHANGE YOUR PASSWORD!");
   }
   public changeUserDetails(){
     this.clickedForm = true;
