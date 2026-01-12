@@ -7,67 +7,95 @@
         <button type="button" class="FileUpload" (click)="goToUserHomepage()">See all files uploaded by {{username ? username : dataUserName}}</button>
     </nav>
     <div class="playerContainer">
-        <div class="errorClass" *ngIf="notRecognized==true">Formato file non riconosciuto</div>
-            <div class="controls" *ngIf="!noLink && !notRecognized">
-                <div class="songDetails" *ngIf="!noLink &&!notRecognized">
-                    <form class="clickedForm" *ngIf="clicked||!noLink&&!notRecognized" #formChangeFile="ngForm" (ngSubmit)="saveChangesForm(formChangeFile)">
-                        <div class="fileClass">Original File Name: {{dataName}}</div>
-                        <div class="artistClass">Artist: {{dataArtistName ? dataArtistName : clicked ? '' : artistNameNew ? artistNameNew : 'Not Set'}}
-                            <input type="text" class="artistNameInput" name="artistNameInput" *ngIf="clicked" ngModel>
-                            <button type="reset" id="resetButtonFirst" class='reset' *ngIf="clicked">X</button>
-                        </div>
-                        <div class="songClass">Song: {{dataSongName ? dataSongName : clicked ? '' : songNameNew ? songNameNew : 'Not Set'}}
-                            <input type="text" class="songNameInput" name="songNameInput" *ngIf="clicked" ngModel>
-                            <button type="reset" id="resetButton" class='reset' *ngIf="clicked">X</button>
-                        </div>
-                        <div class="uploaderClass">Uploaded by: {{dataUserName}}</div>
-                    </form>
-                </div>
-                <div *ngIf="!notRecognized" class="player-controls">
-                    <button (click)="playAudio()" [disabled]="state.playing">
-                        <i class="fa-duotone fa-solid">
-                            <fa-icon [icon]="faPlayIcon"></fa-icon>
-                        </i>
-                    </button>
-                    <button (click)="pause()" [disabled]="!state.playing">
-                        <i class="fa-solid">
-                            <fa-icon [icon]="faPauseIcon"></fa-icon>
-                        </i>
-                    </button>
-                    <button (click)="stop()">
-                        <i class="fa-solid">
-                            <fa-icon [icon]="faStopIcon"></fa-icon>
-                        </i>
-                    </button>
-                    <button (click)="mute()" *ngIf="!state.mute">
-                        <i class="fa-solid">
-                            <fa-icon [icon]="faVolumeMuteIcon"></fa-icon>
-                        </i>
-                    </button>
-                    <button (click)="unmute()" *ngIf="state.mute">
-                        <i class="fa-solid">
-                            <fa-icon [icon]="faVolumeUpIcon"></fa-icon>
-                        </i>
-                    </button>
-                </div>
-                <div class="progress" *ngIf="state">
-                <input type="range" 
-                    [value]="state.currentTime || 0" 
-                    [max]="state.duration || 100"
-                    (input)="onSliderChange($event)"
-                    (change)="onSliderChangeEnd($event)">
-                <span>{{audioService.formatTime(state.currentTime||0) }} / {{audioService.formatTime(state.duration||0) }}</span>
+        @if (notRecognized) {
+            <div class="errorClass">Formato file non riconosciuto</div>
+        }
+        @if (!noLink&&!notRecognized) {
+            <div class="controls">
+                @if (!noLink&&!notRecognized) {
+                    <div class="songDetails">
+                        @if (clicked||!noLink&&!notRecognized) {
+                            <form class="clickedForm" #formChangeFile="ngForm" (ngSubmit)="saveChangesForm(formChangeFile)">
+                                <div class="fileClass">Original File Name: {{dataName}}</div>
+                                <div class="artistClass">Artist: {{dataArtistName ? dataArtistName : clicked ? '' : artistNameNew ? artistNameNew : 'Not Set'}}
+                                    @if(clicked){
+                                        <input type="text" class="artistNameInput" name="artistNameInput" ngModel>
+                                    }
+                                    @if (clicked) {
+                                        <button type="reset" id="resetButtonFirst" class='reset'>X</button>
+                                    }
+                                </div>
+                                <div class="songClass">Song: {{dataSongName ? dataSongName : clicked ? '' : songNameNew ? songNameNew : 'Not Set'}}
+                                    @if(clicked){
+                                        <input type="text" class="songNameInput" name="songNameInput" ngModel>
+                                    }
+                                    @if (clicked) {
+                                        <button type="reset" id="resetButton" class='reset'>X</button>
+                                    }
+                                </div>
+                                <div class="uploaderClass">Uploaded by: {{dataUserName}}</div>
+                            </form>
+                        }
+                    </div>
+                }
+                @if(!notRecognized) {
+                    <div class="player-controls">
+                        <button (click)="playAudio()" [disabled]="state.playing">
+                            <i class="fa-duotone fa-solid">
+                                <fa-icon [icon]="faPlayIcon"></fa-icon>
+                            </i>
+                        </button>
+                        <button (click)="pause()" [disabled]="!state.playing">
+                            <i class="fa-solid">
+                                <fa-icon [icon]="faPauseIcon"></fa-icon>
+                            </i>
+                        </button>
+                        <button (click)="stop()">
+                            <i class="fa-solid">
+                                <fa-icon [icon]="faStopIcon"></fa-icon>
+                            </i>
+                        </button>
+                        @if(state.mute){
+                            <button (click)="mute()">
+                                <i class="fa-solid">
+                                    <fa-icon [icon]="faVolumeMuteIcon"></fa-icon>
+                                </i>
+                            </button>
+                        }
+                        @if(state.mute){
+                            <button (click)="unmute()">
+                                <i class="fa-solid">
+                                    <fa-icon [icon]="faVolumeUpIcon"></fa-icon>
+                                </i>
+                            </button>
+                        }
+                    </div>
+                }
+                @if(state){
+                    <div class="progress">
+                        <input type="range" 
+                            [value]="state.currentTime || 0" 
+                            [max]="state.duration || 100"
+                            (input)="onSliderChange($event)"
+                            (change)="onSliderChangeEnd($event)">
+                        <span>{{audioService.formatTime(state.currentTime||0) }} / {{audioService.formatTime(state.duration||0) }}</span>
+                    </div>
+                }
+                @if(username==dataUserName){
+                    <div [ngClass]="clicked ? 'largeButtons' : 'buttonFile'">
+                        <button type="button" class="deleteFile" (click)="deleteFile()">Delete File</button>
+                        <button [type]="buttonType" [ngClass]="clicked ? 'saveChanges' : 'changeFile'" (click)="clicked ? saveChanges() : changeFile()">{{clicked ? 'Save Changes' : 'Modify File'}}</button>
+                        <button type="button" class="downloadFile" (click)="downloadFile()">Download File</button>
+                    </div>
+                }
             </div>
-            <div [ngClass]="clicked ? 'largeButtons' : 'buttonFile'" *ngIf="username==dataUserName">
-                <button type="button" class="deleteFile" (click)="deleteFile()">Delete File</button>
-                <button [type]="buttonType" [ngClass]="clicked ? 'saveChanges' : 'changeFile'" (click)="clicked ? saveChanges() : changeFile()">{{clicked ? 'Save Changes' : 'Modify File'}}</button>
-                <button type="button" class="downloadFile" (click)="downloadFile()">Download File</button>
-            </div>
-        </div>
-        <div class="noFileClass" *ngIf="(noLink&&notRecognized)||noLink||notRecognized">
-            <h2 class="noFileAvailable">The file has been deleted or it's in an unsupported format</h2>
-            <p class="pUnder">Click the button to return to the homepage and {{notRecognized ? "reupload the file" : "upload a file"}}</p>
-            <button type="button" [ngClass]="notRecognized ? 'NotRecognized' : 'goBackHome'" (click)="notRecognized ? deleteFile() : backToHome()">{{notRecognized ? "Delete the File" : "Back to the Homepage"}}</button>
-        </div>
+            }
+            @if ((noLink&&notRecognized)||noLink||notRecognized) {
+                <div class="noFileClass">
+                    <h2 class="noFileAvailable">The file has been deleted or it's in an unsupported format</h2>
+                    <p class="pUnder">Click the button to return to the homepage and {{notRecognized ? "reupload the file" : "upload a file"}}</p>
+                    <button type="button" [ngClass]="notRecognized ? 'NotRecognized' : 'goBackHome'" (click)="notRecognized ? deleteFile() : backToHome()">{{notRecognized ? "Delete the File" : "Back to the Homepage"}}</button>
+                </div>
+            }
     </div>
 </div>

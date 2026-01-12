@@ -18,15 +18,19 @@
         <div class="uselessNess">
             <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : ''}}</h1>
         </div>
-        <div class="bigDiv" *ngIf="noFiles==false">
-            <div class="CardcontainerHm">
-                <div [ngClass]="response!=undefined&&response.length==2 ? 'row twocardsRow' : 'row'">
-                    <div [ngClass]="response!=undefined&&response.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'" *ngFor="let r of response">   
-                        <app-card [ngClass]="response!=undefined&&response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+        @if(noFiles){
+            <div class="bigDiv">
+                <div class="CardcontainerHm">
+                    <div [ngClass]="response!=undefined&&response.length==2 ? 'row twocardsRow' : 'row'">
+                        @for (r of response; track $index) {
+                            <div [ngClass]="response!=undefined&&response.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'">   
+                                <app-card [ngClass]="response!=undefined&&response.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
     <div Class="somethingElseclass"  *ngIf="sometghingEWlse==true">An error has occured, please contact our administrators</div>
     <button type="button" class="buttonSupport" *ngIf="sometghingEWlse==true" (click)="toSupport()">Contact support</button>
