@@ -61,7 +61,7 @@ export class CardDetailComponentComponent {
     error: false,
     mute: false
   };
-  constructor(private route: Router, private http: HttpClient, public audioService: AudioPlayerServiceService, private ToDeleteFile: PostFileServiceService) {}
+  constructor(private route: Router, public audioService: AudioPlayerServiceService, private ToDeleteFile: PostFileServiceService) {}
 
   private destroy$ = new Subject<void>();
   private audioUrl: string | null = null;
