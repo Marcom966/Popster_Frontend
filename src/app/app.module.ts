@@ -45,6 +45,6 @@ import { HttpClientModule } from '@angular/common/http';
     NgxAudioPlayerModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule, OAuthModule.forRoot(), FontAwesomeModule], providers: [],
+    FormsModule, OAuthModule.forRoot(), FontAwesomeModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class AppModule { }
