@@ -78,6 +78,9 @@ export class UserDetailComponentComponent {
       };
     });
   }
+  public deleteUser(){
+    
+  }
   public attentionPassword(){
     this.changingPassword = true;
     window.alert("YOU ARE ABOUT TO CHANGE YOUR PASSWORD!");
