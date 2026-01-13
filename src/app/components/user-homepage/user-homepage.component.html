@@ -1,7 +1,9 @@
-<div class="loading-container" *ngIf="isLoading">
-    <div class="spinner"></div>
-    <div class="loading-text">Loading...</div>
-</div>
+@if (isLoading) {
+    <div class="loading-container">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading...</div>
+    </div>
+}
 <div class="iHateThisColor">
     <div class="upperContainer">
         <h1 class="h1New">Popster</h1>
@@ -10,25 +12,35 @@
         <button type="button" class="logbutton" (click)="backTotheHomepage()">Back to the Homepage</button>
         <button type="button" class="FileUpload" (click)="username ? toUserDetails() : redirect()">Dettagli utente</button>
         <div class="header">
-            <h1 *ngIf="username" class="welcome">Welcome {{username}}</h1>
+            @if (username) {
+                <h1 class="welcome">Welcome {{username}}</h1>
+            }
         </div>
     </nav>
     <div class="nuovoContainer">
         <div class="uselessNess">
             <h1 [ngClass]="noFiles ? 'errorHomepage':'hompageUno'">{{noFiles ? 'No file has been uploaded yet' : ''}}</h1>
         </div>
-        <div class="bigDiv" *ngIf="noFiles==false">
-            <div class="CardcontainerHm">
-                <div [ngClass]="data!=undefined&&data.length==2 ? 'row twocardsRow' : 'row'">
-                    <div [ngClass]="data!=undefined&&data.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'" *ngFor="let r of data">   
-                        <app-card [ngClass]="data!=undefined&&data.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+        @if (!noFiles) {
+            <div class="bigDiv">
+                <div class="CardcontainerHm">
+                    <div [ngClass]="data!=undefined&&data.length==2 ? 'row twocardsRow' : 'row'">
+                        @for (r of data; track data) {
+                            <div [ngClass]="data!=undefined&&data.length==2 ? 'col-md-6 mb-3' : 'col-md-4 mb-4'">   
+                                <app-card [ngClass]="data!=undefined&&data.length==1 ? 'onlyOneCard' : ''" [data]="r"></app-card>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
-    <div Class="somethingElseclass"  *ngIf="somethingElse==true">An error has occured, please contact our administrators</div>
-    <button type="button" class="buttonSupport" *ngIf="somethingElse==true" (click)="toSupport()">Contact support</button>
+    @if (somethingElse) {
+        <div Class="somethingElseclass">An error has occured, please contact our administrators</div>
+    }
+    @if (somethingElse) {
+        <button type="button" class="buttonSupport" (click)="toSupport()">Contact support</button>
+    }
     <div class="footer">
         <app-footer></app-footer>
     </div>

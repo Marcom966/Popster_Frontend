@@ -9,61 +9,73 @@
         <button type="button" class="button2" (click)="vendor ? yesVendor() : noFunction()">No</button>
         <button class="topRight" id="topRightButton" (click)="onSubmitVendor()">Are you a seller?</button>
     </div>
-    <form class="containerForm" id="containerForm" #formLogin="ngForm" *ngIf="No==true&&Yes==false" (ngSubmit)="onSubmit(formLogin)">
-        <p class="p">Sign up here.</p>
-        <p class="name">Name:</p>
-            <input class="inputClass" type="text" name="FullName" ngModel>
-                <p class="surname">Surname:</p>
-            <input class="inputClassSurname" type="text" name="Surname" ngModel>
-                 <p class="birthday">Birthday:</p>
-        <div class="errorDate">{{wrongDate ? "Please insert a valid date (YYYY-MM-DD)" : ""}}</div>
-            <input class="inputClassBirth" type="text" name="birthday" ngModel>
-                <p class="eMail">E-mail:</p>
-        <div class="emailNotValid" *ngIf="isDateWrong==false">{{fakeEmail ? "Please insert a valid email (nickname@website)" : ""}}</div>
-            <input class="inputClassEmail" type="text" name="eMail" [required]="true" ngModel>
-                <p class="Nickname">Nickname:</p>
-        <div class="notNickname" id="notNickname">{{notNickname ? "Insert a valid nickname" : ""}}</div>
-            <input class="inputNickname" type="text" name="Nickname" [required]="true" ngModel>
-                <p class="Password">Password:</p>
-        <div class="notPassword" id="notpassword">{{notPassword ? "Insert a valid password" : ""}}</div>
-            <input class="inputClassPassword" type="text" name="Password" [required]="true" ngModel>
-                <p class="repeatPassword">Repeat password:</p>
-        <div class="differentPassword" id="password">{{samePassword ? "Passwords don't match" : ""}}</div>
-            <input class="inputClassRepeatPassword" type="text" name="PasswordDue" [required]="true" ngModel>
+    @if (No==true&&Yes==false) {
+        <form class="containerForm" id="containerForm" #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)">
+            <p class="p">Sign up here.</p>
+            <p class="name">Name:</p>
+                <input class="inputClass" type="text" name="FullName" ngModel>
+                    <p class="surname">Surname:</p>
+                <input class="inputClassSurname" type="text" name="Surname" ngModel>
+                    <p class="birthday">Birthday:</p>
+            <div class="errorDate">{{wrongDate ? "Please insert a valid date (YYYY-MM-DD)" : ""}}</div>
+                <input class="inputClassBirth" type="text" name="birthday" ngModel>
+                    <p class="eMail">E-mail:</p>
+            @if (isDateWrong) {
+                <div class="emailNotValid">{{fakeEmail ? "Please insert a valid email (nickname@website)" : ""}}</div>
+            }
+                <input class="inputClassEmail" type="text" name="eMail" [required]="true" ngModel>
+                    <p class="Nickname">Nickname:</p>
+            <div class="notNickname" id="notNickname">{{notNickname ? "Insert a valid nickname" : ""}}</div>
+                <input class="inputNickname" type="text" name="Nickname" [required]="true" ngModel>
+                    <p class="Password">Password:</p>
+            <div class="notPassword" id="notpassword">{{notPassword ? "Insert a valid password" : ""}}</div>
+                <input class="inputClassPassword" type="text" name="Password" [required]="true" ngModel>
+                    <p class="repeatPassword">Repeat password:</p>
+            <div class="differentPassword" id="password">{{samePassword ? "Passwords don't match" : ""}}</div>
+                <input class="inputClassRepeatPassword" type="text" name="PasswordDue" [required]="true" ngModel>
             <button type="submit" Class="register" placeholder="Register now!">Register now!</button>
-    </form>
-    <form class="loginForm" id="containerLogin" #formLoginNew="ngForm" *ngIf="Yes==true&&No==false" (ngSubmit)="onSubmitNew(formLoginNew)">
-        <p class="username">Username:</p>
-            <input class="inputClassusername" type="text" name="Nickname" [required]="true" ngModel>
-                <p class="password">Password:</p>
-        <p class="password">Password:</p>
-            <input class="inputClasspassword" type="text" name="passswordAlready" [required]="true" ngModel>
-        <h1 class="error" *ngIf="nickAndPassDontMatch==true">Wrong username or password or you have not yet subscribed</h1>
-        <button type="submit" class="registerNew" placeholder="Login">Login</button>
-    </form>
-    <form class="sellerForm" id="containerForm" #formLoginSeller="ngForm" *ngIf="No==false&&Yes==false&&vendor==true&&seller==true" (ngSubmit)="onSubmit(formLoginSeller)">
-        <p class="pSeller">Sign up here</p>
-        <p class="nameSeller">Name:</p>
-            <input class="inputClassSeller" type="text" name="FullName" ngModel>
-                <p class="surnameSeller">Surname:</p>
-            <input class="inputClassSurnameSeller" type="text" name="Surname" ngModel>
-                <p class="birthdaySeller">Birthday:</p>
-        <div class="errorDateSeller">{{wrongDate ? "Please insert a valid date (YYYY-MM-DD)" : ""}}</div>
-            <input class="inputClassBirthSeller" type="text" name="birthday" ngModel>
-                <p class="eMailSeller">E-mail:</p>
-        <div class="emailNotValidSeller" *ngIf="isDateWrong==false">{{fakeEmail ? "Please insert a valid email (nickname@website)" : ""}}</div>
-            <input class="inputClassEmailSeller" type="text" name="eMail" [required]="true" ngModel>
-                <p class="NicknameSeller">Seller name:</p>
-        <div class="notNicknameSeller" id="notNickname">{{notNickname ? "Insert a valid nickname" : ""}}</div>
-            <input class="inputNicknameSeller" type="text" name="Seller Name" [required]="true" ngModel>
-                <p class="PasswordSeller">Password:</p>
-        <div class="notPasswordSeller" id="notpassword">{{notPassword ? "Insert a valid password" : ""}}</div>
-            <input class="inputClassPasswordSeller" type="text" name="Password" [required]="true" ngModel>
-                <p class="repeatPasswordSEller">Repeat password:</p>
-        <div class="differentPasswordSeller" id="password">{{samePassword ? "Passwords don't match" : ""}}</div>
-            <input class="inputClassRepeatPasswordSeller" type="text" name="PasswordDue" [required]="true" ngModel>
-        <button type="submit" Class="registerSeller" placeholder="Register now!">Register now!</button>
-    </form>
+        </form>
+    }
+    @if (Yes==true&&No==false) {
+        <form class="loginForm" id="containerLogin" #formLoginNew="ngForm" (ngSubmit)="onSubmitNew(formLoginNew)">
+            <p class="username">Username:</p>
+                <input class="inputClassusername" type="text" name="Nickname" [required]="true" ngModel>
+                    <p class="password">Password:</p>
+            <p class="password">Password:</p>
+                <input class="inputClasspassword" type="text" name="passswordAlready" [required]="true" ngModel>
+            @if (nickAndPassDontMatch) {
+                <h1 class="error">Wrong username or password or you have not yet subscribed</h1>
+            }
+            <button type="submit" class="registerNew" placeholder="Login">Login</button>
+        </form>
+    }
+    @if (No==false&&Yes==false&&vendor==true&&seller==true) {
+        <form class="sellerForm" id="containerFormVendor" #formLoginSeller="ngForm" (ngSubmit)="onSubmit(formLoginSeller)">
+            <p class="pSeller">Sign up here</p>
+            <p class="nameSeller">Name:</p>
+                <input class="inputClassSeller" type="text" name="FullName" ngModel>
+                    <p class="surnameSeller">Surname:</p>
+                <input class="inputClassSurnameSeller" type="text" name="Surname" ngModel>
+                    <p class="birthdaySeller">Birthday:</p>
+            <div class="errorDateSeller">{{wrongDate ? "Please insert a valid date (YYYY-MM-DD)" : ""}}</div>
+                <input class="inputClassBirthSeller" type="text" name="birthday" ngModel>
+                    <p class="eMailSeller">E-mail:</p>
+            @if (!isDateWrong) {
+                <div class="emailNotValidSeller">{{fakeEmail ? "Please insert a valid email (nickname@website)" : ""}}</div>
+            }
+                <input class="inputClassEmailSeller" type="text" name="eMail" [required]="true" ngModel>
+                    <p class="NicknameSeller">Seller name:</p>
+            <div class="notNicknameSeller" id="notNicknameVendor">{{notNickname ? "Insert a valid nickname" : ""}}</div>
+                <input class="inputNicknameSeller" type="text" name="Seller Name" [required]="true" ngModel>
+                    <p class="PasswordSeller">Password:</p>
+            <div class="notPasswordSeller" id="notpasswordVendor">{{notPassword ? "Insert a valid password" : ""}}</div>
+                <input class="inputClassPasswordSeller" type="text" name="Password" [required]="true" ngModel>
+                    <p class="repeatPasswordSEller">Repeat password:</p>
+            <div class="differentPasswordSeller" id="passwordVendor">{{samePassword ? "Passwords don't match" : ""}}</div>
+                <input class="inputClassRepeatPasswordSeller" type="text" name="PasswordDue" [required]="true" ngModel>
+            <button type="submit" Class="registerSeller" placeholder="Register now!">Register now!</button>
+        </form>
+    }
     <div id="g_id_onload"
         data-client_id="324448550075-625vaj9hi25eglu64o2vnldrgsijo278.apps.googleusercontent.com"
         data-context="use"
@@ -80,8 +92,11 @@
         data-text="signin_with"
         data-size="large"
         data-logo_alignment="left">
-     </div>
-     <div [ngClass]="Post||No==true&&Yes==false ? 'somethingElseclassBottom':'somethingElseClassTop'"  *ngIf="somethingElse==true">An error has occured, please contact our administrators</div>
-     <button type="button" [ngClass]="Post||No==true&&Yes==false ? 'buttonSupportBottom' : 'buttonSupportTop'" *ngIf="somethingElse==true&&nickAndPassDontMatch==false" (click)="toSupport()">Contact support</button>
-
+    </div>
+    @if (somethingElse) {
+        <div [ngClass]="Post||No==true&&Yes==false ? 'somethingElseclassBottom':'somethingElseClassTop'">An error has occured, please contact our administrators</div>
+    }
+    @if (somethingElse&&!nickAndPassDontMatch) {
+        <button type="button" [ngClass]="Post||No==true&&Yes==false ? 'buttonSupportBottom' : 'buttonSupportTop'" (click)="toSupport()">Contact support</button>
+    }
 </div>

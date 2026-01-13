@@ -1,14 +1,24 @@
 <div class="footer">
     <div class="copyright">
         <div class="toUsernamePage">
-            <div class="userNotFound" *ngIf="!username">Click on the top button to subscribe</div>
-            <button class="toUserPage" *ngIf="username" (click)="toUserPage()">{{username ? (username+"'s profile") : 'Subscribe'}}</button>
+            @if (!username) {
+                <div class="userNotFound">Click on the top button to subscribe</div>
+            }
+            @if (username) {
+                <button class="toUserPage" (click)="toUserPage()">{{username ? (username+"'s profile") : 'Subscribe'}}</button>
+            }
         </div>
         <p>© 2024 Popster, Marco Meneghetti. All rights reserved.</p>
         <div class="toAllFilesPage">
-            <div class="userNotFoundDue" *ngIf="!username">Welcome to Popster</div>
-            <button class="toAllFiles" *ngIf="pageName=='homepage'&&username" (click)="toAllFilesPage()">See all files uploaded by {{username}}</button>
-            <div class="fileLenght" *ngIf="pageName=='userhomepage'">User files: {{lenght=='0' ? 'No files uploaded' : lenght}}</div>
+            @if (!username) {
+                <div class="userNotFoundDue">Welcome to Popster</div>
+            }
+            @if (pageName=='homepage'&&username) {
+                <button class="toAllFiles" (click)="toAllFilesPage()">See all files uploaded by {{username}}</button>
+            }
+            @if (pageName=='userhomepage') {
+                <div class="fileLenght">User files: {{lenght=='0' ? 'No files uploaded' : lenght}}</div>
+            }
         </div>
     </div>
 </div>

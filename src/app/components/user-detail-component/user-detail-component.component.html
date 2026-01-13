@@ -1,7 +1,9 @@
-<div class="loading-container" *ngIf="isLoading">
-    <div class="spinner"></div>
-    <div class="loading-text">Loading...</div>
-</div>
+@if (isLoading) {
+    <div class="loading-container">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading...</div>
+    </div>
+}
 <div class="iHateThisColor">
     <div class="upperContainer">
         <h1 class="h1New">Popster</h1>
@@ -14,25 +16,39 @@
         <form class="clickedForm"  #formChangeUser="ngForm" (ngSubmit)="saveChangesUser(formChangeUser)">
             <h1 class="userDetailTitle">{{nickname}}'s Details</h1>
             <p class="generalName">Name: {{name}}</p>
-                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
-                <button type="reset" id="generalButtonButton" class='reset' *ngIf="clickedForm">X</button>
+                @if (clickedForm) {
+                    <input type="text" class="changesInput" name="artistNameInput" ngModel>
+                    <button type="reset" id="generalButtonButton" class='reset'>X</button>
+                }
             <p class="generalName">Surname: {{surname}}</p>
-                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
-                <button type="reset" id="surnameButton" class='reset' *ngIf="clickedForm">X</button>
+                @if (clickedForm) {
+                    <input type="text" class="changesInput" name="artistNameInput" ngModel>
+                    <button type="reset" id="surnameButton" class='reset'>X</button>
+                }
             <p class="generalName">Email: {{eMail}}</p>
-                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
-                <button type="reset" id="emailButton" class='reset' *ngIf="clickedForm">X</button>
+                @if (clickedForm) {
+                    <input type="text" class="changesInput" name="artistNameInput" ngModel>
+                    <button type="reset" id="emailButton" class='reset'>X</button>
+                }
             <p class="generalName">Role: {{role}}</p>
             <p class="generalName">Nickname: {{nickname}}</p>
-                <input type="text" class="changesInput" name="artistNameInput" *ngIf="clickedForm" ngModel>
-                <button type="reset" id="resetButtonFirst" class='reset' *ngIf="clickedForm">X</button>
+                @if (clickedForm) {
+                    <input type="text" class="changesInput" name="artistNameInput" ngModel>
+                    <button type="reset" id="resetButtonFirst" class='reset'>X</button>
+                }
             <p class="generalName">Birthday: {{birth}}</p>
-            <button type="button" id="passwordButton" class="changePassword" *ngIf="clickedForm" (click)="attentionPassword()">Change Password:</button>
-                <input type="password" class="changesInput" name="artistNameInput" *ngIf="changingPassword" ngModel>
-                <button type="reset" id="resetButtonSecond" class='reset' *ngIf="changingPassword">X</button>
+            @if (clickedForm) {
+                <button type="button" id="passwordButton" class="changePassword" *ngIf="clickedForm" (click)="attentionPassword()">Change Password:</button>
+                @if (changingPassword) {
+                    <input type="password" class="changesInput" name="artistNameInput" ngModel>
+                    <button type="reset" id="resetButtonSecond" class='reset'>X</button>
+                }
+            }
         </form>
         <div class="buttonRow">
-            <button type="submit" class="saveChangesButton" *ngIf="logged" [disabled]="formChangeUser.invalid" (click)="clickedForm ? saveChanges() : changeUserDetails()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
+            @if (logged) {
+                <button type="submit" class="saveChangesButton" [disabled]="formChangeUser.invalid" (click)="clickedForm ? saveChanges() : changeUserDetails()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
+            }
             <button type="button" class="deleteUserButton" (click)="deleteUser()">Delete User</button>
         </div>
     </div>
