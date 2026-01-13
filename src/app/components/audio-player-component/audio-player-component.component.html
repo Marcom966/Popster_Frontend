@@ -24,16 +24,20 @@
               <fa-icon [icon]="faStopIcon"></fa-icon>
             </i>
           </button>
-          <button (click)="mute()" *ngIf="!state.mute">
-            <i class="fa-solid">
-              <fa-icon [icon]="faVolumeMuteIcon"></fa-icon>
-            </i>
-          </button>
-          <button (click)="unmute()" *ngIf="state.mute">
-            <i class="fa-solid">
-              <fa-icon [icon]="faVolumeUpIcon"></fa-icon>
-            </i>
-          </button>
+          @if (!state.mute) {
+            <button (click)="mute()">
+              <i class="fa-solid">
+                <fa-icon [icon]="faVolumeMuteIcon"></fa-icon>
+              </i>
+            </button>
+          }
+          @if (state.mute) {
+            <button (click)="unmute()">
+              <i class="fa-solid">
+                <fa-icon [icon]="faVolumeUpIcon"></fa-icon>
+              </i>
+            </button>
+          }
         </div>
         @if (state) {
           <div class="progress">
