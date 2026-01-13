@@ -95,3 +95,48 @@
     color: black;
     cursor: pointer;
 }
+.changesInput{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    border: 0.5px solid white;
+    border-radius: 20px;
+    height: 30px;
+    width: 191px;
+    text-align: center;
+    margin-bottom: 33px;
+}
+.reset{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    margin-top: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 40px;
+    border: 0.5px solid white;
+}
+.reset:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.buttonRow{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+.deleteUserButton{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    margin-top: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 40px;
+    border: 0.5px solid white; 
+}
