@@ -62,7 +62,7 @@
                                 </i>
                             </button>
                         }
-                        @if(state.mute){
+                        @if(!state.mute){
                             <button (click)="unmute()">
                                 <i class="fa-solid">
                                     <fa-icon [icon]="faVolumeUpIcon"></fa-icon>
