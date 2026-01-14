@@ -67,7 +67,7 @@ export class UserDetailComponentComponent {
     }
   }
 
-  
+
   public saveChanges(){
     this.requestSub = this.getTheuser.updateUser(this.username, this.updatePassword, this.updateName, this.updateSurname, this.updateEmail)
     .pipe(
@@ -95,6 +95,7 @@ export class UserDetailComponentComponent {
     .subscribe(resp => {
       if(resp==null){
         window.alert("User deleted successfully.");
+        setTimeout(() => this.route.navigate(['/homepage']), 1000);
       };
     });
   }

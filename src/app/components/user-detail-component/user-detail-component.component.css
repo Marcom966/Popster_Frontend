@@ -158,3 +158,8 @@
     border: 0.5px solid white;
     margin-bottom: 40px;
 }
+.deleteUserButton:hover, .changePassword:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
