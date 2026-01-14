@@ -66,6 +66,8 @@ export class UserDetailComponentComponent {
       this.updatePassword = formChangeUser.value.password || this.password;
     }
   }
+
+  
   public saveChanges(){
     this.requestSub = this.getTheuser.updateUser(this.username, this.updatePassword, this.updateName, this.updateSurname, this.updateEmail)
     .pipe(
@@ -81,7 +83,7 @@ export class UserDetailComponentComponent {
     });
   }
 
-  
+
   public deleteUser(){
     this.requestSub = this.getTheuser.deleteUser(this.user_id)
     .pipe(
@@ -96,10 +98,14 @@ export class UserDetailComponentComponent {
       };
     });
   }
+
+
   public attentionPassword(){
     this.changingPassword = true;
     window.alert("YOU ARE ABOUT TO CHANGE YOUR PASSWORD!");
   }
+
+
   public changeUserDetails(){
     this.clickedForm = true;
   }
