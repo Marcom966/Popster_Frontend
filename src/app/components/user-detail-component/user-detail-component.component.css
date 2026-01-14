@@ -84,7 +84,7 @@
     color: white;
     font-weight: bold;
     font-size: small;
-    margin-top: 50px;
+    margin-top: 4px;
     width: 150px;
     height: 40px;
     border-radius: 40px;
@@ -106,6 +106,7 @@
     width: 191px;
     text-align: center;
     margin-bottom: 33px;
+    margin-left: 5px;
 }
 .reset{
     background-color: transparent;
@@ -128,15 +129,32 @@
     justify-content: center;
     gap: 20px;
     text-align: center;
+    border: 2px solid white;
+    border-radius: 40px;
+    width: 335px;
+    height: 52px;
+    margin-left: 792px;
 }
 .deleteUserButton{
     background-color: transparent;
     color: white;
     font-weight: bold;
     font-size: small;
-    margin-top: 20px;
+    margin-top: 4px;
     width: 150px;
     height: 40px;
     border-radius: 40px;
     border: 0.5px solid white; 
+}
+.changePassword{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    margin-top: 20px;
+    width: 150px;
+    height: 31px;
+    border-radius: 40px;
+    border: 0.5px solid white;
+    margin-bottom: 40px;
 }
