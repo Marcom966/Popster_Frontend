@@ -95,7 +95,7 @@ export class UserDetailComponentComponent {
     .subscribe(resp => {
       if(resp==null){
         window.alert("User deleted successfully.");
-        setTimeout(() => this.route.navigate(['/homepage']), 1000);
+        this.route.navigate(['/homepage']);
       };
     });
   }
