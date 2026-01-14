@@ -80,6 +80,8 @@ export class UserDetailComponentComponent {
       };
     });
   }
+
+  
   public deleteUser(){
     this.requestSub = this.getTheuser.deleteUser(this.user_id)
     .pipe(
