@@ -60,5 +60,11 @@ export class FetchUsersService {
       .pipe(catchError(this.handleError));
   }
 
+  public deleteUser(user_id: any): Observable<any>{
+    const url = `http://localhost:8080/api/v1/user/${user_id}`;
+    return this.http.delete<any>(url)
+      .pipe(catchError(this.handleError));
+  }
+
   
 }

@@ -30,6 +30,7 @@ export class UserDetailComponentComponent {
   updateEmail!: string;
   updatePassword!: string;
   changingPassword: boolean = false;
+  user_id!: any;
   constructor(private route: Router, private getTheuser: FetchUsersService) { }
 
   public main(){
@@ -53,6 +54,7 @@ export class UserDetailComponentComponent {
       this.password = resp['password'];
       this.nickname = resp['user_name'];
       this.role = resp['role']; 
+      this.user_id = resp['user_id'];
     })
   }
 
@@ -79,7 +81,18 @@ export class UserDetailComponentComponent {
     });
   }
   public deleteUser(){
-    
+    this.requestSub = this.getTheuser.deleteUser(this.user_id)
+    .pipe(
+      catchError(error=> {
+        console.error('Error occurred:', error);
+        return throwError(() => new Error('An error occurred while deleting the user.'));
+      })
+    )
+    .subscribe(resp => {
+      if(resp==null){
+        window.alert("User deleted successfully.");
+      };
+    });
   }
   public attentionPassword(){
     this.changingPassword = true;

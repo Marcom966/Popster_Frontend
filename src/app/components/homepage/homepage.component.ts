@@ -96,8 +96,6 @@ export class HomepageComponent implements OnInit {
     .subscribe(res=>{
       this.isLoading = false;
       this.response = Object.values(res);
-      console.log(this.response);
-      
       if(this.response.length==0){
         this.noFiles = true;
         return
