@@ -69,7 +69,7 @@ export class UserDetailComponentComponent {
 
 
   public saveChanges(){
-    this.requestSub = this.getTheuser.updateUser(this.username, this.updatePassword, this.updateName, this.updateSurname, this.updateEmail)
+    this.requestSub = this.getTheuser.updateUser(this.username, this.updatePassword, this.updateName, this.updateSurname, this.updateEmail, this.user_id)
     .pipe(
       catchError(error=> {
         console.error('Error occurred:', error);

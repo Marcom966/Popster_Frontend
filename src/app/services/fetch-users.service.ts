@@ -48,14 +48,14 @@ export class FetchUsersService {
     .pipe(catchError(this.handleError));
   }
 
-  public updateUser(user_name: string, password: string, name: string, surname: string,  eMail: string): Observable<any>{
-    const body = JSON.stringify({ user_name, password, name, surname, eMail});
+  public updateUser(user_name: string, password: string, name: string, surname: string,  eMail: string, userId: any): Observable<any>{
+    const body = JSON.stringify({ user_name, password, name, surname, eMail, userId });
     const httpOtions ={
       headers: new HttpHeaders({
         "Content-Type":"application/json",
       })
     };
-    const url = `http://localhost:8080/api/v1/user/update?user_name=${user_name}&password=${password}&name=${name}&surname=${surname}&eMail=${eMail}`;
+    const url = `http://localhost:8080/api/v1/user/update?user_name=${user_name}&password=${password}&name=${name}&surname=${surname}&eMail=${eMail}&userId=${userId}`;
     return this.http.put<any>(url, body, httpOtions)
       .pipe(catchError(this.handleError));
   }
