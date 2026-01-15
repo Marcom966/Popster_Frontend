@@ -55,7 +55,7 @@ export class FetchUsersService {
         "Content-Type":"application/json",
       })
     };
-    const url = `http://localhost:8080/api/v1/user/update?user_name=${user_name}&password=${password}&name=${name}&surname=${surname}&eMail=${eMail}&userId=${userId}`;
+    const url = `http://localhost:8080/api/v1/user/${userId}`;
     return this.http.put<any>(url, body, httpOtions)
       .pipe(catchError(this.handleError));
   }
