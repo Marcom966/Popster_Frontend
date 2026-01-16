@@ -85,7 +85,6 @@ export class UserDetailComponentComponent {
       if(resp==null){
         window.alert("User details updated successfully.");
         this.route.navigate(['homepage']);
-        
       };
     });
   }
