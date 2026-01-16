@@ -48,8 +48,8 @@ export class FetchUsersService {
     .pipe(catchError(this.handleError));
   }
 
-  public updateUser(user_name: string, password: string, name: string, surname: string,  eMail: string, userId: any): Observable<any>{
-    const body = JSON.stringify({ user_name, password, name, surname, eMail, userId });
+  public updateUser(data: FormData, userId: any): Observable<any>{
+    const body = JSON.stringify({ data });
     const httpOtions ={
       headers: new HttpHeaders({
         "Content-Type":"application/json",
