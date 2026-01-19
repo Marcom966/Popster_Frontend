@@ -7,7 +7,7 @@
     color: white;
     border: 2px solid white;
     border-radius: 25px;
-    width:467px;
+    width:498px;
 
 }
 .cards:hover{
@@ -15,7 +15,7 @@
 }  
 .audioPlayer{
     height: 77px;
-  width: 465px;
+  width: 496px;
   color: transparent;
   border: 2px solid white;
 }
@@ -36,7 +36,7 @@
     border-radius: 20px;
     padding: 5px 10px;
     cursor: pointer;
-    margin-left: 104px;
+    margin-left: 287px;
 }
 .changeButton:hover{
     box-shadow: 0 0 15px #fff;
