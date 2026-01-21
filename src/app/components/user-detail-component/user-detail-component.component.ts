@@ -32,6 +32,7 @@ export class UserDetailComponentComponent {
   changingPassword: boolean = false;
   user_id!: any;
   data: FormData = new FormData();
+  buttontype = 'button';
   constructor(private route: Router, private getTheuser: FetchUsersService) { }
 
   public main(){
@@ -60,7 +61,11 @@ export class UserDetailComponentComponent {
   }
 
   public saveChangesUser(formChangeUser: NgForm) {
+    console.log("save changes");
+    
     if (formChangeUser.valid) {
+      console.log("dentro if");
+      
       this.updateName = formChangeUser.value.name || this.name;
       this.data.append('name', this.updateName);
       this.updateSurname = formChangeUser.value.surname || this.surname;
@@ -70,7 +75,10 @@ export class UserDetailComponentComponent {
       this.updatePassword = formChangeUser.value.password || this.password;
       this.data.append('password', this.updatePassword);
     }
+    console.log(this.data);
+    
   }
+
 
 
   public saveChanges(){
@@ -87,6 +95,7 @@ export class UserDetailComponentComponent {
         this.route.navigate(['homepage']);
       };
     });
+    this.buttontype = 'button';
   }
 
 
@@ -100,8 +109,8 @@ export class UserDetailComponentComponent {
     )
     .subscribe(resp => {
       if(resp==null){
-        window.alert("User deleted successfully.");
-        this.route.navigate(['/homepage']);
+        //window.alert("User deleted successfully.");
+        //this.route.navigate(['/homepage']);
       };
     });
   }
@@ -115,6 +124,7 @@ export class UserDetailComponentComponent {
 
   public changeUserDetails(){
     this.clickedForm = true;
+    this.buttontype = 'submit';
   }
 
   public backTotheHomepage() {

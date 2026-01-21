@@ -47,7 +47,7 @@
         </form>
         <div class="buttonRow">
             @if (logged) {
-                <button type="submit" class="saveChangesButton" [disabled]="formChangeUser.invalid" (click)="clickedForm ? saveChanges() : changeUserDetails()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
+                <button [type]="buttontype" class="saveChangesButton" [disabled]="formChangeUser.invalid" (click)="clickedForm ? saveChanges() : changeUserDetails()">{{clickedForm ? 'Save Changes' : 'Edit User Details'}}</button>
             }
             <button type="button" class="deleteUserButton" (click)="deleteUser()">Delete User</button>
         </div>
