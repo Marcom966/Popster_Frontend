@@ -94,8 +94,8 @@ export class UserDetailComponentComponent {
     )
     .subscribe(resp => {
       if(resp==null){
-        window.alert("User details updated successfully.");
-        this.route.navigate(['homepage']);
+        // window.alert("User details updated successfully.");
+        //this.route.navigate(['homepage']);
       };
     });
     this.buttontype = 'button';
