@@ -29,6 +29,7 @@ export class UserDetailComponentComponent {
   updateSurname!: string;
   updateEmail!: string;
   updatePassword!: string;
+  updateNickname!: string;
   changingPassword: boolean = false;
   user_id!: any;
   data: FormData = new FormData();
@@ -66,13 +67,15 @@ export class UserDetailComponentComponent {
     if (formChangeUser.valid) {
       console.log("dentro if");
       
-      this.updateName = formChangeUser.value.name || this.name;
+      this.updateName = formChangeUser.value.artistNameInput || this.name;
       this.data.append('name', this.updateName);
-      this.updateSurname = formChangeUser.value.surname || this.surname;
+      this.updateSurname = formChangeUser.value.artistSurnameInput || this.surname;
       this.data.append('surname', this.updateSurname);
-      this.updateEmail = formChangeUser.value.eMail || this.eMail;
+      this.updateEmail = formChangeUser.value.artistEmailInput || this.eMail;
       this.data.append('eMail', this.updateEmail);
-      this.updatePassword = formChangeUser.value.password || this.password;
+      this.updateNickname = formChangeUser.value.artistNicknameInput || this.nickname;
+      this.data.append('user_name', this.updateNickname);
+      this.updatePassword = formChangeUser.value.artistPasswordInput || this.password;
       this.data.append('password', this.updatePassword);
     }
     console.log(this.data);
