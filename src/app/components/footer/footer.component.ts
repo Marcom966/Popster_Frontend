@@ -18,6 +18,7 @@ export class FooterComponent implements OnInit {
     this.username = localStorage.getItem('user_name');
     this.pageName = localStorage.getItem('page_name');
     this.lenght = localStorage.getItem('length_of_file_array');
+    
   }
   public toUserPage():void{
     this.route.navigate(['/userDetails']);

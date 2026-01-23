@@ -87,6 +87,7 @@ export class UserDetailComponentComponent {
         };
       });
       this.buttontype = 'button';
+      localStorage.setItem('user_name', toSend.user_name);
     }
   }
 
