@@ -32,10 +32,10 @@ export class UserDetailComponentComponent {
   updateNickname!: string;
   changingPassword: boolean = false;
   user_id!: any;
-  data: FormData = new FormData();
+  data!: FormData;
   buttontype = 'button';
   constructor(private route: Router, private getTheuser: FetchUsersService) { }
-
+  
   public main(){
     this.username = localStorage.getItem('user_name') || '';
     this.username ? this.logged = true : this.logged = false;
@@ -61,44 +61,33 @@ export class UserDetailComponentComponent {
     })
   }
 
-  public saveChangesUser(formChangeUser: NgForm) {
-    console.log("save changes");
-    
-    if (formChangeUser.valid) {
-      console.log("dentro if");
-      
-      this.updateName = formChangeUser.value.artistNameInput || this.name;
-      this.data.append('name', this.updateName);
-      this.updateSurname = formChangeUser.value.artistSurnameInput || this.surname;
-      this.data.append('surname', this.updateSurname);
-      this.updateEmail = formChangeUser.value.artistEmailInput || this.eMail;
-      this.data.append('eMail', this.updateEmail);
-      this.updateNickname = formChangeUser.value.artistNicknameInput || this.nickname;
-      this.data.append('user_name', this.updateNickname);
-      this.updatePassword = formChangeUser.value.artistPasswordInput || this.password;
-      this.data.append('password', this.updatePassword);
-    }
-    console.log(this.data);
-    
-  }
 
 
 
-  public saveChanges(){
-    this.requestSub = this.getTheuser.updateUser(this.data, this.user_id)
-    .pipe(
-      catchError(error=> {
-        console.error('Error occurred:', error);
-        return throwError(() => new Error('An error occurred while updating the user.'));
-      })
-    )
-    .subscribe(resp => {
-      if(resp==null){
-        // window.alert("User details updated successfully.");
-        //this.route.navigate(['homepage']);
+  public saveChanges(formChangeUser?: NgForm){
+    if (formChangeUser && formChangeUser.valid) {
+      const toSend = {
+        name: formChangeUser.value.artistNameInput || this.name,
+        surname: formChangeUser.value.artistSurnameInput || this.surname,
+        eMail: formChangeUser.value.artistEmailInput || this.eMail,
+        user_name: formChangeUser.value.artistNicknameInput || this.nickname,
+        password: formChangeUser.value.artistPasswordInput || this.password
       };
-    });
-    this.buttontype = 'button';
+      this.requestSub = this.getTheuser.updateUser(toSend, this.user_id)
+      .pipe(
+        catchError(error=> {
+          console.error('Error occurred:', error);
+          return throwError(() => new Error('An error occurred while updating the user.'));
+        })
+      )
+      .subscribe(resp => {
+        if(resp==null){
+          window.alert("User details updated successfully.");
+          this.route.navigate(['homepage']);
+        };
+      });
+      this.buttontype = 'button';
+    }
   }
 
 
@@ -112,8 +101,8 @@ export class UserDetailComponentComponent {
     )
     .subscribe(resp => {
       if(resp==null){
-        //window.alert("User deleted successfully.");
-        //this.route.navigate(['/homepage']);
+        window.alert("User deleted successfully.");
+        this.route.navigate(['/homepage']);
       };
     });
   }

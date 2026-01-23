@@ -48,15 +48,9 @@ export class FetchUsersService {
     .pipe(catchError(this.handleError));
   }
 
-  public updateUser(data: FormData, userId: any): Observable<any>{
-    const body = JSON.stringify({ data });
-    const httpOtions ={
-      headers: new HttpHeaders({
-        "Content-Type":"application/json",
-      })
-    };
+  public updateUser(data: any, userId: any): Observable<any>{
     const url = `http://localhost:8080/api/v1/user/${userId}`;
-    return this.http.put<any>(url, body, httpOtions)
+    return this.http.put<any>(url, data)
       .pipe(catchError(this.handleError));
   }
 
