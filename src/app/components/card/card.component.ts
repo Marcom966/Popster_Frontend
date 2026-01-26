@@ -83,7 +83,7 @@ export class CardComponent implements OnInit {
         localStorage.setItem('dataid', this.id);
         localStorage.setItem('dataartistname', this.artistNamw);
         localStorage.setItem('datasongname', this.songName);
-        localStorage.setItem('datausername', this.username? this.username : 'unknown');
+        localStorage.setItem('datausername', this.username ? this.username : 'unknown');
         localStorage.setItem('datalink', this.link);
       };
       ptReq.onerror = (e: any)=>{
