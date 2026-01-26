@@ -48,7 +48,7 @@ export class CardComponent implements OnInit {
       this.filegetter.getFilebyId(this.id).subscribe(async (blobData: Blob) => {
         let mime = await dataReturn['type'];
         if(!blobData.type && mime){
-          this.blob = new Blob([await blobData.arrayBuffer()], { type: mime});
+          this.blob = new Blob([await blobData.arrayBuffer()], {type: mime});
         }else{
           this.blob = blobData;
         }
