@@ -10,7 +10,7 @@
     </div>
     <nav class="navbar">
         <button type="button" class="logbutton" (click)="backTotheHomepage()">Back to the Homepage</button>
-        <button type="button" class="FileUpload" (click)="username ? toUserDetails() : redirect()">Dettagli utente</button>
+        <button type="button" class="FileUpload" (click)="username ? toUserDetails() : redirect()">User details</button>
         <div class="header">
             @if (username) {
                 <h1 class="welcome">Welcome {{username}}</h1>

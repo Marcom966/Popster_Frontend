@@ -16,7 +16,7 @@
             @if (pageName=='homepage'&&username) {
                 <button class="toAllFiles" (click)="toAllFilesPage()">See all files uploaded by {{username}}</button>
             }
-            @if (pageName=='userhomepage') {
+            @if (pageName=='userhomepage'&&username) {
                 <div class="fileLenght">User files: {{lenght=='0' ? 'No files uploaded' : lenght}}</div>
             }
         </div>
