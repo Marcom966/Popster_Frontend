@@ -75,7 +75,11 @@ export class CardDetailComponentComponent {
     this.dataArtistName = localStorage.getItem('dataartistname');
     this.dataSongName = localStorage.getItem('datasongname');
     this.dataUserName = localStorage.getItem('datausername');
-    this.dataLink = localStorage.getItem('datalink');    
+    this.dataLink = localStorage.getItem('datalink');
+    if(!this.dataId||!this.dataLink){
+      this.noLink = true;
+      return;
+    }
   }
 
 

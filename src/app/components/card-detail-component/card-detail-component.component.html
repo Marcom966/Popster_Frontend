@@ -10,6 +10,9 @@
         @if (notRecognized) {
             <div class="errorClass">Formato file non riconosciuto</div>
         }
+        @if (noLink) {
+            <div class="errorClass">File non trovato</div>
+        }
         @if (!noLink&&!notRecognized) {
             <div class="controls">
                 @if (!noLink&&!notRecognized) {

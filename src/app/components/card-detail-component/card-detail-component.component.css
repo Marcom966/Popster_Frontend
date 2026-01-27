@@ -314,3 +314,10 @@
     margin-left: 777px;
     height: 45px;
 }
+.errorClass{
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    color: red;
+    margin-top: 57px;
+}
