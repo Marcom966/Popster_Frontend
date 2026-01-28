@@ -57,5 +57,16 @@
     margin-left: 117px;
 }
 .uploaded{
-    margin-left: 190px;
+    margin-left: 68px;
+    text-align: center;
+    width: 294px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin-bottom: 12px;
+}
+.uploaded:hover{
+    border: 1px solid #fff;
+    box-shadow: 0 0 15px #fff;
+    border-radius: 25px;
 }

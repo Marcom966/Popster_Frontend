@@ -10,6 +10,6 @@
     <p class="pname">{{artistNamw ? artistNamw : ('Uploaded by '+username)}}</p>
     <br class="break">
     <h2 class="centerTre">Uploaded by:</h2>
-    <p class="uploaded">{{username}}</p>
+    <button type="button" class="uploaded" id="username_button" (click)="sessionUser ? toUserDetails() : redirect()">{{username}}</button>
     <app-audio-player-component class="audioPlayer" [id]="id" [link]="link" [name]="name" [file]="blob"></app-audio-player-component>
 </div>

@@ -24,12 +24,14 @@ export class CardComponent implements OnInit {
   blob!: Blob;
   errorNew: boolean = false;
   username!: string|null;
+  sessionUser!: string|null;
   datatoPassDown!: FileDataInterface;
 
 
   constructor(private filegetter: PostFileServiceService, public route: Router) { }
   public listData(){
     this.name = this.data.name.toString();
+    this.sessionUser = localStorage.getItem('user_name');
     this.requestSub = this.filegetter.getFilebyIdJson(this.data.id, {responseType: 'blob', observe: 'response'})
     .pipe(catchError(error=>{
       return throwError(()=>{
@@ -97,6 +99,13 @@ export class CardComponent implements OnInit {
       };
 
     }
+  }
+
+  public toUserDetails(): void{
+    this.route.navigate(['/userDetails']);
+  }
+  public redirect(): void{
+    this.route.navigate(['/fileUploadError']);
   }
 
   ngOnChanges(changes: SimpleChanges): void{
