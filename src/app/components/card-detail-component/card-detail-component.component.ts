@@ -167,7 +167,6 @@ export class CardDetailComponentComponent {
 
   public onSliderChangeEnd(event: any) {
     let time = Number(event.target.value);
-    console.log('Cambio posizione audio:', time);
     if(Number.isFinite(time)){
       this.audioService.seekTo(time);
     }
