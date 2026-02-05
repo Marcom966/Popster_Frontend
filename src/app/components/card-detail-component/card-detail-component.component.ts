@@ -186,7 +186,7 @@ export class CardDetailComponentComponent {
         try{
           await this.deleteFromIndexedDB(this.dataId!);
         }catch(err){
-          console.error("Errore durante l'eliminazione da IndexedDB:", err);
+          console.error("An error uncurred while deleting from IndexedDB:", err);
           window.alert('File deleted from server, but error occurred while deleting from local storage.');
         }
         localStorage.removeItem('dataname');
@@ -197,7 +197,7 @@ export class CardDetailComponentComponent {
         localStorage.removeItem('datausername');
       });
     } else {
-      console.error('Error: dataId is null or undefined.');
+      window.alert('Error: dataId is null or undefined.');
     }
   }
 
@@ -216,7 +216,7 @@ export class CardDetailComponentComponent {
 
 
   public saveChanges(){
-    this.formChangeFile.valid ? this.saveChangesForm(this.formChangeFile) : console.error('Form non valido');
+    this.formChangeFile.valid ? this.saveChangesForm(this.formChangeFile) : window.alert('The form is not valid');
     this.requestSub = this.ToDeleteFile.changeFileById(this.dataId!, this.formData).subscribe(resp=>{
       this.artistNameNew = resp['body']['artistName'];
       this.songNameNew = resp['body']['songName'];
