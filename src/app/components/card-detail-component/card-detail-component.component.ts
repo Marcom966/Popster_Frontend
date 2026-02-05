@@ -87,7 +87,7 @@ export class CardDetailComponentComponent {
   public playAudio() {
     const request = indexedDB.open('fileStorage',1);
     request.onerror = (event: any)=>{
-      console.error("errore nell'apertura di indexedDb", event.target.error);
+      window.alert("indexedDb run into an error while opening: "+ event.target.error);
       this.noLink = true;
     }
     request.onsuccess = (event: any)=>{
@@ -98,18 +98,16 @@ export class CardDetailComponentComponent {
       getReq.onsuccess = (event: any)=>{
         const result = event.target.result;
         if(result && result.blob){
-          console.log('file recuperato con successo:', result);
           this.audioUrl = URL.createObjectURL(result.blob);
           this.playStream(this.audioUrl);
-          console.log('blob type: ', result.blob.type);
         }else{
-          console.error('nessun file trovato per ID', this.dataId);
+          window.alert('no file found for ID ' + this.dataId);
           this.noLink = true;
         }
       db.close();
       };
       getReq.onerror = (error: any)=>{
-        console.error('errore nel recupero del file', error);
+        window.alert('an error encourred while recovering the file: ' + error);
         this.noLink = true;
       };
     }
@@ -123,41 +121,35 @@ export class CardDetailComponentComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next:(event: any)=>{
-          console.log('Evento di riproduzione:', event);
           if(event.type === 'error'){
-            console.error('Errore durante la riproduzione:', event);
+            window.alert('An error enourred while playing: ' + event);
             this.notRecognized = true;  
           }
         },
         error: error=>{
-          console.error('Errore nella riproduzione:', error);
+          window.alert('An error occurred while playing the audio: ' + error);
           this.notRecognized = true;
         }
       });
   }
 
   public pause() {
-    console.log('Pausa audio');
     this.audioService.pause();
   }
 
   public play() {
-    console.log('Ripresa audio');
     this.audioService.play();
   }
 
   public stop() {
-    console.log('Stop audio');
     this.audioService.stop();
   }
 
   public mute() {
-    console.log('Muto audio');
     this.audioService.mute();
   }
 
   public unmute() {
-    console.log('Unmute audio');
     this.audioService.unmute();
   }
 
