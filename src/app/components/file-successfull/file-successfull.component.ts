@@ -15,6 +15,6 @@ export class FileSuccessfullComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(()=>this.toUpload(), 5000);
+    setTimeout(()=>{this.toUpload()}, 5000);
   }
 }
