@@ -259,7 +259,7 @@ export class CardDetailComponentComponent {
         const store = trans.objectStore('files');
         const deleteReq = store.delete(id);
         deleteReq.onsuccess = ()=>{
-          console.log('file eliminato con successo da IndexedDB:', id);
+          window.alert('file eliminato con successo da IndexedDB:' +id);
           resolve();
         };
         deleteReq.onerror = ()=>{
