@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Host, HostListener } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
     standalone: false
 })
 export class AppComponent {
+  @HostListener('window:beforeunload', ['$event'])
+  handleBeforeUnload(event: BeforeUnloadEvent) {
+    localStorage.clear();
+  }
+  
   title = 'Popster';
 }
