@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Form, FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { Observable, Subscription, catchError, throwError } from 'rxjs';
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   somethingElse: boolean = false;
   Post: boolean = false;
   role: string = "user";
-  constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, @Inject(GoogleauthServiceService) private googleAuthService: GoogleauthServiceService) { }
+  constructor(private route: Router, public fetchUsers: FetchUsersService, public secondFetch: FetchUsersService, @Inject(GoogleauthServiceService) private googleAuthService: GoogleauthServiceService, private fb: FormBuilder) { }
 
   public onSubmit(form: NgForm){
     this.name = form.value.FullName;
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
     this.nickname = form.value.Nickname;
     this.password = form.value.Password;
     this.pasDue = form.value.passwordDue;
+    let eMail: any;
     if(this.pasDue!=this.password){
       this.samePassword=true;
     }
@@ -67,8 +68,10 @@ export class LoginComponent implements OnInit {
     if(!moment(birth).isValid()){
       this.wrongDate=true;
     }
-    let eMail = this.email;
-    if(!eMail.includes('@')){
+    if(form.value.email.valid){
+      eMail = this.email;
+    }
+    else if(!form.value.eMail.valid){
       this.fakeEmail=true;
       return
     }
