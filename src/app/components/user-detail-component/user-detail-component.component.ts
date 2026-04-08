@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 import { FetchUsersService } from 'src/app/services/fetch-users.service';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -8,7 +8,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-detail-component',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './user-detail-component.component.html',
   styleUrl: './user-detail-component.component.css'
 })

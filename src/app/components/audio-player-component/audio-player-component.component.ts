@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Subscription, takeUntil, Subject } from 'rxjs';
 import { Track } from 'ngx-audio-player';
 import { PostFileServiceService } from 'src/app/services/post-file-service.service';
-import { CommonModule } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import { StreamState } from 'src/app/Interfaces/stream-state';
 import { AudioPlayerServiceService } from 'src/app/services/audio-player-service.service';
@@ -13,7 +13,7 @@ import { faPlay, faPause, faStop, faVolumeMute, faVolumeUp } from '@fortawesome/
 
 @Component({
   selector: 'app-audio-player-component',
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [FontAwesomeModule],
   templateUrl: './audio-player-component.component.html',
   styleUrl: './audio-player-component.component.css',
   providers: [AudioPlayerServiceService],
