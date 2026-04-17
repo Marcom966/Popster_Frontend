@@ -8,14 +8,17 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class PostFileServiceService {
 
   constructor(private http: HttpClient) { }
+  private tooBig: boolean = false;
   private handleError(error: HttpErrorResponse){
     if(error.status===0){
-      console.error("an error occurred: "+error.error);
+      console.error("an error occurred: "+error.error +"error message: "+error.message);
     }else if(error.status===400){
       let er = Object.values(error);
       console.error(`Backend returned code ${error.status}, body was: `+er)
     }else if(error.status===500){
       console.error(error.message);
+    }else if (error.status===413){
+      console.error('File Too Large!');
     }
     return throwError(()=>new Error('something bad happened: '+error.status)); 
 

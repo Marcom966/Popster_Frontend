@@ -9,12 +9,12 @@ export class FetchUsersService {
   
   errorVar: boolean = false;
   public wrongEmail: boolean = false;
-  public errorMessage!: string;
+  public errorMessage!: string; 
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse){
     if(error.status===0){
-      console.error("an error occurred: "+error.error);
+      console.error("an error occurred: "+error.error+"error message: "+error.message);
     }else if(error.status===400){
       let er = Object.values(error);
       console.error(`Backend returned code ${error.status}, body was: `+er)
