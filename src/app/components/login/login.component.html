@@ -40,7 +40,6 @@
         <form class="loginForm" id="containerLogin" #formLoginNew="ngForm" (ngSubmit)="onSubmitNew(formLoginNew)">
             <p class="username">Username:</p>
                 <input class="inputClassusername" type="text" name="Nickname" [required]="true" ngModel>
-                    <p class="password">Password:</p>
             <p class="password">Password:</p>
                 <input class="inputClasspassword" type="text" name="passswordAlready" [required]="true" ngModel>
             @if (nickAndPassDontMatch) {

@@ -691,34 +691,50 @@
 }
 @media (max-width: 1536px){
     .choose{
-        left: 660px;
+        left: 18px;
+        top: 15px;
     }
     .button1{
-        left: 648px;
+        left: 672px;
+        top: 28px;
     }
     .button2{
-        left: 772px;
+        left: 676px;
+        top: 28px;
     }
     .topRight{
-        left: 1368px;
+        left: 1132px;
+        top: -126px;
     }
     .username{
-        left: 741px;
+        left: 766px;
+        top: 36px;
     }
     .inputClassusername{
-        left: 686px;
+        left: 709px;
+        top: 43px;
     }
     .password{
-        left: 741px;
+        left: 766px;
+        top: 65px;
     }
     .inputClasspassword{
-        left: 686px;
+        left: 711px;
+        top: 63px;
     }
     .registerNew{
-        left: 703px;
+        left: 536px;
+        top: 136px;
     }
     .differentPassword{
         left: 703px;
+    }
+    .backButton{
+        top: -66px;
+    }
+    .error{
+        margin-top: 90px;
+        margin-left: 501px;
     }
 }
 
