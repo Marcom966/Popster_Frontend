@@ -251,6 +251,15 @@ input[type=file]::file-selector-button{
     .uploadTheFile{
         margin-left: -274px;
     }
+    .reset{
+        margin-left: -300px;
+    }
+    .inputFull{
+        margin-left: -215px;
+    }
+    .submitButton{
+        left: -151px;
+    }
 
 }
 
