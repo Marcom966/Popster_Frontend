@@ -32,11 +32,11 @@
     font-weight: light;
     font-family: 'San Francisco', Helvetica, Arial, san-serif;
     top: 120px;
-    left: 851px;
+    left: 60px;
 }
 .button1{
     top:154px;
-    left: 848px;
+    left: 898px;
     background-color: transparent;
     color: white;
     width: 112px;
@@ -54,7 +54,7 @@
 }
 .button2{
     top:154px;
-    left: 962px;
+    left: 909px;
     background-color: transparent;
     color: white;
     width: 112px;
@@ -309,8 +309,8 @@
     width: 292px;
 }
 .topRight{
-    top:35px;
-    left: 1717px;
+    top:-24px;
+    left: 1519px;
     background-color: black;
     color: white;
     width: 155px;
@@ -515,6 +515,7 @@
     left: 868px;
     border: 0.5px solid white;
     border-radius: 25px;
+    width: 268px;
 }
 .error{
     background-color: Transparent;
