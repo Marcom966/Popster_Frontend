@@ -5,6 +5,9 @@
     </div>
     <nav class="navbar">
         <button type="button" class="logbutton" (click)="logged ? logOut() : logIn()">{{logged ? "Log out" : "Log in/subscribe"}}</button>
+        <div class="searchButton">
+            <app-searchcomponenmt></app-searchcomponenmt>
+        </div>
         <button type="button" class="FileUpload" (click)="logged ? fileUpload() : redirect()">Upload a file</button>
         <div class="header">
             <h1 [ngClass]="logged ? 'welcome' : 'subscribe'">{{logged ? ("Welcome back "+name) : ''}}</h1>
