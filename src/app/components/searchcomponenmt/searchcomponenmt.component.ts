@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './searchcomponenmt.component.css',
 })
 export class SearchcomponenmtComponent {
+  public search(): void {
+    console.log('Search button clicked');
+  }
 
 }
