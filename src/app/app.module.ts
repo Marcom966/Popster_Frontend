@@ -25,6 +25,7 @@ import { SupportComponentComponent } from './components/support-component/suppor
 import { CardDetailComponentComponent } from './components/card-detail-component/card-detail-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AudioPlayerComponentComponent } from './components/audio-player-component/audio-player-component.component';
+import {SearchcomponenmtComponent} from './components/searchcomponenmt/searchcomponenmt.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -45,6 +46,6 @@ import { AudioPlayerComponentComponent } from './components/audio-player-compone
     NgxAudioPlayerModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule, OAuthModule.forRoot(), FontAwesomeModule, AudioPlayerComponentComponent],
+    FormsModule, OAuthModule.forRoot(), FontAwesomeModule, AudioPlayerComponentComponent, SearchcomponenmtComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class AppModule { }
