@@ -1,10 +1,12 @@
 <div class="searchButton">
     <div class="searchDiv">
-        <input type="text" class="searchText" placeholder="Search here" type="text" ngModel>
-        <button type="button" class="searchButton" (click)="search()">
-            <div class="searchIcon">
-                <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
-            </div>
-        </button>
+        <form class="formClass" #form="ngForm" (ngSubmit)="search(form)">
+            <input type="text" class="searchText" placeholder="Search here" name="searchText" type="text" ngModel>
+            <button type="submit" class="searchButton">
+                <div class="searchIcon">
+                    <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+                </div>
+            </button>
+        </form>
     </div>
 </div>

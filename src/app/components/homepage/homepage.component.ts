@@ -104,9 +104,6 @@ export class HomepageComponent implements OnInit {
       this.toshow = this.res1.name;
     });
   }
-  public searchListData(search: string){
-    this.requestSub = this.getFiles.getAllFiles().subscribe();
-  }
 
 
   public logOut(){
