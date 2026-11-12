@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-searchcomponenmt',
@@ -10,8 +11,9 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 })
 export class SearchcomponenmtComponent {
   faMagnifyingGlass = faMagnifyingGlass;
-  public search(): void {
-    console.log('Search button clicked');
+  stringToSearch: string = "";
+  public search(form: NgForm): void {
+    this.stringToSearch = form.value.searchText;
   }
 
 }
